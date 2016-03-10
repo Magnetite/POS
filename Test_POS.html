@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Test POS</title>
+
+<link rel="stylesheet" 
+href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+<script src="JSPOS.js"></script> 
+
+
+
+
+<style>
+
+.denom {
+background-color: blue;
+//border-radius: 10px;
+color: white;
+width: 65px;
+height:40px;
+//margin: 10px 10px 10px 10px;
+font-size: 20px;
+}
+
+
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="container" id="subtotal">
+	<div class="jumbotron" > Subtotal:</div>
+</div>
+<div class="container" id="total">Total:</div>
+
+<div class="btn-group-vertical">
+	<div class="denom btn btn-default" id="20"> $20</div>
+	<div class="denom btn btn-default" id="10"> $10</div>
+	<div class="denom btn btn-default" id="5"> $5</div>
+	<div class="denom btn btn-default" id="1"> $1</div>
+</div>
+
+<br>
+<div class="btn btn-default denom" id="exact" >Exact</div>
+<div class="btn btn-default denom" id="done" >Done</div> 
+<div class="btn btn- default denom" id="del" > Delete</div>
+
+
+</body>
+</html>
