@@ -46,10 +46,13 @@ var Register = {
 		return this;
 	},
 	
-	Remove_item: function(d){
-		this.subtotal -= d;
-		this.tax_elgible -= d;  //Changed
+	remove_item: function(){
+		var delt = prompt("Enter Value to take off","");
+		this.subtotal -= delt;
+		this.tax_elgible -= delt;  
 		this.totalAmt();
+		//var ot = "Removed     -";
+		this.print("Testing", "subtotal");
 		
 		return this;
 	},
@@ -67,7 +70,7 @@ var Register = {
 	
 	
 	print: function(out, id){  //Outputs to HTML
-		document.getElementById(id).innerHTML = out;
+		document.getElementById(id).innerHTML += out;
 		return this;
 	},
 	
@@ -81,7 +84,9 @@ var Register = {
 
 
 function prepare(){
-	document.getElementById("done").onclick = JSPOS.Register.saleComplete();
-	document.getElementById("exact").onclick = JSPOS.Register.exact_change();
+	document.getElementById("done").onclick = Register.saleComplete;
+	document.getElementById("exact").onclick = Register.exact_change;
+	document.getElementById("del").onclick = Register.remove_item;
+	document.getElementById("print").onclick = function(){Register.print("Hello_World<br>","subtotal")};
 }
 

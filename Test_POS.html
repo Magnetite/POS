@@ -8,6 +8,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 
 <script src="JSPOS.js"></script> 
+<script> window.onload = prepare;</script>
 
 
 
@@ -33,23 +34,35 @@ font-size: 20px;
 
 <body>
 
-<div class="container" id="subtotal">
-	<div class="jumbotron" > Subtotal:</div>
+<div class="container">
+
+	<div class="row">
+	
+		
+
+		
+		<div class="col-md-6">
+			<div class="btn-group-vertical">
+				<div class="denom btn btn-default" id="20"> $20</div>
+				<div class="denom btn btn-default" id="10"> $10</div>
+				<div class="denom btn btn-default" id="5"> $5</div>
+				<div class="denom btn btn-default" id="1"> $1</div>
+			</div>
+
+			<br>
+			<div class="btn btn-default denom" id="exact" >Exact</div>
+			<div class="btn btn-default denom" id="done" >Done</div> 
+			<div class="btn btn- default denom" id="del" > Delete</div>
+			<div class="btn btn- default denom" id="print" >print</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div id="subtotal" > Subtotal:</div>
+
+			<div id="total">Total:</div>
+		</div>
+	</div>
 </div>
-<div class="container" id="total">Total:</div>
-
-<div class="btn-group-vertical">
-	<div class="denom btn btn-default" id="20"> $20</div>
-	<div class="denom btn btn-default" id="10"> $10</div>
-	<div class="denom btn btn-default" id="5"> $5</div>
-	<div class="denom btn btn-default" id="1"> $1</div>
-</div>
-
-<br>
-<div class="btn btn-default denom" id="exact" >Exact</div>
-<div class="btn btn-default denom" id="done" >Done</div> 
-<div class="btn btn- default denom" id="del" > Delete</div>
-
 
 </body>
 </html>
