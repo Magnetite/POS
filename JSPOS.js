@@ -1,7 +1,8 @@
 
 //Experimental POS script
+//Reg is short for Register
 
-var Register = {
+var Reg = {
     
     total: 0,
     subtotal: 0,
@@ -12,67 +13,93 @@ var Register = {
 	list: "",
 
     
-    ringUp: function(a){      //Updates total and subtotal 1
-        this.subtotal += a;
-        this.tax_elgible += a;        //<= update later
-        this.totalAmt();
-        return this;
-    },
-	
-	 
-    cash: function(c){   //Updates the value of paid 2
-        this.paid += c;
-        return this;
+    ring_up: function(a){      //Updates total and subtotal 1
+        Reg.subtotal += a;
+        Reg.tax_elgible += a;        //<= update later
+        Reg.total_amt();
+        return Reg;
     },
 	
 	
 	exact_change: function(){
 	
 		var v = prompt("Enter exact change:", "");
-		this.paid = parseInt(v);
-		return this;
+		Reg.paid = Reg.money_format(parseFloat(v));
+		Reg.prints("Cash:   $" + Reg.paid, "list", 'a');
+		return Reg;
 	
 	},
 	
 	
     change_back: function(){   //Calculates change due 3
         change = paid - total;
-        return this;
+        return Reg;
     },
 	
 	
-	totalAmt: function(){   // Calculates total  4
-		this.total = this.tax_elgible * this.tax;  //Changed
-		return this;
+	total_amt: function(){   // Calculates total  4
+		Reg.total = Reg.money_format(Reg.tax_elgible * Reg.tax );   // Rounds down fractional cent
+		Reg.prints("Total: " + Reg.total, "total");
+		Reg.prints("Subtotal: " + Reg.subtotal, "subtotal");
+		return Reg;
+	},
+	
+	money_format: function(a){
+		return (Math.floor(a * 100))/100;
 	},
 	
 	remove_item: function(){
-		var delt = prompt("Enter Value to take off","");
-		this.subtotal -= delt;
-		this.tax_elgible -= delt;  
-		this.totalAmt();
-		//var ot = "Removed     -";
-		this.print("Testing", "subtotal");
+		var delt = Reg.money_format(prompt("Enter Value to take off",""));
+		Reg.subtotal -= delt;
+		Reg.tax_elgible -= delt;  
+		Reg.total_amt();
+		Reg.prints("Removed $" + delt, "list", 'a');
 		
-		return this;
+		return Reg;
 	},
     
     
-    saleComplete: function(){   // Resets the state of program  5
-        this.total = 0;
-        this.subtotal = 0;
-        this.tax_elgible = 0;
-        this.paid = 0;
-        this.change = 0;
-		this.list = "";
-        return this;
+	
+	
+	
+	
+	
+	
+	
+	
+    sale_complete: function(){   // Resets the state of program.  First of the "utility functions"
+        Reg.total = 0;
+        Reg.subtotal = 0;
+        Reg.tax_elgible = 0;
+        Reg.paid = 0;
+        Reg.change = 0;
+		Reg.list = "";
+		Reg.clear("list","");
+		Reg.clear("subtotal", "Subtotal: ");  // id input over here!
+		Reg.clear("total", "Total: ");
+        return Reg;
     },
 	
 	
-	print: function(out, id){  //Outputs to HTML
-		document.getElementById(id).innerHTML += out;
-		return this;
+	prints: function(out, id, mode){  //Outputs to HTML
+	
+		if (mode == 'a'){
+			document.getElementById(id).innerHTML += "<br>" + out;
+		} else {
+			document.getElementById(id).innerHTML = out;
+		}
+		return Reg;
 	},
+	
+	clear: function(id, txt){
+		document.getElementById(id).innerHTML = txt;
+		return Reg;
+	},
+	
+	onklick: function(id, action){
+		document.getElementById(id).onclick = action;
+		return Reg;
+	}
 	
 	
 	
@@ -84,9 +111,9 @@ var Register = {
 
 
 function prepare(){
-	document.getElementById("done").onclick = Register.saleComplete;
-	document.getElementById("exact").onclick = Register.exact_change;
-	document.getElementById("del").onclick = Register.remove_item;
-	document.getElementById("print").onclick = function(){Register.print("Hello_World<br>","subtotal")};
+	Reg.onklick("done", Reg.sale_complete);
+	Reg.onklick("exact", Reg.exact_change);
+	Reg.onklick("del", Reg.remove_item);
+	Reg.onklick("print", function(){Reg.prints("Hello_World","subtotal")} );
 }
 
