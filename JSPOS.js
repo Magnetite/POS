@@ -10,14 +10,15 @@ var Reg = {
     tax_elgible: 0,
     paid: 0,
     change: 0,
-	list: "",
+	list: [],
 
     
 	
 	
 	
-    ring_up: function(a){                          //<= updates total and subtotal 
-        Reg.subtotal = Reg.money_format(Reg.subtotal + a);
+    ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
+        Reg.subtotal = Reg.money_format(Reg.subtotal + a.price);
+		Reg.list.push(a);
         Reg.tax_elgible = Reg.subtotal;            //<= update later
         Reg.total_amt();
 		
@@ -79,7 +80,7 @@ var Reg = {
         Reg.tax_elgible = 0;
         Reg.paid = 0;
         Reg.change = 0;
-		Reg.list = "";
+		Reg.list = [];
 		
 		Reg.clear("list","");
 		Reg.clear("subtotal", "Subtotal: ");     //<= id input over here!
