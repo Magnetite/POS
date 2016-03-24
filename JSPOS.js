@@ -13,10 +13,14 @@ var Reg = {
 	list: "",
 
     
-    ring_up: function(a){      //Updates total and subtotal 1
-        Reg.subtotal += a;
-        Reg.tax_elgible += a;        //<= update later
+	
+	
+	
+    ring_up: function(a){                          //<= updates total and subtotal 
+        Reg.subtotal = Reg.money_format(Reg.subtotal + a);
+        Reg.tax_elgible = Reg.subtotal;            //<= update later
         Reg.total_amt();
+		
         return Reg;
     },
 	
@@ -24,35 +28,36 @@ var Reg = {
 	exact_change: function(){
 	
 		var v = prompt("Enter exact change:", "");
-		Reg.paid = Reg.money_format(parseFloat(v));
+		Reg.paid = Reg.money_format(Reg.paid + parseFloat(v));
+		Reg.total_amt();
+		
 		Reg.prints("Cash:   $" + Reg.paid, "list", 'a');
+		
 		return Reg;
 	
 	},
 	
 	
-    change_back: function(){   //Calculates change due 3
-        change = paid - total;
-        return Reg;
-    },
-	
-	
-	total_amt: function(){   // Calculates total  4
-		Reg.total = Reg.money_format(Reg.tax_elgible * Reg.tax );   // Rounds down fractional cent
+	total_amt: function(){                        //<= Calculates total  
+		Reg.total = Reg.money_format(Reg.tax_elgible * Reg.tax); 
+		
 		Reg.prints("Total: " + Reg.total, "total");
 		Reg.prints("Subtotal: " + Reg.subtotal, "subtotal");
+		Reg.prints("Tax:  " + Reg.money_format(Reg.total - Reg.subtotal, 'r'), "tax");
+		Reg.prints("Paid:  " + Reg.paid, "paid");
+		Reg.prints("Due:  " + Reg.money_format(Reg.total - Reg.paid), "due");
+		
 		return Reg;
 	},
 	
-	money_format: function(a){
-		return (Math.floor(a * 100))/100;
-	},
+	
 	
 	remove_item: function(){
 		var delt = Reg.money_format(prompt("Enter Value to take off",""));
-		Reg.subtotal -= delt;
-		Reg.tax_elgible -= delt;  
+		Reg.subtotal = Reg.money_format(Reg.subtotal - delt);
+		Reg.tax_elgible = Reg.money_format(Reg.tax_elgible - delt);  
 		Reg.total_amt();
+		
 		Reg.prints("Removed $" + delt, "list", 'a');
 		
 		return Reg;
@@ -67,18 +72,34 @@ var Reg = {
 	
 	
 	
-    sale_complete: function(){   // Resets the state of program.  First of the "utility functions"
+    sale_complete: function(){	//<= Resets the state of program.  First of the "utility functions"
+	
         Reg.total = 0;
         Reg.subtotal = 0;
         Reg.tax_elgible = 0;
         Reg.paid = 0;
         Reg.change = 0;
 		Reg.list = "";
+		
 		Reg.clear("list","");
-		Reg.clear("subtotal", "Subtotal: ");  // id input over here!
+		Reg.clear("subtotal", "Subtotal: ");     //<= id input over here!
 		Reg.clear("total", "Total: ");
+		Reg.clear("paid", "Paid:  ");
+		Reg.clear("due", "Due:  ");
+		Reg.clear("tax", "Tax:  ");
+		
         return Reg;
     },
+	
+	money_format: function(a, mode){                   //<= Rounds down fractional cent
+	
+		if (mode == 'r'){
+			return (Math.round(a * 100))/100;
+		}
+		
+		return (Math.floor(a * 100))/100;
+		
+	},
 	
 	
 	prints: function(out, id, mode){  //Outputs to HTML
@@ -88,16 +109,22 @@ var Reg = {
 		} else {
 			document.getElementById(id).innerHTML = out;
 		}
+		
 		return Reg;
+		
 	},
 	
 	clear: function(id, txt){
+	
 		document.getElementById(id).innerHTML = txt;
+		
 		return Reg;
 	},
 	
 	onklick: function(id, action){
+	
 		document.getElementById(id).onclick = action;
+		
 		return Reg;
 	}
 	
