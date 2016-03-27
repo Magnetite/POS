@@ -19,8 +19,9 @@ var Reg = {
     ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
         Reg.subtotal = Reg.money_format(Reg.subtotal + a.price);
 		Reg.list.push(a);
-        Reg.tax_elgible = Reg.subtotal;            //<= update later
+        Reg.tax_elgible = Reg.subtotal;            //<= Temp fix, Adjust later
         Reg.total_amt();
+		Reg.prints(a, "list");
 		
         return Reg;
     },
@@ -107,6 +108,8 @@ var Reg = {
 	
 		if (mode == 'a'){
 			document.getElementById(id).innerHTML += "<br>" + out;
+		} else if (typeof(out) == "object"){
+			document.getElementById(id).innerHTML += "<br>" + out.name + "  $" + out.price;
 		} else {
 			document.getElementById(id).innerHTML = out;
 		}
@@ -142,6 +145,7 @@ function prepare(){
 	Reg.onklick("done", Reg.sale_complete);
 	Reg.onklick("exact", Reg.exact_change);
 	Reg.onklick("del", Reg.remove_item);
+	Reg.onklick("test", function(){Reg.ring_up({name:"Hamburger", price:3.49})  });
 	Reg.onklick("print", function(){Reg.prints("Hello_World","subtotal")} );
 }
 
