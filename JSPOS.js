@@ -11,6 +11,7 @@ var Reg = {
     paid: 0,
     change: 0,
 	list: [],
+	lineNum: 0,
 
     
 	
@@ -82,6 +83,7 @@ var Reg = {
         Reg.paid = 0;
         Reg.change = 0;
 		Reg.list = [];
+		Reg.lineNum = 0;
 		
 		Reg.clear("list","");
 		Reg.clear("subtotal", "Subtotal: ");     //<= id input over here!
@@ -109,7 +111,7 @@ var Reg = {
 		if (mode == 'a'){
 			document.getElementById(id).innerHTML += "<br>" + out;
 		} else if (typeof(out) == "object"){
-			document.getElementById(id).innerHTML += "<br>" + out.name + "  $" + out.price;
+			document.getElementById(id).innerHTML += "<div id = '" +  Reg.lineNum + "'><button id='" + Reg.lineNum + "b'>" + out.name + "</button>  <button>$" + out.price + "</button></div>";  //get rid of br element!  Done!!!
 		} else {
 			document.getElementById(id).innerHTML = out;
 		}
