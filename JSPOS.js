@@ -22,7 +22,11 @@ var Reg = {
 		Reg.list.push(a);
         Reg.tax_elgible = Reg.subtotal;            //<= Temp fix, Adjust later
         Reg.total_amt();
+		
+		Reg.lineNum++;
 		Reg.prints(a, "list");
+		var b = "" + Reg.lineNum + "b";
+		//Reg.onklick( b, function(){Reg.delTag(Reg.lineNum + 'a') } );  //should update list[] when deleting
 		
         return Reg;
     },
@@ -41,8 +45,13 @@ var Reg = {
 	},
 	
 	
-	total_amt: function(){                        //<= Calculates total  
+	total_amt: function(){                        //<= Calculates total 
+
+		if ( Reg.tax_elgible > 0){
 		Reg.total = Reg.money_format(Reg.tax_elgible * Reg.tax); 
+		} else {
+		Reg.total = Reg.money_format(Reg.tax_elgible);
+		}
 		
 		Reg.prints("Total: " + Reg.total, "total");
 		Reg.prints("Subtotal: " + Reg.subtotal, "subtotal");
@@ -55,8 +64,11 @@ var Reg = {
 	
 	
 	
-	remove_item: function(){
-		var delt = Reg.money_format(prompt("Enter Value to take off",""));
+	remove_item: function(delt){
+	
+		if (typeof(delt) != Number){
+			var delt = Reg.money_format(prompt("Enter Value to take off",""));
+		}
 		Reg.subtotal = Reg.money_format(Reg.subtotal - delt);
 		Reg.tax_elgible = Reg.money_format(Reg.tax_elgible - delt);  
 		Reg.total_amt();
@@ -109,9 +121,13 @@ var Reg = {
 	prints: function(out, id, mode){  //Outputs to HTML
 	
 		if (mode == 'a'){
-			document.getElementById(id).innerHTML += "<br>" + out;
+			document.getElementById(id).innerHTML += "<div><button>" + out + "</button></div>";
 		} else if (typeof(out) == "object"){
-			document.getElementById(id).innerHTML += "<div id = '" +  Reg.lineNum + "'><button id='" + Reg.lineNum + "b'>" + out.name + "</button>  <button>$" + out.price + "</button></div>";  //get rid of br element!  Done!!!
+			document.getElementById(id).innerHTML += "<div id = '" +  Reg.lineNum + 
+			"a'><button id='" + Reg.lineNum + "b' onclick='Reg.delTag(\"" + Reg.lineNum  + "a\")'>" + out.name + Reg.lineNum + 
+			"</button>  <button>$" + out.price + 
+			"</button></div>";  //get rid of br element!  Done!!!
+			
 		} else {
 			document.getElementById(id).innerHTML = out;
 		}
@@ -132,6 +148,13 @@ var Reg = {
 		document.getElementById(id).onclick = action;
 		
 		return Reg;
+	},
+	
+	delTag: function(id){
+		var del = document.getElementById(id);
+		del.parentNode.removeChild(del);
+		
+		return Reg;
 	}
 	
 	
@@ -148,6 +171,6 @@ function prepare(){
 	Reg.onklick("exact", Reg.exact_change);
 	Reg.onklick("del", Reg.remove_item);
 	Reg.onklick("test", function(){Reg.ring_up({name:"Hamburger", price:3.49})  });
-	Reg.onklick("print", function(){Reg.prints("Hello_World","subtotal")} );
+	Reg.onklick("print", function(){Reg.prints("","list")} );
 }
 
