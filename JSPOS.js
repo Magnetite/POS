@@ -1,8 +1,8 @@
 
 //Experimental POS script
-//Reg is short for Register
+//rg is short for register
 
-var Reg = {
+var rg = {
     
     total: 0,
     subtotal: 0,
@@ -18,48 +18,47 @@ var Reg = {
 	
 	
     ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
-        Reg.subtotal = Reg.money_format(Reg.subtotal + a.price);
-		Reg.list.push(a);
-        Reg.tax_elgible = Reg.subtotal;            //<= Temp fix, Adjust later
-        Reg.total_amt();
+        rg.subtotal = rg.money_format(rg.subtotal + a.price);
+		rg.list.push(a);
+        rg.tax_elgible = rg.subtotal;             //<= Temp fix, Adjust later
+        rg.total_amt();
 		
-		Reg.lineNum++;
-		Reg.prints(a, "list");
-		var b = "" + Reg.lineNum + "b";
-		//Reg.onklick( b, function(){Reg.delTag(Reg.lineNum + 'a') } );  //should update list[] when deleting
+		rg.lineNum++;
+		rg.prints(a, "list");
+		var b = rg.lineNum + "b";
 		
-        return Reg;
+        return rg;
     },
 	
 	
 	exact_change: function(){
 	
 		var v = prompt("Enter exact change:", "");
-		Reg.paid = Reg.money_format(Reg.paid + parseFloat(v));
-		Reg.total_amt();
+		rg.paid = rg.money_format(rg.paid + parseFloat(v));
+		rg.total_amt();
 		
-		Reg.prints("Cash:   $" + Reg.paid, "list", 'a');
+		rg.prints("Cash:   $" + rg.paid, "list", 'a');
 		
-		return Reg;
+		return rg;
 	
 	},
 	
 	
 	total_amt: function(){                        //<= Calculates total 
 
-		if ( Reg.tax_elgible > 0){
-		Reg.total = Reg.money_format(Reg.tax_elgible * Reg.tax); 
+		if ( rg.tax_elgible > 0){
+		rg.total = rg.money_format(rg.tax_elgible * rg.tax); 
 		} else {
-		Reg.total = Reg.money_format(Reg.tax_elgible);
+		rg.total = rg.money_format(rg.tax_elgible);
 		}
 		
-		Reg.prints("Total: " + Reg.total, "total");
-		Reg.prints("Subtotal: " + Reg.subtotal, "subtotal");
-		Reg.prints("Tax:  " + Reg.money_format(Reg.total - Reg.subtotal, 'r'), "tax");
-		Reg.prints("Paid:  " + Reg.paid, "paid");
-		Reg.prints("Due:  " + Reg.money_format(Reg.total - Reg.paid), "due");
+		rg.prints("Total: " + rg.total, "total");
+		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
+		rg.prints("Tax:  " + rg.money_format(rg.total - rg.subtotal, 'r'), "tax");
+		rg.prints("Paid:  " + rg.paid, "paid");
+		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid), "due");
 		
-		return Reg;
+		return rg;
 	},
 	
 	
@@ -67,15 +66,15 @@ var Reg = {
 	remove_item: function(delt){
 	
 		if (typeof(delt) != Number){
-			var delt = Reg.money_format(prompt("Enter Value to take off",""));
+			var delt = rg.money_format(prompt("Enter Value to take off",""));
 		}
-		Reg.subtotal = Reg.money_format(Reg.subtotal - delt);
-		Reg.tax_elgible = Reg.money_format(Reg.tax_elgible - delt);  
-		Reg.total_amt();
+		rg.subtotal = rg.money_format(rg.subtotal - delt);
+		rg.tax_elgible = rg.money_format(rg.tax_elgible - delt);  
+		rg.total_amt();
 		
-		Reg.prints("Removed $" + delt, "list", 'a');
+		rg.prints("Removed $" + delt, "list", 'a');
 		
-		return Reg;
+		return rg;
 	},
     
     
@@ -89,22 +88,22 @@ var Reg = {
 	
     sale_complete: function(){	//<= Resets the state of program.  First of the "utility functions"
 	
-        Reg.total = 0;
-        Reg.subtotal = 0;
-        Reg.tax_elgible = 0;
-        Reg.paid = 0;
-        Reg.change = 0;
-		Reg.list = [];
-		Reg.lineNum = 0;
+        rg.total = 0;
+        rg.subtotal = 0;
+        rg.tax_elgible = 0;
+        rg.paid = 0;
+        rg.change = 0;
+		rg.list = [];
+		rg.lineNum = 0;
 		
-		Reg.clear("list","");
-		Reg.clear("subtotal", "Subtotal: ");     //<= id input over here!
-		Reg.clear("total", "Total: ");
-		Reg.clear("paid", "Paid:  ");
-		Reg.clear("due", "Due:  ");
-		Reg.clear("tax", "Tax:  ");
+		rg.clear("list","");
+		rg.clear("subtotal", "Subtotal: ");     //<= id input over here!
+		rg.clear("total", "Total: ");
+		rg.clear("paid", "Paid:  ");
+		rg.clear("due", "Due:  ");
+		rg.clear("tax", "Tax:  ");
 		
-        return Reg;
+        return rg;
     },
 	
 	money_format: function(a, mode){                   //<= Rounds down fractional cent
@@ -123,16 +122,17 @@ var Reg = {
 		if (mode == 'a'){
 			document.getElementById(id).innerHTML += "<div><button>" + out + "</button></div>";
 		} else if (typeof(out) == "object"){
-			document.getElementById(id).innerHTML += "<div id = '" +  Reg.lineNum + 
-			"a'><button id='" + Reg.lineNum + "b' onclick='Reg.delTag(\"" + Reg.lineNum  + "a\")'>" + out.name + Reg.lineNum + 
-			"</button>  <button>$" + out.price + 
-			"</button></div>";  //get rid of br element!  Done!!!
+			document.getElementById(id).innerHTML += "<div id = '" +  rg.lineNum + 
+			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
+			"a\")'>" + out.name + 
+			"</button> <button>$" + out.price + 
+			"</button></div>"; 
 			
 		} else {
 			document.getElementById(id).innerHTML = out;
 		}
 		
-		return Reg;
+		return rg;
 		
 	},
 	
@@ -140,21 +140,24 @@ var Reg = {
 	
 		document.getElementById(id).innerHTML = txt;
 		
-		return Reg;
+		return rg;
 	},
 	
 	onklick: function(id, action){
 	
 		document.getElementById(id).onclick = action;
 		
-		return Reg;
+		return rg;
 	},
 	
 	delTag: function(id){
 		var del = document.getElementById(id);
 		del.parentNode.removeChild(del);
 		
-		return Reg;
+		var index = parseInt(id) - 1;
+		rg.list.splice(index, 1);
+		
+		return rg;
 	}
 	
 	
@@ -167,10 +170,10 @@ var Reg = {
 
 
 function prepare(){
-	Reg.onklick("done", Reg.sale_complete);
-	Reg.onklick("exact", Reg.exact_change);
-	Reg.onklick("del", Reg.remove_item);
-	Reg.onklick("test", function(){Reg.ring_up({name:"Hamburger", price:3.49})  });
-	Reg.onklick("print", function(){Reg.prints("","list")} );
+	rg.onklick("done", rg.sale_complete);
+	rg.onklick("exact", rg.exact_change);
+	rg.onklick("del", rg.remove_item);
+	rg.onklick("test", function(){rg.ring_up({name:"Hamburger", price:3.49})  });
+	rg.onklick("print", function(){rg.prints("","list")} );
 }
 
