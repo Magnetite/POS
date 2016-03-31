@@ -20,12 +20,12 @@ var rg = {
     ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
         rg.subtotal = rg.money_format(rg.subtotal + a.price);
 		rg.list.push(a);
-        rg.tax_elgible = rg.subtotal;             //<= Temp fix, Adjust later
+        
         rg.total_amt();
 		
 		rg.lineNum++;
 		rg.prints(a, "list");
-		var b = rg.lineNum + "b";
+		
 		
         return rg;
     },
@@ -46,6 +46,8 @@ var rg = {
 	
 	total_amt: function(){                        //<= Calculates total 
 
+		rg.tax_elgible = rg.subtotal;             //<= Temp fix, Adjust later
+		
 		if ( rg.tax_elgible > 0){
 		rg.total = rg.money_format(rg.tax_elgible * rg.tax); 
 		} else {
@@ -68,6 +70,9 @@ var rg = {
 		if (typeof(delt) != Number){
 			var delt = rg.money_format(prompt("Enter Value to take off",""));
 		}
+		
+		if (delt == 0){return;}     //<= So it does not add button when 0 has been taken off
+		
 		rg.subtotal = rg.money_format(rg.subtotal - delt);
 		rg.tax_elgible = rg.money_format(rg.tax_elgible - delt);  
 		rg.total_amt();
@@ -117,14 +122,14 @@ var rg = {
 	},
 	
 	
-	prints: function(out, id, mode){  //Outputs to HTML
+	prints: function(out, id, mode){  //<= Outputs to HTML
 	
 		if (mode == 'a'){
 			document.getElementById(id).innerHTML += "<div><button>" + out + "</button></div>";
 		} else if (typeof(out) == "object"){
 			document.getElementById(id).innerHTML += "<div id = '" +  rg.lineNum + 
 			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
-			"a\")'>" + out.name + 
+			"a\",\"" + out.price +"\")'>" + out.name + 
 			"</button> <button>$" + out.price + 
 			"</button></div>"; 
 			
@@ -150,20 +155,25 @@ var rg = {
 		return rg;
 	},
 	
-	delTag: function(id){
+	delTag: function(id, price){
 		var del = document.getElementById(id);
 		del.parentNode.removeChild(del);
 		
-		var index = parseInt(id) - 1;
+		if (price){                    //<= update price after taking off item
+		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(price) ); 
+		rg.total_amt(); 
+		}  
+		
+		var index = parseInt(id) - 1;                 //fix this and next line, does not properly delete value from array
 		rg.list.splice(index, 1);
+		
+		
 		
 		return rg;
 	}
 	
 	
-	
-	
-    
+	   
    
     
 };
