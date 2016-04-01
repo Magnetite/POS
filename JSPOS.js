@@ -126,10 +126,11 @@ var rg = {
 	
 		if (mode == 'a'){
 			document.getElementById(id).innerHTML += "<div><button>" + out + "</button></div>";
-		} else if (typeof(out) == "object"){
+		} else if (typeof(out) === "object"){
 			document.getElementById(id).innerHTML += "<div id = '" +  rg.lineNum + 
 			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
-			"a\",\"" + out.price +"\")'>" + out.name + 
+			"a\",\"" + out.price +
+			"\")'>" + out.name + 
 			"</button> <button>$" + out.price + 
 			"</button></div>"; 
 			
@@ -183,7 +184,9 @@ function prepare(){
 	rg.onklick("done", rg.sale_complete);
 	rg.onklick("exact", rg.exact_change);
 	rg.onklick("del", rg.remove_item);
-	rg.onklick("test", function(){rg.ring_up({name:"Hamburger", price:3.49})  });
+	rg.onklick("burger", function(){rg.ring_up({name:"Hamburger", price:3.49})  });
+	rg.onklick("fries", function(){rg.ring_up({name:"Fries", price:1.79})  });
+	rg.onklick("salad", function(){rg.ring_up({name:"Salad", price:1.99})  });
 	rg.onklick("print", function(){rg.prints("","list")} );
 }
 
