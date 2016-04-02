@@ -113,9 +113,12 @@ var rg = {
 	
 	money_format: function(a, mode){                   //<= Rounds down fractional cent
 	
-		if (mode == 'r'){
+		if (mode === 'r'){
 			return (Math.round(a * 100))/100;
-		}
+		} 
+		else if ( mode === 'c'){
+			return (Math.ceil(a * 100))/100;
+		} 
 		
 		return (Math.floor(a * 100))/100;
 		
@@ -161,7 +164,7 @@ var rg = {
 		del.parentNode.removeChild(del);
 		
 		if (price){                    //<= update price after taking off item
-		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(price) ); 
+		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(price) , 'c');  //<= Need to fix rounding error, so it subtracts like it should
 		rg.total_amt(); 
 		}  
 		
