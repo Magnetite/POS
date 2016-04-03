@@ -81,6 +81,15 @@ var rg = {
 		
 		return rg;
 	},
+	
+	change_price: function(a){
+		
+		a.price = prompt("Enter a new price:","");
+		
+		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(a.price) , 'c');   //<= Need to fix rounding error
+		rg.total_amt(); 
+		return rg;
+	},
     
     
 	
@@ -111,7 +120,7 @@ var rg = {
         return rg;
     },
 	
-	money_format: function(a, mode){                   //<= Rounds down fractional cent
+	money_format: function(a, mode){                   //<= Rounds fractional cent
 	
 		if (mode === 'r'){
 			return (Math.round(a * 100))/100;
