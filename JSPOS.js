@@ -71,7 +71,7 @@ var rg = {
 			var delt = rg.money_format(prompt("Enter Value to take off",""));
 		}
 		
-		if (delt == 0){return;}     //<= So it does not add button when 0 has been taken off
+		if (delt === 0){return;}     //<= So it does not add button when 0 has been taken off
 		
 		rg.subtotal = rg.money_format(rg.subtotal - delt);
 		rg.tax_elgible = rg.money_format(rg.tax_elgible - delt);  
@@ -86,7 +86,7 @@ var rg = {
 		
 		a.price = prompt("Enter a new price:","");
 		
-		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(a.price) , 'c');   //<= Need to fix rounding error
+		rg.subtotal = rg.money_format( rg.subtotal - money_format(parseFloat(a.price), 'c' ) , 'c');   //<= Need to fix rounding error
 		rg.total_amt(); 
 		return rg;
 	},
