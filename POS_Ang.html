@@ -8,8 +8,9 @@
 href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 
-<script src="JSPOS_Ang.js"></script> 
+ 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 <script> window.onload = prepare;</script>
 
 
@@ -34,7 +35,7 @@ font-size: 20px;
 
 </head>
 
-<body ng-app="POS">
+<body ng-app="POS" ng-controller="POScon">
 
 <div class="container">
 
@@ -51,10 +52,9 @@ font-size: 20px;
 			<div class="btn btn- default denom" id="del" > Delete</div>
 			<div class="btn btn- default denom" id="print" >print</div>
 			</div>
-			<div class="btn-group-vertical">
-			<div class="btn btn- default denom" id="burger" >Burger</div>
-			<div class="btn btn- default denom" id="fries" >Fries</div>
-			<div class="btn btn- default denom" id="salad" >Salad</div>
+			<div ng-repeat="x in menu" class="btn-group-vertical">
+			{{"<div class="btn btn- default denom" > " + x.name + "</div>" }}  
+			
 			</div>
 			
 		</div>
@@ -71,5 +71,6 @@ font-size: 20px;
 	</div>
 </div>
 
+<script src="JSPOS_Ang.js"></script>
 </body>
 </html>

@@ -202,3 +202,8 @@ function prepare(){
 	rg.onklick("print", function(){rg.prints("","list")} );
 }
 
+var app = angular.module('POS', []);
+app.controller('POScon',function($scope){
+	$scope.list = rg.list;
+})
+
