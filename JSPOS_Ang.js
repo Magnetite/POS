@@ -10,7 +10,7 @@ var rg = {
     tax_elgible: 0,
     paid: 0,
     change: 0,
-	list: [],
+	list: [{name: "Ham",price:3.49}, {name: "Eggs", price:1.79}],
 	lineNum: 0,
 
     
@@ -107,7 +107,7 @@ var rg = {
         rg.tax_elgible = 0;
         rg.paid = 0;
         rg.change = 0;
-		rg.list = [];
+		rg.list = [{name: "Hamburger", price: 3.49}];  //"Hamburger" added as a test
 		rg.lineNum = 0;
 		
 		rg.clear("list","");
@@ -133,8 +133,8 @@ var rg = {
 		
 	},
 	
-	
-	prints: function(out, id, mode){  //<= Outputs to HTML
+	//Change prints()
+	prints: function(out, id, mode){  
 	
 		if (mode == 'a'){
 			document.getElementById(id).innerHTML += "<div><button>" + out + "</button></div>";
@@ -143,8 +143,7 @@ var rg = {
 			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
 			"a\",\"" + out.price +
 			"\")'>" + out.name + 
-			"</button> <button>$" + out.price + 
-			"</button></div>"; 
+			"</button> <button> {{out.price | currency}}</button></div>"; 
 			
 		} else {
 			document.getElementById(id).innerHTML = out;
@@ -196,14 +195,13 @@ function prepare(){
 	rg.onklick("done", rg.sale_complete);
 	rg.onklick("exact", rg.exact_change);
 	rg.onklick("del", rg.remove_item);
+	/*
 	rg.onklick("burger", function(){rg.ring_up({name:"Hamburger", price:3.49})  });
 	rg.onklick("fries", function(){rg.ring_up({name:"Fries", price:1.79})  });
 	rg.onklick("salad", function(){rg.ring_up({name:"Salad", price:1.99})  });
 	rg.onklick("print", function(){rg.prints("","list")} );
+	*/
 }
 
-var app = angular.module('POS', []);
-app.controller('POScon',function($scope){
-	$scope.list = rg.list;
-})
+
 

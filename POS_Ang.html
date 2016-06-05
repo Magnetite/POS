@@ -11,7 +11,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-<script> window.onload = prepare;</script>
+
 
 
 
@@ -35,7 +35,8 @@ font-size: 20px;
 
 </head>
 
-<body ng-app="POS" ng-controller="POScon">
+<body>
+<div ng-app="POS" ng-controller="POScon">
 
 <div class="container">
 
@@ -52,25 +53,61 @@ font-size: 20px;
 			<div class="btn btn- default denom" id="del" > Delete</div>
 			<div class="btn btn- default denom" id="print" >print</div>
 			</div>
-			<div ng-repeat="x in menu" class="btn-group-vertical">
-			{{"<div class="btn btn- default denom" > " + x.name + "</div>" }}  
+			
+			
+			<!--  Food Menu Buttons -->
+			<div  class="btn-group-vertical">
+			<div ng-repeat="x in menu" ng-click="add( x )"  class='btn btn- default denom' >  {{x.name}}</div> 
 			
 			</div>
+			
 			
 		</div>
 		
 		<div class="col-md-6">
-			<div id="list" ng-repeat="x in list"> {{"<button>" + x.name + "</button> <button>" + x.price + "</button>"}}</div>
-			<div id="subtotal" > Subtotal: {{subtotal}}</div>
-			<div id="tax" > Tax: {{ subtotal * tax}}</div>
-			<div id="paid" > Paid: {{paid}}</div>
+		
+		<div class="out">
+			
+		</div>
+			<div> Subtotal: {{subtotal | currency}}</div>
+			<div> Tax: {{ subtotal * (tax - 1) | currency}}</div>
+			<div> Paid: {{paid | currency}}</div>
 
-			<div id="total">Total: {{total}}</div>
-			<div id="due">Due: {{due}}</div>
+			<div>Total: {{subtotal * tax | currency}}</div>
+			<div>Due: {{(subtotal * tax) - paid  | currency}}</div>
+			<div>Items: {{list.length}}</div>
 		</div>
 	</div>
 </div>
 
+
+
+</div>
+
 <script src="JSPOS_Ang.js"></script>
+<script> 
+window.onload = prepare;
+
+var app = angular.module('POS', []);
+app.controller('POScon',function($scope){
+	$scope.menu = [{name: "Fries",price:1.29}, {name: "Ham",price:3.49},{name: "Eggs", price:1.79}];
+	$scope.list = [];
+	$scope.subtotal = 0;
+	$scope.tax = 1.07;
+	$scope.paid = 0;
+	$scope.add = function(a){
+		$scope.list.push(a);
+		$scope.subtotal += a.price;
+		rg.lineNum++;
+		rg.prints(a, "out");
+	}
+	
+	
+	
+	
+	
+})
+
+</script>
 </body>
 </html>
