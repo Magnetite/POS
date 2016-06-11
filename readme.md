@@ -1,6 +1,6 @@
 
-
 Core functionality points of POS project:
+
 ---------------------------
 
 1. Ring up items
