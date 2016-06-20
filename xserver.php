@@ -2,7 +2,7 @@
 	
 	<?php
 	
-	if (isset($_POST['n']))
+	if (isset($_GET['n']))
 	{
 		//$menuItems = query("SELECT name, cost FROM menu");
 		

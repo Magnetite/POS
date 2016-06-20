@@ -365,13 +365,24 @@ menu = [];
 
 
 $(document).ready(function(){
+	// 	$.get('/xserver.php?n=foo').then(function (payload) {
+	// 		alert(payload);
+	// 	}, function (err) {
+	// 		alert(err);
+	// 	})
+	// });
+	
 	$.ajax({
-					type: "POST",
-					url: "xserver.php",
-					data: {n:1, success: function(result){
-						alert(result);
-					}
-					} }) });
+		type: "GET",
+		url: "xserver.php",
+		data: {
+			n: 1
+		},
+		success: function (result) {
+			alert(result);
+		}
+	});
+});
 /*
 request = new ajaxRequest();
 request.open("POST", "xserver.php", true);
