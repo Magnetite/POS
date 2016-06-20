@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
 <meta charset="utf-8">
 <title> Test POS</title>
 
@@ -9,6 +12,8 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 
 <script src="JSPOS.js"></script> 
+
+
 <script> window.onload = prepare;</script>
 
 
@@ -59,7 +64,7 @@ font-size: 20px;
 			<div class="btn btn- default denom" id="del" > Delete</div>
 			<div class="btn btn- default denom" id="print" >print</div>
 			</div>
-			<div class="btn-group-vertical">
+			<div class="btn-group-vertical" id = "menuButtons">
 			<div class="btn btn- default denom" id="burger" >Burger</div>
 			<div class="btn btn- default denom" id="fries" >Fries</div>
 			<div class="btn btn- default denom" id="salad" >Salad</div>

@@ -349,3 +349,121 @@ clear: function(id, txt){
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+params = "n=1";
+menu = [];
+
+
+$(document).ready(function(){
+	$.ajax({
+					type: "POST",
+					url: "xserver.php",
+					data: {n:1, success: function(result){
+						alert(result);
+					}
+					} }) });
+/*
+request = new ajaxRequest();
+request.open("POST", "xserver.php", true);
+
+request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+request.setRequestHeader("Content-length", params.length);
+request.setRequestHeader("Connection", "close");
+
+request.onreadystatechange = function()
+{
+	if (this.readyState == 4)
+	{
+	
+		if (this.status == 200)
+		{
+			if (this.responseText != null)
+			{
+				
+				menu = this.response;  //Text.split(",");
+				
+				
+				
+				//document.getElementById('t').innerHTML = menu;  //Test Line ===============================
+				alert(menu);  //Test Line =============================================================
+				
+				//Put menu buttons on webpage and set the event handlers
+				/*
+				for (var i = 0, len = menu.length; i < len; i += 2)
+				{
+				
+					if (i === 0){document.getElementById('menuButtons').innerHTML = "";}
+					
+					
+					document.getElementById('menuButtons').innerHTML += "<div class='btn btn- default denom' id='button" + i + " '>" + menu[i] + "</div>"
+					rg.onklick("button" + i, function(){ rg.ring_up( {name:menu[i], price:menu[i + 1]} )  });
+				
+				}
+				
+			
+			
+			} else { alert("Ajax error: No data received from server"); }
+		
+		} else {alert("Ajax error: " + this.statusext); }
+	
+	}
+
+
+}
+
+
+
+
+
+
+request.send(params);
+
+
+
+function ajaxRequest()
+{
+
+	try
+	{
+		var req = new XMLHttpRequest();
+	
+	} 
+	catch(e1)
+	{
+		try
+		{
+			req = new ActiveXObject("Msxml2.XMLHTTP");
+		
+		}
+		catch(e2)
+		{
+			try 
+			{
+					req = new ActiveXObject("Microsoft.XMLHTTP");
+			
+			}
+			catch(e3)
+			{
+				req = false;
+			
+			}
+		
+		}
+	
+	}
+
+	return req;
+
+}
+
+*/
