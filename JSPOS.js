@@ -120,6 +120,7 @@ var rg = {
         return rg;
     },
 	
+	
 	money_format: function(a, mode){                   //<= Rounds fractional cent
 	
 		if (mode === 'r'){
@@ -161,7 +162,7 @@ var rg = {
 		return rg;
 	},
 	
-	onklick: function(id, action){
+	onklick: function(id, action){   //Replace with jQuery Mathod
 	
 		document.getElementById(id).onclick = action;
 		
@@ -174,7 +175,14 @@ var rg = {
 		
 		if (price){                    //<= update price after taking off item
 		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(price) , 'c');  //<= Need to fix rounding error, so it subtracts like it should
-		rg.total_amt(); 
+		/*
+		rg.subtotal = 0;
+		$.each(rg.list, function(a){
+			rg.subtotal += a.price;
+		})
+		rg.subtotal = rg.money_format(rg.subtotal);
+		rg.total_amt();
+		*/
 		}  
 		
 		var index = parseInt(id) - 1;                 //fix this and next line, does not properly delete value from array
@@ -200,7 +208,7 @@ var rg = {
 
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 //Prepare event handlers of UI 
-
+/*
 function prepare(){
 	rg.onklick("done", rg.sale_complete);
 	rg.onklick("exact", rg.exact_change);
@@ -210,144 +218,7 @@ function prepare(){
 	rg.onklick("salad", function(){rg.ring_up({name:"Salad", price:1.99})  });
 	rg.onklick("print", function(){rg.prints("","list")} );
 }
-
-
-
-
-
-
-
-
-
-
-//========================================================================================================================
-//Calculate values for POS
-
-var cal = {
-
-money_format: function(a, mode){                   //<= Rounds fractional cent
-	
-		if (mode === 'r'){
-			return (Math.round(a * 100))/100;
-		} 
-		else if ( mode === 'c'){
-			return (Math.ceil(a * 100))/100;
-		} 
-		
-		return (Math.floor(a * 100))/100;
-		
-	},
-	
-	total_amt: function(){                        //<= Calculates total 
-
-		rg.tax_elgible = rg.subtotal;             //<= Temp fix, Adjust later
-		
-		if ( rg.tax_elgible > 0){
-		rg.total = rg.money_format(rg.tax_elgible * rg.tax); 
-		} else {
-		rg.total = rg.money_format(rg.tax_elgible);
-		}
-		
-		rg.prints("Total: " + rg.total, "total");
-		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
-		rg.prints("Tax:  " + rg.money_format(rg.total - rg.subtotal, 'r'), "tax");
-		rg.prints("Paid:  " + rg.paid, "paid");
-		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid), "due");
-		
-		return rg;
-	},
-
-}
-
-
-
-
-
-
-
-
-
-
-//********************************************************************************************************
-//Manipulate UI of POS
-
-var  ui = {
-
-
-sale_complete: function(){	//<= Resets the state of program.  First of the "utility functions"
-	
-        rg.total = 0;
-        rg.subtotal = 0;
-        rg.tax_elgible = 0;
-        rg.paid = 0;
-        rg.change = 0;
-		rg.list = [];
-		rg.lineNum = 0;
-		
-		rg.clear("list","");
-		rg.clear("subtotal", "Subtotal: ");     //<= id input over here!
-		rg.clear("total", "Total: ");
-		rg.clear("paid", "Paid:  ");
-		rg.clear("due", "Due:  ");
-		rg.clear("tax", "Tax:  ");
-		
-        return rg;
-    },
-
-
-prints: function(out, id, mode){  //<= Outputs to HTML
-	
-		if (mode == 'a'){
-			document.getElementById(id).innerHTML += "<div><button>" + out + "</button></div>";
-		} else if (typeof(out) === "object"){
-			document.getElementById(id).innerHTML += "<div id = '" +  rg.lineNum + 
-			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
-			"a\",\"" + out.price +
-			"\")'>" + out.name + 
-			"</button> <button>$" + out.price + 
-			"</button></div>"; 
-			
-		} else {
-			document.getElementById(id).innerHTML = out;
-		}
-		
-		return rg;
-		
-	},
-
-clear: function(id, txt){
-	
-		document.getElementById(id).innerHTML = txt;
-		
-		return rg;
-	},
-	
-	onklick: function(id, action){
-	
-		document.getElementById(id).onclick = action;
-		
-		return rg;
-	},
-	
-	delTag: function(id, price){
-		var del = document.getElementById(id);
-		del.parentNode.removeChild(del);
-		
-		if (price){                    //<= update price after taking off item
-		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(price) , 'c');  //<= Need to fix rounding error, so it subtracts like it should
-		rg.total_amt(); 
-		}  
-		
-		var index = parseInt(id) - 1;                 //fix this and next line, does not properly delete value from array
-		rg.list.splice(index, 1);
-		
-		
-		
-		return rg;
-	}
-
-
-}
+*/
 
 
 
@@ -360,110 +231,28 @@ clear: function(id, txt){
 
 
 
-params = "n=1";
-menu = [];
 
 
 $(document).ready(function(){
-	$.ajax({
-					type: "POST",
+	 $.ajax({
+					type: "GET",
 					url: "xserver.php",
-					data: {n:1, success: function(result){
-						alert(result);
+					data: "n=foo" + Math.random(),
+					dataType: "json",
+					success: function(result){
+						$.each(result, function(){
+							$('#menuButtons').append('<div class="btn btn-default denom" id="' + this.id + '" >' + this.name + '</div>');
+							var fcost = this.cost;
+							var fname = this.name;
+							$('#' + this.id).bind("click", function(){  
+								rg.ring_up({name:fname, price:fcost});
+								
+							})
+							
+						})
+						rg.onklick("done", rg.sale_complete);
+						rg.onklick("cash", rg.exact_change);
 					}
-					} }) });
-/*
-request = new ajaxRequest();
-request.open("POST", "xserver.php", true);
-
-request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-request.setRequestHeader("Content-length", params.length);
-request.setRequestHeader("Connection", "close");
-
-request.onreadystatechange = function()
-{
-	if (this.readyState == 4)
-	{
-	
-		if (this.status == 200)
-		{
-			if (this.responseText != null)
-			{
-				
-				menu = this.response;  //Text.split(",");
-				
-				
-				
-				//document.getElementById('t').innerHTML = menu;  //Test Line ===============================
-				alert(menu);  //Test Line =============================================================
-				
-				//Put menu buttons on webpage and set the event handlers
-				/*
-				for (var i = 0, len = menu.length; i < len; i += 2)
-				{
-				
-					if (i === 0){document.getElementById('menuButtons').innerHTML = "";}
-					
-					
-					document.getElementById('menuButtons').innerHTML += "<div class='btn btn- default denom' id='button" + i + " '>" + menu[i] + "</div>"
-					rg.onklick("button" + i, function(){ rg.ring_up( {name:menu[i], price:menu[i + 1]} )  });
-				
-				}
-				
-			
-			
-			} else { alert("Ajax error: No data received from server"); }
-		
-		} else {alert("Ajax error: " + this.statusext); }
-	
-	}
+					}) });
 
 
-}
-
-
-
-
-
-
-request.send(params);
-
-
-
-function ajaxRequest()
-{
-
-	try
-	{
-		var req = new XMLHttpRequest();
-	
-	} 
-	catch(e1)
-	{
-		try
-		{
-			req = new ActiveXObject("Msxml2.XMLHTTP");
-		
-		}
-		catch(e2)
-		{
-			try 
-			{
-					req = new ActiveXObject("Microsoft.XMLHTTP");
-			
-			}
-			catch(e3)
-			{
-				req = false;
-			
-			}
-		
-		}
-	
-	}
-
-	return req;
-
-}
-
-*/

@@ -14,10 +14,6 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="JSPOS.js"></script> 
 
 
-<script> window.onload = prepare;</script>
-
-
-
 
 <style>
 
@@ -57,17 +53,12 @@ font-size: 20px;
 				<div class="denom btn btn-default" id="1"> $1</div>
 			</div>
 		-->
-			<br>
 			<div class="btn-group-vertical">
-			<div class="btn btn-default denom" id="exact" >$</div>
+			<div class="btn btn-default denom" id="cash" >Cash Payment</div> 
+			<div class="btn btn-default denom" id="print" >Print Receipt</div>
 			<div class="btn btn-default denom" id="done" >Done</div> 
-			<div class="btn btn- default denom" id="del" > Delete</div>
-			<div class="btn btn- default denom" id="print" >print</div>
 			</div>
 			<div class="btn-group-vertical" id = "menuButtons">
-			<div class="btn btn- default denom" id="burger" >Burger</div>
-			<div class="btn btn- default denom" id="fries" >Fries</div>
-			<div class="btn btn- default denom" id="salad" >Salad</div>
 			</div>
 			
 		</div>
