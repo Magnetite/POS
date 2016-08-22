@@ -6,8 +6,8 @@ var rg = {
     
     total: 0,
     subtotal: 0,
-    tax: 1.07,
-    tax_elgible: 0,
+    tax: 0.07,
+	taxSub: 0,
     paid: 0,
     change: 0,
 	list: [],
@@ -18,7 +18,7 @@ var rg = {
 	
 	
     ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
-        rg.subtotal = rg.money_format(rg.subtotal + a.price);
+        rg.subtotal = rg.money_format(rg.subtotal + a.price, 'r');  
 		rg.list.push(a);
         
         rg.total_amt();
@@ -34,29 +34,30 @@ var rg = {
 	exact_change: function(){
 	
 		var v = prompt("Enter exact change:", "");
-		rg.paid = rg.money_format(rg.paid + parseFloat(v));
-		rg.total_amt();
 		
-		rg.prints("Cash:   $" + rg.paid, "list", 'a');
-		
+		if ( v > 0 ){
+			rg.paid = rg.money_format(rg.paid + parseFloat(v));
+			rg.total_amt();
+			
+			rg.prints("Cash:   $" + rg.paid, "list", 'a');
+		}
 		return rg;
 	
 	},
 	
 	
 	total_amt: function(){                        //<= Calculates total 
-
-		rg.tax_elgible = rg.subtotal;             //<= Temp fix, Adjust later
+    
 		
-		if ( rg.tax_elgible > 0){
-		rg.total = rg.money_format(rg.tax_elgible * rg.tax); 
-		} else {
-		rg.total = rg.money_format(rg.tax_elgible);
+		if ( rg.subtotal >= 0){
+		rg.taxSub = rg.money_format(rg.subtotal * rg.tax, 'r'); 
 		}
+		rg.total = rg.money_format(rg.subtotal + rg.taxSub, 'r');
+		
 		
 		rg.prints("Total: " + rg.total, "total");
 		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
-		rg.prints("Tax:  " + rg.money_format(rg.total - rg.subtotal, 'r'), "tax");
+		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), "tax"); //Fix, make taxSub variable instead
 		rg.prints("Paid:  " + rg.paid, "paid");
 		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid), "due");
 		
@@ -65,22 +66,7 @@ var rg = {
 	
 	
 	
-	remove_item: function(delt){
 	
-		if (typeof(delt) != Number){
-			var delt = rg.money_format(prompt("Enter Value to take off",""));
-		}
-		
-		if (delt === 0){return;}     //<= So it does not add button when 0 has been taken off
-		
-		rg.subtotal = rg.money_format(rg.subtotal - delt);
-		rg.tax_elgible = rg.money_format(rg.tax_elgible - delt);  
-		rg.total_amt();
-		
-		rg.prints("Removed $" + delt, "list", 'a');
-		
-		return rg;
-	},
 	
 	change_price: function(a){
 		
@@ -111,11 +97,11 @@ var rg = {
 		rg.lineNum = 0;
 		
 		rg.clear("list","");
-		rg.clear("subtotal", "Subtotal: ");     //<= id input over here!
-		rg.clear("total", "Total: ");
-		rg.clear("paid", "Paid:  ");
-		rg.clear("due", "Due:  ");
-		rg.clear("tax", "Tax:  ");
+		rg.clear("subtotal", "Subtotal: 0");     //<= id input over here!
+		rg.clear("total", "Total: 0");
+		rg.clear("paid", "Paid:  0");
+		rg.clear("due", "Due:  0");
+		rg.clear("tax", "Tax:  0");
 		
         return rg;
     },
@@ -174,19 +160,10 @@ var rg = {
 		del.parentNode.removeChild(del);
 		
 		if (price){                    //<= update price after taking off item
-		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(price) , 'c');  //<= Need to fix rounding error, so it subtracts like it should
-		/*
-		rg.subtotal = 0;
-		$.each(rg.list, function(a){
-			rg.subtotal += a.price;
-		})
-		rg.subtotal = rg.money_format(rg.subtotal);
-		rg.total_amt();
-		*/
-		}  
+		rg.subtotal = rg.money_format( rg.subtotal - parseFloat(price) , 'r');  //<= Need to fix rounding error, so it subtracts like it should
 		
-		var index = parseInt(id) - 1;                 //fix this and next line, does not properly delete value from array
-		rg.list.splice(index, 1);
+		rg.total_amt();
+		}  
 		
 		
 		
@@ -234,7 +211,6 @@ function prepare(){
 
 
 $(document).ready(function(){
-<<<<<<< HEAD
 	 $.ajax({
 					type: "GET",
 					url: "xserver.php",
@@ -255,73 +231,5 @@ $(document).ready(function(){
 						rg.onklick("cash", rg.exact_change);
 					}
 					}) });
-=======
-	// 	$.get('/xserver.php?n=foo').then(function (payload) {
-	// 		alert(payload);
-	// 	}, function (err) {
-	// 		alert(err);
-	// 	})
-	// });
-	
-	$.ajax({
-		type: "GET",
-		url: "xserver.php",
-		data: {
-			n: 1
-		},
-		success: function (result) {
-			alert(result);
-		}
-	});
-});
-/*
-request = new ajaxRequest();
-request.open("POST", "xserver.php", true);
-
-request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-request.setRequestHeader("Content-length", params.length);
-request.setRequestHeader("Connection", "close");
-
-request.onreadystatechange = function()
-{
-	if (this.readyState == 4)
-	{
-	
-		if (this.status == 200)
-		{
-			if (this.responseText != null)
-			{
-				
-				menu = this.response;  //Text.split(",");
-				
-				
-				
-				//document.getElementById('t').innerHTML = menu;  //Test Line ===============================
-				alert(menu);  //Test Line =============================================================
-				
-				//Put menu buttons on webpage and set the event handlers
-				/*
-				for (var i = 0, len = menu.length; i < len; i += 2)
-				{
-				
-					if (i === 0){document.getElementById('menuButtons').innerHTML = "";}
-					
-					
-					document.getElementById('menuButtons').innerHTML += "<div class='btn btn- default denom' id='button" + i + " '>" + menu[i] + "</div>"
-					rg.onklick("button" + i, function(){ rg.ring_up( {name:menu[i], price:menu[i + 1]} )  });
-				
-				}
-				
-			
-			
-			} else { alert("Ajax error: No data received from server"); }
-		
-		} else {alert("Ajax error: " + this.statusext); }
-	
-	}
-
-
-}
->>>>>>> origin/master
 
 

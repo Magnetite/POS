@@ -2,11 +2,8 @@
 	
 	<?php
 	
-<<<<<<< HEAD
 	include("try.php");
 	
-=======
->>>>>>> origin/master
 	if (isset($_GET['n']))
 	{
 		$menuItems = tryC();
