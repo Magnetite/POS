@@ -11,6 +11,7 @@ var rg = {
     paid: 0,
     change: 0,
 	list: [],
+	dict: {},
 	lineNum: 0,
 
     
@@ -19,7 +20,26 @@ var rg = {
 	
     ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
         rg.subtotal = rg.money_format(rg.subtotal + a.price, 'r');  
-		rg.list.push(a);
+		//rg.list.push(a);
+		
+		
+		
+		if ( rg.dict.hasOwnProperty(a.id) )
+		{
+		
+			 if (rg.dict[a.id].stock === 0 ){
+				alert("Out of stock!");
+				return;
+			 } else {
+				rg.dict[a.id].stock -= 1;
+				}
+				
+		} else {
+			
+			
+			rg.dict[a.id] = a;
+			rg.dict[a.id].stock -= 1;
+		}
         
         rg.total_amt();
 		
@@ -31,9 +51,15 @@ var rg = {
     },
 	
 	
-	exact_change: function(){
+	exact_change: function(a){
 	
-		var v = prompt("Enter exact change:", "");
+		var v = 0;
+	
+		if (arguments.length === 0){
+			v = prompt("Enter exact change:", "");
+		} else {
+			v = a;
+		}
 		
 		if ( v > 0 ){
 			rg.paid = rg.money_format(rg.paid + parseFloat(v));
@@ -42,6 +68,16 @@ var rg = {
 			rg.prints("Cash:   $" + rg.paid, "list", 'a');
 		}
 		return rg;
+	
+	},
+	
+	cash_button: function(cash){
+	
+		if ( cash >= (rg.total - rg.paid) ){
+			rg.exact_change(cash);
+		} else {
+			alert("Not enough to cover payment");
+		}
 	
 	},
 	
@@ -129,7 +165,7 @@ var rg = {
 			document.getElementById(id).innerHTML += "<div id = '" +  rg.lineNum + 
 			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
 			"a\",\"" + out.price +
-			"\")'>" + out.name + 
+			"\", " + out.id + ")'>" + out.name + 
 			"</button> <button>$" + out.price + 
 			"</button></div>"; 
 			
@@ -155,7 +191,15 @@ var rg = {
 		return rg;
 	},
 	
-	delTag: function(id, price){
+	delTag: function(id, price, index){
+		
+		
+		
+		rg.dict[index].stock += 1; 
+		
+		if (rg.dict[index].stock === rg.dict[index].max){ delete rg.dict[index]};
+	
+	
 		var del = document.getElementById(id);
 		del.parentNode.removeChild(del);
 		
@@ -168,6 +212,22 @@ var rg = {
 		
 		
 		return rg;
+	},
+	
+	
+	ajax: function(a, callback){
+	
+		$.ajax({
+					type: "GET",
+					url: "xserver.php",
+					data: "n=menu&m=" +  Math.random(),
+					dataType: "json",
+					success: function(result){
+					callback(result);
+					},
+					})
+	
+	
 	}
 	
 	
@@ -195,6 +255,27 @@ function prepare(){
 	rg.onklick("salad", function(){rg.ring_up({name:"Salad", price:1.99})  });
 	rg.onklick("print", function(){rg.prints("","list")} );
 }
+
+$.ajax({
+					type: "GET",
+					url: "xserver.php",
+					data: "n=menu&m=hi" +  Math.random(),
+					dataType: "json",
+					success: function(result){
+						$.each(result, function(){
+							$('#menuButtons').append('<div class="btn btn-default denom" id="' + this.id + '" >' + this.name + '</div>');
+							var fcost = this.cost;
+							var fname = this.name;
+							$('#' + this.id).bind("click", function(){  
+								rg.ring_up({name:fname, price:fcost});
+								
+							})
+							
+						})
+						rg.onklick("done", rg.sale_complete);
+						rg.onklick("cash", rg.exact_change);
+					}
+					})
 */
 
 
@@ -211,25 +292,35 @@ function prepare(){
 
 
 $(document).ready(function(){
-	 $.ajax({
-					type: "GET",
-					url: "xserver.php",
-					data: "n=foo" + Math.random(),
-					dataType: "json",
-					success: function(result){
-						$.each(result, function(){
+
+
+	
+	
+	 rg.ajax("menu", function(r){
+						$.each(r, function(){
 							$('#menuButtons').append('<div class="btn btn-default denom" id="' + this.id + '" >' + this.name + '</div>');
 							var fcost = this.cost;
 							var fname = this.name;
-							$('#' + this.id).bind("click", function(){  
-								rg.ring_up({name:fname, price:fcost});
+							var fstock = this.in_stock;
+							var fid = this.id;
+							$('#' + this.id).bind("click", function(){
+								//Make functionality for fstock!
+								rg.ring_up({id:fid, name:fname, price:fcost, stock:fstock, max:fstock});
 								
 							})
 							
 						})
+						rg.onklick("50d", function(){ return rg.cash_button(50);} )
+						rg.onklick("20d", function(){ return rg.cash_button(20);})
+						rg.onklick("10d", function(){ return rg.cash_button(10);} )
+						rg.onklick("5d", function(){ return rg.cash_button(5);})
+						rg.onklick("1d", function(){ return rg.cash_button(1);})
+						
+						
 						rg.onklick("done", rg.sale_complete);
 						rg.onklick("cash", rg.exact_change);
-					}
-					}) });
+					})  
+					
+	  });
 
 

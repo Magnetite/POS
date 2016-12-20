@@ -45,16 +45,19 @@ font-size: 20px;
 		
 		<div class="col-md-6">
 		
-		<!--
+		
 			<div class="btn-group-vertical">
-				<div class="denom btn btn-default" id="20"> $20</div>
-				<div class="denom btn btn-default" id="10"> $10</div>
-				<div class="denom btn btn-default" id="5"> $5</div>
-				<div class="denom btn btn-default" id="1"> $1</div>
+				<div class="denom btn btn-default" id="50d"> $50</div>
+				<div class="denom btn btn-default" id="20d"> $20</div>
+				<div class="denom btn btn-default" id="10d"> $10</div>
+				<div class="denom btn btn-default" id="5d"> $5</div>
+				<div class="denom btn btn-default" id="1d"> $1</div>
 			</div>
-		-->
+		
 			<div class="btn-group-vertical">
-			<div class="btn btn-default denom" id="cash" >Cash Payment</div> 
+			<div class="btn btn-default denom" id="cash" >Cash</div> 
+			<div class="btn btn-default denom" id="exact" >Exact</div> 
+			<div class="btn btn-default denom" id="Nearest" >Nearest Dollar</div> 
 			<div class="btn btn-default denom" id="print" >Print Receipt</div>
 			<div class="btn btn-default denom" id="done" >Done</div> 
 			</div>
