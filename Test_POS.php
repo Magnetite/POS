@@ -57,7 +57,10 @@ font-size: 20px;
 			<div class="btn-group-vertical">
 			<div class="btn btn-default denom" id="cash" >Cash</div> 
 			<div class="btn btn-default denom" id="exact" >Exact</div> 
-			<div class="btn btn-default denom" id="Nearest" >Nearest Dollar</div> 
+			<div class="btn btn-default denom" id="NearestD" >Nearest 1.00</div> 
+			<div class="btn btn-default denom" id="Nearest25" >Nearest .25</div> 
+			<div class="btn btn-default denom" id="Nearest10" >Nearest .10</div> 
+			<div class="btn btn-default denom" id="Nearest5" >Nearest .05</div> 
 			<div class="btn btn-default denom" id="print" >Print Receipt</div>
 			<div class="btn btn-default denom" id="done" >Done</div> 
 			</div>

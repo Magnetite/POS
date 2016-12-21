@@ -220,7 +220,7 @@ var rg = {
 		$.ajax({
 					type: "GET",
 					url: "xserver.php",
-					data: "n=menu&m=" +  Math.random(),
+					data: "n=" + a + "&m=" +  Math.random(),
 					dataType: "json",
 					success: function(result){
 					callback(result);
