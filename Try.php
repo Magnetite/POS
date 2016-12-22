@@ -10,7 +10,23 @@ try
 				// ensure that PDO::prepare returns false when passed invalid SQL
                 $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 
 				
+				//default value of $query
 				$query = "select * from menu where in_stock > ?";
+				
+				if ($_GET['n'] === 'create'){
+				
+					Creater();  //Finish this
+					
+				} else if ($_GET['n'] === 'update'){
+					
+					Updater();  //Finish this
+					
+				} else if ($_GET['n'] === 'delete'){
+				
+					Deleter();  //Finish this
+				    
+				}
+				
 				$stmt = $handle->prepare($query);
 				$stmt->execute([0]);
 				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -26,7 +42,33 @@ try
             }
 			}
 			
-			//func_get_args 
+			
+			function Creater(){
+			
+				//Set default create string value
+				    $query = "";
+			
+			}
+			
+			
+			function Updater($newStock, $menu_id){
+			
+				//Put a loop here! Iterate and update all Values
+				
+					//Need to Make sure can't go over in_stock!
+				    $query = "UPDATE menu SET in_stock=" . $newStock . " WHERE id=" . $menu_id;
+					
+			
+			
+			}
+			
+			
+			function Deleter($menu_id){
+				
+				$query = "DELETE FROM menu WHERE id=" . $menu_id ;
+			
+			}
+		
 			
 			
 		?>
