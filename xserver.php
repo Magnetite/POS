@@ -4,7 +4,15 @@
 	
 	include("try.php");
 	
-	if (isset($_GET['n']))
+	
+	
+		//Turn string into an array, to easily update stock values
+		$IdStk = explode("-", $_GET['s']);
+	
+	
+	
+	//Testing url parameter passing, passed
+	if ( isset($_GET['n']) && isset($_GET['m']) )
 	{
 		$menuItems = tryC();
 		
