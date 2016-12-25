@@ -215,12 +215,19 @@ var rg = {
 	},
 	
 	
-	ajax: function(a, callback){
+	ajax: function(a, callback, IdStock){
+	
+	
+		if (!IdStock){
+		
+			var IdStock = ""; //Use var here?
+		
+		}
 	
 		$.ajax({
 					type: "GET",
 					url: "xserver.php",
-					data: "n=" + a + "&m=" +  Math.random(),
+					data: "n=" + a + "&s=" + IdStock + "&m=" +  Math.random(),
 					dataType: "json",
 					success: function(result){
 					callback(result);
