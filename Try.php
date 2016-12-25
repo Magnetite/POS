@@ -19,7 +19,7 @@ try
 					
 				} else if ($_GET['n'] === 'update'){
 					
-					Updater();  //Finish this
+					Updater($IdStk);  //Finish this, 
 					
 				} else if ($_GET['n'] === 'delete'){
 				
@@ -51,14 +51,15 @@ try
 			}
 			
 			
-			function Updater($newStock, $menu_id){
+			function Updater($arr){
 			
 				//Put a loop here! Iterate and update all Values
+				for($i = 0, $len = count($arr); $i < $len; $i++){
 				
 					//Need to Make sure can't go over in_stock!
-				    $query = "UPDATE menu SET in_stock=" . $newStock . " WHERE id=" . $menu_id;
+				    $query = "UPDATE menu SET in_stock=" . $arr[$i] . " WHERE id=" . $arr[$i + 1];
 					
-			
+				}
 			
 			}
 			
