@@ -57,7 +57,7 @@ try
 				for($i = 0, $len = count($arr); $i < $len; $i++){
 				
 					//Need to Make sure can't go over in_stock!
-				    $query = "UPDATE menu SET in_stock=" . $arr[$i] . " WHERE id=" . $arr[$i + 1];
+				    $query = "UPDATE menu SET in_stock=" . $arr[$i + 1] . " WHERE id=" . $arr[$i];
 					
 				}
 			
