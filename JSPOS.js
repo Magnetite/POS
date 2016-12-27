@@ -71,6 +71,18 @@ var rg = {
 	
 	},
 	
+	nearest_amount: function(nearest){
+	
+		var am =  math.round(rg.total * 100);
+		var res = nearest - (am % nearest);
+		
+		exact_change(res + rg.total);
+		
+		return rg;
+		
+	
+	},
+	
 	cash_button: function(cash){
 	
 		if ( cash >= (rg.total - rg.paid) ){
@@ -220,7 +232,7 @@ var rg = {
 	
 		if (!IdStock){
 		
-			var IdStock = ""; //Use var here?
+		 IdStock = ""; 
 		
 		}
 	
