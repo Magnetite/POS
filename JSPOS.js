@@ -72,11 +72,12 @@ var rg = {
 	},
 	
 	nearest_amount: function(nearest){
+	 //nearest parameter represents cents.
 	
-		var am =  math.round(rg.total * 100);
-		var res = nearest - (am % nearest);
+		var am =  Math.round(rg.total * 100);
+		var res =  am + nearest - (am % nearest);
 		
-		exact_change(res + rg.total);
+		rg.exact_change( res/100 );
 		
 		return rg;
 		
@@ -334,6 +335,12 @@ $(document).ready(function(){
 						rg.onklick("10d", function(){ return rg.cash_button(10);} )
 						rg.onklick("5d", function(){ return rg.cash_button(5);})
 						rg.onklick("1d", function(){ return rg.cash_button(1);})
+						
+						
+						rg.onklick("NearestD", function(){ return rg.nearest_amount(100); })
+						rg.onklick("Nearest25", function(){ return rg.nearest_amount(25); })
+						rg.onklick("Nearest10", function(){ return rg.nearest_amount(10); })
+						rg.onklick("Nearest5", function(){ return rg.nearest_amount(5); })
 						
 						
 						rg.onklick("done", rg.sale_complete);
