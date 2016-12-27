@@ -108,7 +108,7 @@ var rg = {
 		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
 		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), "tax"); //Fix, make taxSub variable instead
 		rg.prints("Paid:  " + rg.paid, "paid");
-		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid), "due");
+		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), "due");
 		
 		return rg;
 	},
