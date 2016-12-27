@@ -337,7 +337,7 @@ $(document).ready(function(){
 						
 						
 						rg.onklick("done", rg.sale_complete);
-						rg.onklick("cash", rg.exact_change);
+						rg.onklick("cash",  function(){ return rg.exact_change();} );
 					})  
 					
 	  });
