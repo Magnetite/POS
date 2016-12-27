@@ -108,7 +108,14 @@ var rg = {
 		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
 		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), "tax"); //Fix, make taxSub variable instead
 		rg.prints("Paid:  " + rg.paid, "paid");
+		
+		if ((rg.total - rg.paid) >= 0){
 		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), "due");
+		rg.prints("Change:  " + rg.money_format(0, 'r'), "change");
+		} else {
+		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), "change");
+		rg.prints("Due:  " + rg.money_format(0, 'r'), "due");
+		}
 		
 		return rg;
 	},
@@ -143,7 +150,9 @@ var rg = {
         rg.paid = 0;
         rg.change = 0;
 		rg.list = [];
+		rg.dict = {};
 		rg.lineNum = 0;
+		
 		
 		rg.clear("list","");
 		rg.clear("subtotal", "Subtotal: 0");     //<= id input over here!

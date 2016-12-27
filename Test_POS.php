@@ -77,6 +77,7 @@ font-size: 20px;
 
 			<div id="total">Total:</div>
 			<div id="due">Due:</div>
+			<div id="change">Change:</div>
 		</div>
 	</div>
 </div>
