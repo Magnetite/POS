@@ -336,6 +336,7 @@ $(document).ready(function(){
 						rg.onklick("5d", function(){ return rg.cash_button(5);})
 						rg.onklick("1d", function(){ return rg.cash_button(1);})
 						
+						rg.onklick("exact", function(){ return rg.exact_change(rg.total); })
 						
 						rg.onklick("NearestD", function(){ return rg.nearest_amount(100); })
 						rg.onklick("Nearest25", function(){ return rg.nearest_amount(25); })
