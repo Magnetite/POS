@@ -54,7 +54,7 @@ try
 			function Updater($arr){
 			
 				//Put a loop here! Iterate and update all Values
-				for($i = 0, $len = count($arr); $i < $len; $i++){
+				for($i = 0, $len = count($arr); $i < $len; $i += 2){
 				
 					
 				    $query = "UPDATE menu SET in_stock=" . $arr[$i + 1] . " WHERE id=" . $arr[$i];
