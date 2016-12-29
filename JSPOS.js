@@ -248,7 +248,7 @@ var rg = {
 				OutStr += "-";
 			}
 			
-			OutStr += Object.keys(rg.dict)[i] + "-" + rg.dict[Object.keys(rg.dict)[i]].stock;  //<= FINISH AND FIX THIS
+			OutStr += Object.keys(rg.dict)[i] + "-" + rg.dict[Object.keys(rg.dict)[i]].stock; 
 		
 		}
 		
@@ -291,55 +291,6 @@ var rg = {
 
 
 
-
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-//Prepare event handlers of UI 
-/*
-function prepare(){
-	rg.onklick("done", rg.sale_complete);
-	rg.onklick("exact", rg.exact_change);
-	rg.onklick("del", rg.remove_item);
-	rg.onklick("burger", function(){rg.ring_up({name:"Hamburger", price:3.49})  });
-	rg.onklick("fries", function(){rg.ring_up({name:"Fries", price:1.79})  });
-	rg.onklick("salad", function(){rg.ring_up({name:"Salad", price:1.99})  });
-	rg.onklick("print", function(){rg.prints("","list")} );
-}
-
-$.ajax({
-					type: "GET",
-					url: "xserver.php",
-					data: "n=menu&m=hi" +  Math.random(),
-					dataType: "json",
-					success: function(result){
-						$.each(result, function(){
-							$('#menuButtons').append('<div class="btn btn-default denom" id="' + this.id + '" >' + this.name + '</div>');
-							var fcost = this.cost;
-							var fname = this.name;
-							$('#' + this.id).bind("click", function(){  
-								rg.ring_up({name:fname, price:fcost});
-								
-							})
-							
-						})
-						rg.onklick("done", rg.sale_complete);
-						rg.onklick("cash", rg.exact_change);
-					}
-					})
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function(){
 
 
@@ -353,7 +304,7 @@ $(document).ready(function(){
 							var fstock = this.in_stock;
 							var fid = this.id;
 							$('#' + this.id).bind("click", function(){
-								//Make functionality for fstock!
+								
 								rg.ring_up({id:fid, name:fname, price:fcost, stock:fstock, max:fstock});
 								
 							})
@@ -379,4 +330,4 @@ $(document).ready(function(){
 					
 	  });
 
-
+	  
