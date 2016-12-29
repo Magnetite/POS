@@ -236,6 +236,23 @@ var rg = {
 		return rg;
 	},
 	
+	object_str: function()
+	{
+	
+		var len = Object.keys(rg.dict).length;
+		var OutStr = "";
+		
+		for (var i = 0; i < len; i++){
+		
+			if (i > 0){ 
+				OutStr += "-";
+			}
+			
+			OutStr += rg.dict[i];  //<= FINISH AND FIX THIS
+		
+		}
+	
+	},
 	
 	ajax: function(a, callback, IdStock){
 	
