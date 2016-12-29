@@ -248,7 +248,7 @@ var rg = {
 				OutStr += "-";
 			}
 			
-			OutStr += rg.dict[i];  //<= FINISH AND FIX THIS
+			OutStr += Object.keys(rg.dict)[i] + "-" + rg.dict[Object.keys(rg.dict)[i]].stock;  //<= FINISH AND FIX THIS
 		
 		}
 	
