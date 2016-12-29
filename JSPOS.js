@@ -251,6 +251,9 @@ var rg = {
 			OutStr += Object.keys(rg.dict)[i] + "-" + rg.dict[Object.keys(rg.dict)[i]].stock;  //<= FINISH AND FIX THIS
 		
 		}
+		
+		//returns OutStr instead of rg
+		return OutStr;
 	
 	},
 	
