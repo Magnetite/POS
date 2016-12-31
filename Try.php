@@ -60,6 +60,8 @@ try
 				    $query = "UPDATE menu SET in_stock=" . $arr[$i + 1] . " WHERE id=" . $arr[$i];
 					
 					//Need function here to process $query!
+					$stmt = $handle->prepare($query);
+					$stmt->execute();
 				}
 			
 			}
