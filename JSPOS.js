@@ -120,7 +120,11 @@ var rg = {
 		return rg;
 	},
 	
+	amount_over: function(over){
 	
+	rg.exact_change(rg.total + over);
+	
+	},
 	
 	
 	
