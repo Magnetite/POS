@@ -43,7 +43,7 @@ font-size: 20px;
 		
 
 		
-		<div class="col-md-6">
+		<div class="col-md-9">
 		
 		
 			<div class="btn-group-vertical">
@@ -56,15 +56,18 @@ font-size: 20px;
 		
 			<div class="btn-group-vertical">
 			<div class="btn btn-default denom" id="cash" >Cash</div> 
-			<div class="btn btn-default denom" id="exact" >Exact</div> 
+			<div class="btn btn-default denom" id="exact" >Exact</div>
+			<br>
 			<div class="btn btn-default denom" id="NearestD" >Nearest 1.00</div> 
 			<div class="btn btn-default denom" id="Nearest25" >Nearest .25</div> 
 			<div class="btn btn-default denom" id="Nearest10" >Nearest .10</div> 
-			<div class="btn btn-default denom" id="Nearest5" >Nearest .05</div> 
+			<div class="btn btn-default denom" id="Nearest5" >Nearest .05</div>
+			<br>
 			<div class="btn btn-default denom" id="More20" >$20 More</div> 
 			<div class="btn btn-default denom" id="More10" >$10 More</div> 
 			<div class="btn btn-default denom" id="More5" >$5 More</div> 
 			<div class="btn btn-default denom" id="More1" >$1 More</div> 
+			<br>
 			<div class="btn btn-default denom" id="print" >Print Receipt</div>
 			<div class="btn btn-default denom" id="done" >Done</div> 
 			</div>
@@ -73,7 +76,7 @@ font-size: 20px;
 			
 		</div>
 		
-		<div class="col-md-6">
+		<div class="col-md-3">
 			<div id="list"></div>
 			<div id="subtotal" > Subtotal:</div>
 			<div id="tax" > Tax:</div>
