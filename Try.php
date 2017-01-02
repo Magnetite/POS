@@ -72,6 +72,13 @@ try
 				$query = "DELETE FROM menu WHERE id=" . $menu_id ;
 			
 			}
+			
+			function Executer($q, $value){
+			
+			$stmt = $handle->prepare($q);
+			$stmt->execute($value);
+			
+			}
 		
 			
 			
