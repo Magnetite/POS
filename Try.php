@@ -19,16 +19,35 @@ try
 					
 				} else if ($_GET['n'] === 'update'){
 					
-					Updater($IdStk);  //Finish this, 
+					//Updater($IdStk);  
+					
+						//Iterate and update all Values
+					for($i = 0, $len = count($arr); $i < $len; $i += 2){
+					
+						
+						$query = "UPDATE menu SET in_stock=" . $arr[$i + 1] . " WHERE id=" . $arr[$i];
+						
+						//Need function here to process $query!
+						$stmt = $handle->prepare($query);
+						$stmt->execute();
+					}
+					
+					return 0;
+					
 					
 				} else if ($_GET['n'] === 'delete'){
 				
-					Deleter();  //Finish this
+					//Deleter();  //Finish this
+					
+					$query = "DELETE FROM menu WHERE id=" . $_GET[d];
+					
 				    
 				}
 				
 				$stmt = $handle->prepare($query);
 				$stmt->execute([0]);
+				
+				
 				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				return $rows;
 				
@@ -41,6 +60,8 @@ try
                 exit;
             }
 			}
+			
+			
 			
 			
 			function Creater(){
@@ -73,10 +94,14 @@ try
 			
 			}
 			
-			function Executer($q, $value){
+			function Executer($q){
 			
 			$stmt = $handle->prepare($q);
-			$stmt->execute($value);
+			$stmt->execute([0]);
+			
+
+			
+				
 			
 			}
 		
