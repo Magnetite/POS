@@ -13,19 +13,20 @@ try
 				//default value of $query
 				$query = "select * from menu where in_stock > ?";
 				
-				if ($_GET['n'] === 'create'){
+				if (isset($_GET['c']) ){
 				
 					Creater();  //Finish this
 					
-				} else if ($_GET['n'] === 'update'){
+				} else if (isset($_GET['u']) ){
 					
-					//Updater($IdStk);  
+					//Turn string into an array, to easily update stock values
+					$IdStk = explode("-", $_GET['u']); 
 					
-						//Iterate and update all Values
-					for($i = 0, $len = count($arr); $i < $len; $i += 2){
+						//Iterate and update all values
+					for($i = 0, $len = count($IdStk); $i < $len; $i += 2){
 					
 						
-						$query = "UPDATE menu SET in_stock=" . $arr[$i + 1] . " WHERE id=" . $arr[$i];
+						$query = "UPDATE menu SET in_stock=" . $IdStk[$i + 1] . " WHERE id=" . $IdStk[$i];
 						
 						//Need function here to process $query!
 						$stmt = $handle->prepare($query);
@@ -35,9 +36,9 @@ try
 					return 0;
 					
 					
-				} else if ($_GET['n'] === 'delete'){
+				} else if (isset($_GET['d'])){
 				
-					//Deleter();  //Finish this
+					
 					
 					$query = "DELETE FROM menu WHERE id=" . $_GET[d];
 					

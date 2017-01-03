@@ -261,19 +261,15 @@ var rg = {
 	
 	},
 	
-	ajax: function(a, callback, IdStock){
+	ajax: function(a, callback){
 	
 	
-		if (!IdStock){
-		
-		 IdStock = ""; 
-		
-		}
+		var data_str = a + "&m=" +  Math.random();
 	
 		$.ajax({
 					type: "GET",
 					url: "xserver.php",
-					data: "n=" + a + "&s=" + IdStock + "&m=" +  Math.random(),
+					data: data_str,
 					dataType: "json",
 					success: function(result){
 					callback(result);
@@ -300,7 +296,7 @@ $(document).ready(function(){
 
 	
 	
-	 rg.ajax("menu", function(r){
+	 rg.ajax("n=menu", function(r){
 						$.each(r, function(){
 							$('#menuButtons').append('<div class="btn btn-default denom" id="' + this.id + '" >' + this.name + '</div>');
 							var fcost = this.cost;
