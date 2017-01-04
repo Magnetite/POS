@@ -130,7 +130,7 @@ var rg = {
 	
 	change_price: function(a){
 		
-		a.price = prompt("Enter a new price:","");
+		a.price = prompt("Enter a override price:","");
 		
 		rg.subtotal = rg.money_format( rg.subtotal - money_format(parseFloat(a.price), 'c' ) , 'c');   //<= Need to fix rounding error
 		rg.total_amt(); 
@@ -146,7 +146,15 @@ var rg = {
 	
 	
 	
-    sale_complete: function(){	//<= Resets the state of program.  First of the "utility functions"
+    sale_complete: function(){	
+	
+		var str = rg.object_str();
+	
+		rg.ajax("u=" + str, function(){
+		//test 
+		console.log("Data transmitted");
+		
+		} )
 	
         rg.total = 0;
         rg.subtotal = 0;
@@ -159,7 +167,7 @@ var rg = {
 		
 		
 		rg.clear("list","");
-		rg.clear("subtotal", "Subtotal: 0");     //<= id input over here!
+		rg.clear("subtotal", "Subtotal: 0");     
 		rg.clear("total", "Total: 0");
 		rg.clear("paid", "Paid:  0");
 		rg.clear("due", "Due:  0");
