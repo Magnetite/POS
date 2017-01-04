@@ -176,6 +176,11 @@ var rg = {
         return rg;
     },
 	
+	receipt: function(){
+	
+	
+	},
+	
 	
 	money_format: function(a, mode){                   //<= Rounds fractional cent
 	
@@ -330,6 +335,13 @@ $(document).ready(function(){
 						rg.onklick("Nearest25", function(){ return rg.nearest_amount(25); })
 						rg.onklick("Nearest10", function(){ return rg.nearest_amount(10); })
 						rg.onklick("Nearest5", function(){ return rg.nearest_amount(5); })
+						
+						
+						rg.onklick("More50", function(){ return rg.amount_over(50); })
+						rg.onklick("More20", function(){ return rg.amount_over(20); })
+						rg.onklick("More10", function(){ return rg.amount_over(10); })
+						rg.onklick("More5", function(){ return rg.amount_over(5); })
+						rg.onklick("More1", function(){ return rg.amount_over(1); })
 						
 						
 						rg.onklick("done", rg.sale_complete);
