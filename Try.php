@@ -13,6 +13,18 @@ try
 				//default value of $query
 				$query = "select * from menu where in_stock > ?";
 				
+				
+				
+				$table = "menu";
+				
+				if (isset($_GET['t']) ){
+				
+					$table = $_GET['t'];
+				
+				}
+				
+				
+				
 				if (isset($_GET['c']) ){
 				
 					Creater();  //Finish this
@@ -40,7 +52,7 @@ try
 				
 					
 					
-					$query = "DELETE FROM menu WHERE id=" . $_GET[d];
+					$query = "DELETE FROM" . $table . "WHERE id=" . $_GET[d];
 					
 				    
 				}
