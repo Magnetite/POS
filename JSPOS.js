@@ -13,6 +13,7 @@ var rg = {
 	list: [],
 	dict: {},
 	lineNum: 0,
+	dup: 1,
 
     
 	
@@ -24,22 +25,30 @@ var rg = {
 		
 		
 		
-		if ( rg.dict.hasOwnProperty(a.id) )
-		{
+			while(rg.dup > 0){
 		
-			 if (rg.dict[a.id].stock === 0 ){
-				alert("Out of stock!");
-				return;
-			 } else {
-				rg.dict[a.id].stock -= 1;
-				}
-				
-		} else {
-			
-			
-			rg.dict[a.id] = a;
-			rg.dict[a.id].stock -= 1;
-		}
+						if ( rg.dict.hasOwnProperty(a.id) )
+						{
+						
+							 if (rg.dict[a.id].stock === 0 ){
+								alert("Out of stock!");
+								return;
+							 } else {
+								rg.dict[a.id].stock -= 1;
+								}
+								
+						} else {
+							
+							
+							rg.dict[a.id] = a;
+							rg.dict[a.id].stock -= 1;
+						}
+						
+						rg.dup -= 1;
+						
+				}	
+
+					rg.dup = 1;
         
         rg.total_amt();
 		
@@ -49,6 +58,13 @@ var rg = {
 		
         return rg;
     },
+	
+	duplicate: function(){
+	
+		rg.dup = prompt("Enter how many:", "");
+		return rg;
+	
+	},
 	
 	
 	exact_change: function(a){
@@ -330,6 +346,8 @@ $(document).ready(function(){
 						rg.onklick("1d", function(){ return rg.cash_button(1);})
 						
 						rg.onklick("exact", function(){ return rg.exact_change(rg.total); })
+						
+						rg.onklick("Dup", function(){ return rg.duplicate(); })
 						
 						rg.onklick("NearestD", function(){ return rg.nearest_amount(100); })
 						rg.onklick("Nearest25", function(){ return rg.nearest_amount(25); })
