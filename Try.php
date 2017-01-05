@@ -27,7 +27,9 @@ try
 				
 				if (isset($_GET['c']) ){
 				
-					Creater();  //Finish this
+					//Creater();  //Finish this
+					
+					$query = "INSERT INTO " . $table . " VALUES (" .  $_GET['c'] . ");" ;
 					
 				} else if (isset($_GET['u']) ){
 					
