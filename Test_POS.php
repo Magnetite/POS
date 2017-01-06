@@ -63,7 +63,7 @@ font-size: 20px;
 			<div class="btn btn-default denom" id="Nearest10" >Nearest .10</div> 
 			<div class="btn btn-default denom" id="Nearest5" >Nearest .05</div>
 			<br>
-			<div class="btn btn-default denom" id="Dup" >Duplicate</div>
+			<div class="btn btn-default denom" id="Dup" >Quantity</div>
 			<br>
 			<div class="btn btn-default denom" id="More50" >$50 More</div> 
 			<div class="btn btn-default denom" id="More20" >$20 More</div> 

@@ -44,16 +44,18 @@ var rg = {
 							rg.dict[a.id].stock -= 1;
 						}
 						
+						rg.total_amt();
+		
+						rg.lineNum++;
+						rg.prints(a, "list");
+						
 						rg.dup -= 1;
 						
 				}	
 
 					rg.dup = 1;
         
-        rg.total_amt();
-		
-		rg.lineNum++;
-		rg.prints(a, "list");
+        
 		
 		
         return rg;
@@ -345,21 +347,21 @@ $(document).ready(function(){
 						rg.onklick("5d", function(){ return rg.cash_button(5);})
 						rg.onklick("1d", function(){ return rg.cash_button(1);})
 						
-						rg.onklick("exact", function(){ return rg.exact_change(rg.total); })
+						rg.onklick("exact", function(){ return rg.exact_change(rg.total); });
 						
-						rg.onklick("Dup", function(){ return rg.duplicate(); })
+						rg.onklick("Dup", function(){ return rg.duplicate(); });
 						
-						rg.onklick("NearestD", function(){ return rg.nearest_amount(100); })
-						rg.onklick("Nearest25", function(){ return rg.nearest_amount(25); })
-						rg.onklick("Nearest10", function(){ return rg.nearest_amount(10); })
-						rg.onklick("Nearest5", function(){ return rg.nearest_amount(5); })
+						rg.onklick("NearestD", function(){ return rg.nearest_amount(100); });
+						rg.onklick("Nearest25", function(){ return rg.nearest_amount(25); });
+						rg.onklick("Nearest10", function(){ return rg.nearest_amount(10); });
+						rg.onklick("Nearest5", function(){ return rg.nearest_amount(5); });
 						
 						
-						rg.onklick("More50", function(){ return rg.amount_over(50); })
-						rg.onklick("More20", function(){ return rg.amount_over(20); })
-						rg.onklick("More10", function(){ return rg.amount_over(10); })
-						rg.onklick("More5", function(){ return rg.amount_over(5); })
-						rg.onklick("More1", function(){ return rg.amount_over(1); })
+						rg.onklick("More50", function(){ return rg.amount_over(50); });
+						rg.onklick("More20", function(){ return rg.amount_over(20); });
+						rg.onklick("More10", function(){ return rg.amount_over(10); });
+						rg.onklick("More5", function(){ return rg.amount_over(5); });
+						rg.onklick("More1", function(){ return rg.amount_over(1); });
 						
 						
 						rg.onklick("done", rg.sale_complete);
