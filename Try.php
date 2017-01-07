@@ -27,10 +27,15 @@ try
 				
 				if (isset($_GET['c']) ){
 				
-					//Creater();  //Finish this
+					
 					
 					$query = "INSERT INTO " . $table . " VALUES (" .  $_GET['c'] . ");" ;
 					
+				}else if(isset($_GET['r']) ){
+				
+					$query = "SELECT * FROM " . $table ;
+				
+				
 				} else if (isset($_GET['u']) ){
 					
 					//Turn string into an array, to easily update stock values
