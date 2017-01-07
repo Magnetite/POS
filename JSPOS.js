@@ -44,14 +44,16 @@ var rg = {
 							rg.dict[a.id].stock -= 1;
 						}
 						
-						rg.total_amt();
+						
 		
 						rg.lineNum++;
-						rg.prints(a, "list");
+						rg.prints(a, "list");  
 						
 						rg.dup -= 1;
 						
 				}	
+				
+				rg.total_amt();
 
 					rg.dup = 1;
         
