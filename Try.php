@@ -31,9 +31,14 @@ try
 					
 					$query = "INSERT INTO " . $table . " VALUES (" .  $_GET['c'] . ");" ;
 					
-				}else if(isset($_GET['r']) ){
+				} else if(isset($_GET['r1']) ){
 				
 					$query = "SELECT * FROM " . $table ;
+				
+				
+				} else if(isset($_GET['r2']) ){
+				
+					$query = "SELECT * FROM " . $table . " WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
 				
 				
 				} else if (isset($_GET['u']) ){
