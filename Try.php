@@ -60,6 +60,25 @@ try
 					return 0;
 					
 					
+				}  else if (isset($_GET['u1']) ){
+					
+					//Turn string into an array, to easily update stock values
+					$UpdateStr = explode("-", $_GET['u1']); 
+					
+						//Iterate and update all values
+					for($i = 0, $len = count($UpdateStr); $i < $len; $i += 3){
+					
+						
+						$query = "UPDATE " . $table . " SET " . $UpdateStr[$i + 1] . " = " . $UpdateStr[$i + 2] . " WHERE id = " . $UpdateStr[$i] ;
+						
+						//Need function here to process $query!
+						$stmt = $handle->prepare($query);
+						$stmt->execute();
+					}
+					
+					return 0;
+					
+					
 				} else if (isset($_GET['d'])){
 				
 					
