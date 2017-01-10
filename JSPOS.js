@@ -192,6 +192,7 @@ var rg = {
 		rg.clear("paid", "Paid:  0");
 		rg.clear("due", "Due:  0");
 		rg.clear("tax", "Tax:  0");
+		rg.clear("change", "Change:  0");
 		
         return rg;
     },
@@ -366,7 +367,7 @@ $(document).ready(function(){
 						rg.onklick("More1", function(){ return rg.amount_over(1); });
 						
 						
-						rg.onklick("done", rg.sale_complete);
+						rg.onklick("done", function(){ return rg.sale_complete();} );
 						rg.onklick("cash",  function(){ return rg.exact_change();} );
 					})  
 					

@@ -81,13 +81,13 @@ font-size: 20px;
 		
 		<div class="col-md-3">
 			<div id="list"></div>
-			<div id="subtotal" > Subtotal:</div>
-			<div id="tax" > Tax:</div>
-			<div id="paid" > Paid:</div>
+			<div id="subtotal" > Subtotal: 0</div>
+			<div id="tax" > Tax: 0</div>
+			<div id="paid" > Paid: 0</div>
 
-			<div id="total">Total:</div>
-			<div id="due">Due:</div>
-			<div id="change">Change:</div>
+			<div id="total">Total: 0</div>
+			<div id="due">Due: 0</div>
+			<div id="change">Change: 0</div>
 		</div>
 	</div>
 </div>
