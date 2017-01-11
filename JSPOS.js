@@ -14,6 +14,7 @@ var rg = {
 	dict: {},
 	lineNum: 0,
 	dup: 1,
+	receiptStr: "",
 
     
 	
@@ -132,6 +133,7 @@ var rg = {
 		if ((rg.total - rg.paid) >= 0){
 		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), "due");
 		rg.prints("Change:  " + rg.money_format(0, 'r'), "change");
+		//rg.prints("Change:  0", "change");
 		} else {
 		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), "change");
 		rg.prints("Due:  " + rg.money_format(0, 'r'), "due");
@@ -198,6 +200,8 @@ var rg = {
     },
 	
 	receipt: function(){
+	
+	
 	
 	
 	},
@@ -274,7 +278,7 @@ var rg = {
 		return rg;
 	},
 	
-	object_str: function()
+	object_str: function(mode)
 	{
 	
 		var len = Object.keys(rg.dict).length;
@@ -286,8 +290,13 @@ var rg = {
 				OutStr += "-";
 			}
 			
+			if (!mode){
 			OutStr += Object.keys(rg.dict)[i] + "-" + rg.dict[Object.keys(rg.dict)[i]].stock; 
-		
+			} else {
+			
+			//Functionality for the receipt function, Need to add how much of each product bought
+			OutStr += rg.dict[Object.keys(rg.dict)[i]].name + "-" + rg.dict[Object.keys(rg.dict)[i]].price; 
+			}
 		}
 		
 		//returns OutStr instead of rg
