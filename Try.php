@@ -27,12 +27,7 @@ try
 				
 				if (isset($_GET['c']) ){
 				
-					
-					
-					$query = "INSERT INTO " . $table . " VALUES ( " . $_GET['c'] . " );" ;
-					
-					$stmt = $handle->prepare($query);
-					$stmt->execute();
+					Creater($table, $handle);
 					
 				} else if(isset($_GET['r1']) ){
 				
@@ -86,16 +81,11 @@ try
 					
 				} else if (isset($_GET['d'])){
 				
-					$n = "name";
-					
-					if (isset($_GET['ds'])){ $n = $_GET['ds'];}
-					
-					$query = "DELETE FROM " . $table . " WHERE " . $n . "=" . $_GET['d'];
-					
-					$stmt = $handle->prepare($query);
-					$stmt->execute();
+				
+				Deleter($table, $handle);
 				    
 				}
+				
 				
 				$stmt = $handle->prepare($query);
 				$stmt->execute([0]);
@@ -117,10 +107,13 @@ try
 			
 			
 			
-			function Creater(){
+			function Creater($ta, $h){
 			
-				//Set default create string value
-				    $query = "";
+				
+				    $query = "INSERT INTO " . $ta . " VALUES ( " . $_GET['c'] . " );" ;
+					
+					$stmt = $h->prepare($query);
+					$stmt->execute();
 			
 			}
 			
@@ -141,9 +134,17 @@ try
 			}
 			
 			
-			function Deleter($menu_id){
+			function Deleter($ta, $h){
 				
-				$query = "DELETE FROM menu WHERE id=" . $menu_id ;
+				$n = "name";
+					
+					if (isset($_GET['ds'])){ $n = $_GET['ds'];}
+					
+					$query = "DELETE FROM " . $ta . " WHERE " . $n . "=" . $_GET['d'];
+					
+					$stmt = $h->prepare($query);
+					$stmt->execute();
+					
 			
 			}
 			
