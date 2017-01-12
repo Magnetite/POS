@@ -161,9 +161,10 @@ var rg = {
 	
 	DeleteRow: function(){
 	
+		//Testing...
 		var d = prompt("Enter exact name of item to delete from database:", "");
 		
-		rg.ajax("d=" + d ,function(){alert(d + " row deleted"); })
+		rg.ajax("d='" + d + "'" ,function(){alert("Request sent"); })
 		
 		return rg;
 		

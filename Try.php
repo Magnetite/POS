@@ -82,9 +82,11 @@ try
 				} else if (isset($_GET['d'])){
 				
 					
+					//Testing 
+					$query = "DELETE FROM " . $table . " WHERE name=" . $_GET['d'];
 					
-					$query = "DELETE FROM" . $table . "WHERE id=" . $_GET[d];
-					
+					$stmt = $handle->prepare($query);
+					$stmt->execute();
 				    
 				}
 				
