@@ -29,7 +29,7 @@ try
 				
 					
 					
-					$query = "INSERT INTO " . $table . " VALUES (" .  $_GET['c'] . ");" ;
+					$query = "INSERT INTO " . $table . " VALUES ('Hot_Dog',256,3425,45,7);" ;
 					
 				} else if(isset($_GET['r1']) ){
 				

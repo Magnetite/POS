@@ -76,6 +76,7 @@ font-size: 20px;
 			
 			<!-- Button to test DB functionality -->
 			<div class="btn btn-default denom" id="DeleteRow" >Delete from DB!</div> 
+			<div class="btn btn-default denom" id="CreateRow" >Create Row in DB!</div> 
 			</div>
 			<div class="btn-group-vertical" id = "menuButtons">
 			</div>
