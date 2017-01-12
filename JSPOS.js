@@ -174,9 +174,9 @@ var rg = {
 	CreateRow: function(){
 	
 		
-		//var c = prompt("Enter a comma seperated list of values to enter into DB. 'name,cost,coupon_code,stock,id'");
+		var c = prompt("Enter a comma seperated list of values to enter into DB. 'name,cost,coupon_code,stock,id'");
 		
-		rg.ajax("c=7", function(){alert("request sent");})
+		rg.ajax("c=" + c, function(){alert("request sent");})
 		
 		return rg;
 	
