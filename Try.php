@@ -79,8 +79,7 @@ try
 				
 				    $query = "INSERT INTO " . $ta . " VALUES ( " . $_GET['c'] . " );" ;
 					
-					$stmt = $h->prepare($query);
-					$stmt->execute();
+					Executer($h,$query,[]);
 			
 			}
 			
@@ -102,9 +101,8 @@ try
 						
 						$query = "UPDATE " . $ta . " SET " . $UpdateStr[$i + 1] . " = " . $UpdateStr[$i + 2] . " WHERE id = " . $UpdateStr[$i] ;
 						
-						//Need function here to process $query!
-						$stmt = $h->prepare($query);
-						$stmt->execute();
+						//Process $query
+						Executer($h,$query,[]);
 					}
 					
 					return 0;
@@ -124,9 +122,8 @@ try
 						
 						$query = "UPDATE " . $ta . " SET in_stock=" . $IdStk[$i + 1] . " WHERE id=" . $IdStk[$i];
 						
-						//Need function here to process $query!
-						$stmt = $h->prepare($query);
-						$stmt->execute();
+						//Process $query
+						Executer($h,$query,[]);
 					}
 					
 					return 0;
@@ -139,33 +136,21 @@ try
 			
 			function Deleter($ta, $h){
 				
-				
 					$n = "name";
-					
-					if (isset($_GET['ds'])){ $n = $_GET['ds'];}
-					
-					
-					  
-				
-				
+					if ( isset($_GET['ds']) ){ $n = $_GET['ds']};
 				
 					
 					$query = "DELETE FROM " . $ta . " WHERE " . $n . "=" . $_GET['d'];
 					
-					$stmt = $h->prepare($query);
-					$stmt->execute();
-				
-				
-				
-				
-					
+					Executer($h,$query,[])
+							
+				}
 			
-			}
 			
-			function Executer($q){
+			function Executer($h,$q, $arr){
 			
-			$stmt = $handle->prepare($q);
-			$stmt->execute([0]);
+			$stmt = $h->prepare($q);
+			$stmt->execute($arr);
 			
 
 			
