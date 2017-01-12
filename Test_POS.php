@@ -72,7 +72,10 @@ font-size: 20px;
 			<div class="btn btn-default denom" id="More1" >$1 More</div> 
 			<br>
 			<div class="btn btn-default denom" id="print" >Print Receipt</div>
-			<div class="btn btn-default denom" id="done" >Done</div> 
+			<div class="btn btn-default denom" id="done" >Done</div>
+			
+			<!-- Button to test DB functionality -->
+			<div class="btn btn-default denom" id="DeleteRow" >Delete from DB!</div> 
 			</div>
 			<div class="btn-group-vertical" id = "menuButtons">
 			</div>

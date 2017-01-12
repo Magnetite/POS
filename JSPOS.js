@@ -158,6 +158,17 @@ var rg = {
 		rg.total_amt(); 
 		return rg;
 	},
+	
+	DeleteRow: function(){
+	
+		var d = prompt("Enter exact name of item to delete from database:", "");
+		
+		rg.ajax("d=" + d ,function(){alert(d + " row deleted"); })
+		
+		return rg;
+		
+	
+	},
     
     
 	
@@ -378,6 +389,8 @@ $(document).ready(function(){
 						
 						rg.onklick("done", function(){ return rg.sale_complete();} );
 						rg.onklick("cash",  function(){ return rg.exact_change();} );
+						
+						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow();} );
 					})  
 					
 	  });
