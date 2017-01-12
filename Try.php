@@ -36,11 +36,13 @@ try
 					
 				} else if(isset($_GET['r1']) ){
 				
+					//All rows of table
 					$query = "SELECT * FROM " . $table ;
 				
 				
 				} else if(isset($_GET['r2']) ){
 				
+					//Only certain rows of table
 					$query = "SELECT * FROM " . $table . " WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
 				
 				
@@ -84,9 +86,11 @@ try
 					
 				} else if (isset($_GET['d'])){
 				
+					$n = "name";
 					
-					//Testing 
-					$query = "DELETE FROM " . $table . " WHERE name=" . $_GET['d'];
+					if (isset($_GET['ds'])){ $n = $_GET['ds'];}
+					
+					$query = "DELETE FROM " . $table . " WHERE " . $n . "=" . $_GET['d'];
 					
 					$stmt = $handle->prepare($query);
 					$stmt->execute();
