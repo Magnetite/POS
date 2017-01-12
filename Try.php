@@ -43,40 +43,7 @@ try
 				
 				} else if (isset($_GET['u']) ){
 					
-					//Turn string into an array, to easily update stock values
-					$IdStk = explode("-", $_GET['u']); 
-					
-						//Iterate and update all values
-					for($i = 0, $len = count($IdStk); $i < $len; $i += 2){
-					
-						
-						$query = "UPDATE menu SET in_stock=" . $IdStk[$i + 1] . " WHERE id=" . $IdStk[$i];
-						
-						//Need function here to process $query!
-						$stmt = $handle->prepare($query);
-						$stmt->execute();
-					}
-					
-					return 0;
-					
-					
-				}  else if (isset($_GET['u1']) ){
-					
-					//Turn string into an array, to easily update stock values
-					$UpdateStr = explode("-", $_GET['u1']); 
-					
-						//Iterate and update all values
-					for($i = 0, $len = count($UpdateStr); $i < $len; $i += 3){
-					
-						
-						$query = "UPDATE " . $table . " SET " . $UpdateStr[$i + 1] . " = " . $UpdateStr[$i + 2] . " WHERE id = " . $UpdateStr[$i] ;
-						
-						//Need function here to process $query!
-						$stmt = $handle->prepare($query);
-						$stmt->execute();
-					}
-					
-					return 0;
+					Updater($table, $handle);
 					
 					
 				} else if (isset($_GET['d'])){
@@ -118,32 +85,79 @@ try
 			}
 			
 			
-			function Updater($arr){
+			function Updater($ta,$h){
 			
-				//Put a loop here! Iterate and update all Values
-				for($i = 0, $len = count($arr); $i < $len; $i += 2){
+			
+			
+			if (isset($_GET['u1']) ){
+					
+					
+					
+					//Turn string into an array, to easily update stock values
+					$UpdateStr = explode("-", $_GET['u1']); 
+					
+						//Iterate and update all values
+					for($i = 0, $len = count($UpdateStr); $i < $len; $i += 3){
+					
+						
+						$query = "UPDATE " . $ta . " SET " . $UpdateStr[$i + 1] . " = " . $UpdateStr[$i + 2] . " WHERE id = " . $UpdateStr[$i] ;
+						
+						//Need function here to process $query!
+						$stmt = $h->prepare($query);
+						$stmt->execute();
+					}
+					
+					return 0;
+					
+					
+				} else {
+			
+			
+			
+			
+					//Turn string into an array, to easily update stock values
+					$IdStk = explode("-", $_GET['u']); 
+					
+					//Iterate and update all values
+					for($i = 0, $len = count($IdStk); $i < $len; $i += 2){
+					
+						
+						$query = "UPDATE " . $ta . " SET in_stock=" . $IdStk[$i + 1] . " WHERE id=" . $IdStk[$i];
+						
+						//Need function here to process $query!
+						$stmt = $h->prepare($query);
+						$stmt->execute();
+					}
+					
+					return 0;
+					
+						}
 				
-					
-				    $query = "UPDATE menu SET in_stock=" . $arr[$i + 1] . " WHERE id=" . $arr[$i];
-					
-					//Need function here to process $query!
-					$stmt = $handle->prepare($query);
-					$stmt->execute();
-				}
 			
 			}
 			
 			
 			function Deleter($ta, $h){
 				
-				$n = "name";
+				
+					$n = "name";
 					
 					if (isset($_GET['ds'])){ $n = $_GET['ds'];}
+					
+					
+					  
+				
+				
+				
 					
 					$query = "DELETE FROM " . $ta . " WHERE " . $n . "=" . $_GET['d'];
 					
 					$stmt = $h->prepare($query);
 					$stmt->execute();
+				
+				
+				
+				
 					
 			
 			}
