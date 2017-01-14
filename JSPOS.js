@@ -181,6 +181,12 @@ var rg = {
 		return rg;
 	
 	},
+	
+	ReadRow: function(table, id){
+	
+		
+	
+	},
     
     
 	
