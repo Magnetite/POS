@@ -17,6 +17,7 @@ try
 				
 				$table = "menu";
 				
+				
 				if (isset($_GET['t']) ){
 				
 					$table = $_GET['t'];
@@ -41,7 +42,7 @@ try
 					$query = "SELECT * FROM " . $table . " WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
 				
 				
-				} else if (isset($_GET['u']) ){
+				} else if (isset($_GET['u']) or isset($_GET['u1']) ){
 					
 					Updater($table, $handle);
 					
@@ -79,7 +80,9 @@ try
 				
 				    $query = "INSERT INTO " . $ta . " VALUES ( " . $_GET['c'] . " );" ;
 					
-					Executer($h,$query,[]);
+					Executer($h,$query);
+					//$stmt = $h->prepare($query);
+					//$stmt->execute();
 			
 			}
 			
@@ -102,7 +105,9 @@ try
 						$query = "UPDATE " . $ta . " SET " . $UpdateStr[$i + 1] . " = " . $UpdateStr[$i + 2] . " WHERE id = " . $UpdateStr[$i] ;
 						
 						//Process $query
-						Executer($h,$query,[]);
+						Executer($h,$query);
+						//$stmt = $handle->prepare($query);
+						//$stmt->execute();
 					}
 					
 					return 0;
@@ -123,7 +128,10 @@ try
 						$query = "UPDATE " . $ta . " SET in_stock=" . $IdStk[$i + 1] . " WHERE id=" . $IdStk[$i];
 						
 						//Process $query
-						Executer($h,$query,[]);
+						Executer($h,$query);
+						
+						//$stmt = $handle->prepare($query);
+						//$stmt->execute();
 					}
 					
 					return 0;
@@ -137,20 +145,23 @@ try
 			function Deleter($ta, $h){
 				
 					$n = "name";
-					if ( isset($_GET['ds']) ){ $n = $_GET['ds']};
+					if ( isset($_GET['ds']) ){ $n = $_GET['ds'];}
 				
 					
 					$query = "DELETE FROM " . $ta . " WHERE " . $n . "=" . $_GET['d'];
 					
-					Executer($h,$query,[])
+					//Executer($h,$query);
+					
+					$stmt = $handle->prepare($query);
+					$stmt->execute();
 							
 				}
 			
 			
-			function Executer($h,$q, $arr){
+			function Executer($h,$q){
 			
 			$stmt = $h->prepare($q);
-			$stmt->execute($arr);
+			$stmt->execute();
 			
 
 			
