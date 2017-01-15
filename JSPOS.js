@@ -34,6 +34,12 @@ var rg = {
 							 if (rg.dict[a.id].stock === 0 ){
 								alert("Out of stock!");
 								return;
+							 } else if (rg.dict[a.id].stock - rg.dup < 0){
+								
+								//1/14
+								alert("Not Enough Stock!");
+								return;
+							 
 							 } else {
 								rg.dict[a.id].stock -= 1;
 								}
@@ -48,13 +54,14 @@ var rg = {
 						
 		
 						rg.lineNum++;
-						rg.prints(a, "list");  
+						rg.prints(a, "list");
+						rg.total_amt();  //1/14
 						
 						rg.dup -= 1;
 						
 				}	
 				
-				rg.total_amt();
+				
 
 					rg.dup = 1;
         
@@ -164,7 +171,8 @@ var rg = {
 		//Testing...
 		var d = prompt("Enter exact name of item to delete from database:", "");
 		
-		rg.ajax("d='" + d + "'" ,function(){alert("Request sent"); })
+		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
+		rg.ajax("d='" + d + "'" ,function(){console.log("Request Successful"); })
 		
 		return rg;
 		
@@ -176,7 +184,7 @@ var rg = {
 		
 		var c = prompt("Enter a comma seperated list of values to enter into DB. 'name,cost,coupon_code,stock,id'");
 		
-		rg.ajax("c=" + c, function(){alert("request sent");})
+		rg.ajax("c=" + c, function(){console.log("Request Successful");})
 		
 		return rg;
 	
@@ -203,7 +211,7 @@ var rg = {
 	
 		rg.ajax("u=" + str, function(){
 		//test 
-		console.log("Data transmitted");
+		console.log("Request Successful");
 		
 		} )
 	
@@ -345,7 +353,8 @@ var rg = {
 					dataType: "json",
 					success: function(result){
 					callback(result);
-					},
+					}
+					
 					})
 	
 	
@@ -369,6 +378,8 @@ $(document).ready(function(){
 	
 	
 	 rg.ajax("n=menu", function(r){
+	 
+						
 						$.each(r, function(){
 							$('#menuButtons').append('<div class="btn btn-default denom" id="' + this.id + '" >' + this.name + '</div>');
 							var fcost = this.cost;
@@ -382,6 +393,13 @@ $(document).ready(function(){
 							})
 							
 						})
+						
+						
+					})
+
+
+
+
 						rg.onklick("50d", function(){ return rg.cash_button(50);} )
 						rg.onklick("20d", function(){ return rg.cash_button(20);})
 						rg.onklick("10d", function(){ return rg.cash_button(10);} )
@@ -410,7 +428,6 @@ $(document).ready(function(){
 						
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow();} );
 						rg.onklick("CreateRow",  function(){ return rg.CreateRow();} );
-					})  
 					
 	  });
 

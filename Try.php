@@ -81,8 +81,7 @@ try
 				    $query = "INSERT INTO " . $ta . " VALUES ( " . $_GET['c'] . " );" ;
 					
 					Executer($h,$query);
-					//$stmt = $h->prepare($query);
-					//$stmt->execute();
+					
 			
 			}
 			
@@ -106,8 +105,7 @@ try
 						
 						//Process $query
 						Executer($h,$query);
-						//$stmt = $handle->prepare($query);
-						//$stmt->execute();
+						
 					}
 					
 					return 0;
@@ -130,8 +128,6 @@ try
 						//Process $query
 						Executer($h,$query);
 						
-						//$stmt = $handle->prepare($query);
-						//$stmt->execute();
 					}
 					
 					return 0;
@@ -150,23 +146,15 @@ try
 					
 					$query = "DELETE FROM " . $ta . " WHERE " . $n . "=" . $_GET['d'];
 					
-					//Executer($h,$query);
-					
-					$stmt = $handle->prepare($query);
-					$stmt->execute();
+					Executer($h,$query);
 							
 				}
 			
 			
 			function Executer($h,$q){
 			
-			$stmt = $h->prepare($q);
-			$stmt->execute();
-			
-
-			
-				
-			
+				$stmt = $h->prepare($q);
+				$stmt->execute();	
 			}
 		
 			
