@@ -25,7 +25,7 @@ var rg = {
 		//rg.list.push(a);
 		
 		
-		
+			//Modify this loop?  1/14 
 			while(rg.dup > 0){
 		
 						if ( rg.dict.hasOwnProperty(a.id) )
@@ -48,7 +48,7 @@ var rg = {
 							
 							
 							rg.dict[a.id] = a;
-							rg.dict[a.id].stock -= 1;
+							rg.dict[a.id].stock -= 1;  //Check for non zero stock!  1/14
 						}
 						
 						
@@ -209,11 +209,20 @@ var rg = {
 	
 		var str = rg.object_str();
 	
-		rg.ajax("u=" + str, function(){
-		//test 
-		console.log("Request Successful");
+		if (rg.paid >= rg.total){
+	
+				rg.ajax("u=" + str, function(){
+				//test 
+				console.log("Request Successful");
+				
+				} )
+				
+		} else { 
 		
-		} )
+		alert("Not enough funds!");
+		return;
+		
+		}
 	
         rg.total = 0;
         rg.subtotal = 0;
