@@ -190,9 +190,10 @@ var rg = {
 	
 	},
 	
-	ReadRow: function(table, id){
+	ReadRow: function(table, col, id){
 	
-		
+		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(){ console.log("Read Request Successful");} );
+		return rg;
 	
 	},
     
