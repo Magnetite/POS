@@ -192,7 +192,19 @@ var rg = {
 	
 	ReadRow: function(table, col, id){
 	
-		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(){ console.log("Read Request Successful");} );
+		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ console.log("Read Request Successful " + Object.values(R));} );
+		return rg;
+	
+	},
+	
+	ReadRow_test: function(){
+	
+		var r = prompt("Enter 'table',col,id","");
+		
+		var outArr = r.split(",");
+		
+		rg.ReadRow(r[0],r[1],r[2]);
+		
 		return rg;
 	
 	},
@@ -436,8 +448,9 @@ $(document).ready(function(){
 						rg.onklick("done", function(){ return rg.sale_complete();} );
 						rg.onklick("cash",  function(){ return rg.exact_change();} );
 						
-						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow();} );
-						rg.onklick("CreateRow",  function(){ return rg.CreateRow();} );
+						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
+						rg.onklick("CreateRow",  function(){ return rg.CreateRow(); });
+						rg.onklick("ReadRow",  function(){ return rg.ReadRow_test(); });
 					
 	  });
 
