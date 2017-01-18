@@ -192,7 +192,18 @@ var rg = {
 	
 	ReadRow: function(table, col, id){
 	
-		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ console.log("Read Request Successful " + Object.values(R));} );
+		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
+		
+		console.log("Read Request Successful ");
+		
+		for (i = 0, len = Object.keys(R).length; i < len; i++){
+			console.log(Object.keys(R)[i]);
+		
+		}
+		
+		
+		
+		} );
 		return rg;
 	
 	},
