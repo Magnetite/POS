@@ -78,6 +78,7 @@ font-size: 20px;
 			<div class="btn btn-default denom" id="DeleteRow" >Delete from DB!</div> 
 			<div class="btn btn-default denom" id="CreateRow" >Create Row in DB!</div> 
 			<div class="btn btn-default denom" id="ReadRow" >Read Row in DB</div> 
+			<div class="btn btn-default denom" > <a href="Manage.php">Manage DB</a></div>
 			</div>
 			<div class="btn-group-vertical" id = "menuButtons">
 			</div>
