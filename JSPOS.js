@@ -320,6 +320,12 @@ var rg = {
 	
 	onklick: function(id, action){   //Replace with jQuery Mathod
 	
+		if (!document.getElementById(id)){
+			
+			return rg;
+		
+		}
+	
 		document.getElementById(id).onclick = action;
 		
 		return rg;
@@ -461,6 +467,7 @@ $(document).ready(function(){
 						
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
 						rg.onklick("CreateRow",  function(){ return rg.CreateRow(); });
+						rg.onklick("CreateRow1",  function(){ return rg.CreateRow(); });
 						rg.onklick("ReadRow",  function(){ return rg.ReadRow_test(); });
 					
 	  });
