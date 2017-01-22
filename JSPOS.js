@@ -85,6 +85,7 @@ var rg = {
 	
 		if (arguments.length === 0){
 			v = prompt("Enter exact change:", "");
+			if (v = ""){return rg;}
 		} else {
 			v = a;
 		}
@@ -159,7 +160,11 @@ var rg = {
 	
 	change_price: function(a){
 		
-		a.price = prompt("Enter a override price:","");
+		r = prompt("Enter a override price:","");
+		
+		if (r = ""){return rg;}
+		
+		a.price = r;
 		
 		rg.subtotal = rg.money_format( rg.subtotal - money_format(parseFloat(a.price), 'c' ) , 'c');   //<= Need to fix rounding error
 		rg.total_amt(); 
@@ -170,6 +175,8 @@ var rg = {
 	
 		//Testing...
 		var d = prompt("Enter exact name of item to delete from database:", "");
+		
+		if (d = ""){return rg;}
 		
 		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
 		rg.ajax("d='" + d + "'" ,function(){console.log("Request Successful"); })
@@ -183,6 +190,7 @@ var rg = {
 	
 		
 		var c = prompt("Enter a comma seperated list of values to enter into DB. 'name,cost,coupon_code,stock,id'");
+		if (c = ""){return rg;}
 		
 		rg.ajax("c=" + c, function(){console.log("Request Successful");})
 		
@@ -211,6 +219,8 @@ var rg = {
 	ReadRow_test: function(){
 	
 		var r = prompt("Enter 'table',col,id","");
+		
+		if (r = ""){return rg;}
 		
 		var outArr = r.split(",");
 		
@@ -467,7 +477,6 @@ $(document).ready(function(){
 						
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
 						rg.onklick("CreateRow",  function(){ return rg.CreateRow(); });
-						rg.onklick("CreateRow1",  function(){ return rg.CreateRow(); });
 						rg.onklick("ReadRow",  function(){ return rg.ReadRow_test(); });
 					
 	  });
