@@ -186,6 +186,13 @@ var rg = {
 	
 	},
 	
+	UpdateRow: function(arr){
+	
+		rg.ajax();
+		return rg;
+	
+	},
+	
 	CreateRow: function(){
 	
 		
