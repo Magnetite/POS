@@ -186,9 +186,16 @@ var rg = {
 	
 	},
 	
-	UpdateRow: function(arr){
+	UpdateRow: function(){
 	
-		rg.ajax();
+		//Test phase
+		
+		var input = prompt("Please type query like so:  'something-equalTo-something-equalTo'", "");
+		
+		//Check if string is empty
+		if (input == ""){ return rg;}
+		
+		rg.ajax("t=menu" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
 		return rg;
 	
 	},
