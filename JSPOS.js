@@ -489,9 +489,11 @@ $(document).ready(function(){
 						rg.onklick("done", function(){ return rg.sale_complete();} );
 						rg.onklick("cash",  function(){ return rg.exact_change();} );
 						
-						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
+						
 						rg.onklick("CreateRow",  function(){ return rg.CreateRow(); });
 						rg.onklick("ReadRow",  function(){ return rg.ReadRow_test(); });
+						rg.onklick("UpdateRow",  function(){ return rg.UpdateRow(); });
+						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
 					
 	  });
 
