@@ -195,7 +195,7 @@ var rg = {
 		//Check if string is empty
 		if (input == ""){ return rg;}
 		
-		rg.ajax("t=menu" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
+		rg.ajax("t=menu&u1=" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
 		return rg;
 	
 	},
