@@ -98,7 +98,7 @@ try
 					$UpdateStr = explode("-", $_GET['u1']); 
 					
 						//Iterate and update all values
-					for($i = 0, $len = count($UpdateStr); $i < $len; $i += 2){
+					for($i = 0, $len = count($UpdateStr); $i < $len; $i += 3){
 					
 						
 						$query = "UPDATE " . $_GET['t'] . " SET " . $UpdateStr[$i + 1] . " = " . $UpdateStr[$i + 2] . " WHERE id = " . $UpdateStr[$i] ;

@@ -171,34 +171,9 @@ var rg = {
 		return rg;
 	},
 	
-	DeleteRow: function(){
 	
-		//Testing...
-		var d = prompt("Enter exact name of item to delete from database:", "");
-		
-		if (d = ""){return rg;}
-		
-		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
-		rg.ajax("d='" + d + "'" ,function(){console.log("Request Successful"); })
-		
-		return rg;
-		
 	
-	},
 	
-	UpdateRow: function(){
-	
-		//Test phase
-		
-		var input = prompt("Please type query like so:  'something-equalTo-something-equalTo'", "");
-		
-		//Check if string is empty
-		if (input == ""){ return rg;}
-		
-		rg.ajax("t=menu&u1=" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
-		return rg;
-	
-	},
 	
 	CreateRow: function(){
 	
@@ -241,6 +216,35 @@ var rg = {
 		rg.ReadRow(r[0],r[1],r[2]);
 		
 		return rg;
+	
+	},
+	
+	UpdateRow: function(){
+	
+		//Test phase
+		
+		var input = prompt("Please type query like so:  'something-equalTo-something-equalTo-id_Num'", "");
+		
+		//Check if string is empty
+		if (input == ""){ return rg;}
+		
+		rg.ajax("t=menu&u1=" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
+		return rg;
+	
+	},
+	
+	DeleteRow: function(){
+	
+		//Testing...
+		var d = prompt("Enter exact name of item to delete from database:", "");
+		
+		if (d = ""){return rg;}
+		
+		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
+		rg.ajax("d='" + d + "'" ,function(){console.log("Request Successful"); })
+		
+		return rg;
+		
 	
 	},
     
