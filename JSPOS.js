@@ -178,8 +178,8 @@ var rg = {
 	CreateRow: function(){
 	
 		
-		var c = prompt("Enter a comma seperated list of values to enter into DB. 'name,cost,coupon_code,stock,id'","");
-		if (c = ""){return rg;}
+		var c = prompt("Enter a comma separated list of values to enter into DB. 'name,cost,coupon_code,stock,id'","");
+		if (c.length < 2){return;}
 		
 		rg.ajax("c=" + c, function(){console.log("Request Successful");});
 		
