@@ -178,10 +178,10 @@ var rg = {
 	CreateRow: function(){
 	
 		
-		var c = prompt("Enter a comma seperated list of values to enter into DB. 'name,cost,coupon_code,stock,id'");
+		var c = prompt("Enter a comma seperated list of values to enter into DB. 'name,cost,coupon_code,stock,id'","");
 		if (c = ""){return rg;}
 		
-		rg.ajax("c=" + c, function(){console.log("Request Successful");})
+		rg.ajax("c=" + c, function(){console.log("Request Successful");});
 		
 		return rg;
 	
@@ -223,12 +223,12 @@ var rg = {
 	
 		//Test phase
 		
-		var input = prompt("Please type query like so:  'something-equalTo-something-equalTo-id_Num'", "");
+		var input = prompt("Please type query like so:  'something-equalTo-id_Num'", "");
 		
 		//Check if string is empty
 		if (input == ""){ return rg;}
 		
-		rg.ajax("t=menu&u1=" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
+		rg.ajax("t='menu'&u1=" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
 		return rg;
 	
 	},

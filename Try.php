@@ -94,6 +94,9 @@ try
 					
 					
 					
+					
+					
+					
 					//Turn string into an array, to easily update stock values
 					$UpdateStr = explode("-", $_GET['u1']); 
 					
