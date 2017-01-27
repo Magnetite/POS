@@ -189,14 +189,17 @@ var rg = {
 	
 	ReadRow: function(table, col, id){
 	
-		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
+		rg.ajax("t=" + table + "&r2=1&P1=" + col + "&P2=" + id, function(R){ 
 		
 		console.log("Read Request Successful ");
+		console.log(R);
+		
 		
 		for (i = 0, len = Object.keys(R).length; i < len; i++){
 			console.log(R[Object.keys(R)[i]]);
 		
 		}
+		
 		
 		
 		
