@@ -36,10 +36,18 @@ try
 					$query = "SELECT * FROM " . $table ;
 				
 				
-				} else if(isset($_GET['r2']) ){
+				} else if(isset($_GET['P1']) ){
 				
 					//Only certain rows of table
-					$query = "SELECT * FROM " . $table . " WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
+					$query = "SELECT * FROM menu WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
+					//$query = "SELECT * FROM menu WHERE name = 'Salad';";
+					
+					$st = $handle->prepare($query);
+				    $st->execute();
+				
+				
+				   $rowz = $st->fetchAll(PDO::FETCH_ASSOC);
+				   return $rowz ; 
 				
 				
 				} else if (isset($_GET['u']) or isset($_GET['u1']) ){

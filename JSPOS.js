@@ -189,17 +189,17 @@ var rg = {
 	
 	ReadRow: function(table, col, id){
 	
-		rg.ajax("t=" + table + "&r2=1&P1=" + col + "&P2=" + id, function(R){ 
+		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
 		console.log("Read Request Successful ");
 		console.log(R);
 		
-		
+		/*
 		for (i = 0, len = Object.keys(R).length; i < len; i++){
-			console.log(R[Object.keys(R)[i]]);
+			console.log(R[Object.keys(R)]);
 		
 		}
-		
+		*/
 		
 		
 		
@@ -212,11 +212,11 @@ var rg = {
 	
 		var r = prompt("Enter 'table',col,id","");
 		
-		if (r = ""){return rg;}
+		if (r == ""){return rg;} //Part of error was here
 		
 		var outArr = r.split(",");
 		
-		rg.ReadRow(r[0],r[1],r[2]);
+		rg.ReadRow(outArr[0],outArr[1],outArr[2]);
 		
 		return rg;
 	
