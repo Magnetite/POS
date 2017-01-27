@@ -38,9 +38,14 @@ try
 				
 				} else if(isset($_GET['P1']) ){
 				
+					
+				   return Reader($table, $handle);
+				
+				/*
 					//Only certain rows of table
 					$query = "SELECT * FROM menu WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
 					//$query = "SELECT * FROM menu WHERE name = 'Salad';";
+					
 					
 					$st = $handle->prepare($query);
 				    $st->execute();
@@ -48,7 +53,8 @@ try
 				
 				   $rowz = $st->fetchAll(PDO::FETCH_ASSOC);
 				   return $rowz ; 
-				
+				   */
+					
 				
 				} else if (isset($_GET['u']) or isset($_GET['u1']) ){
 					
@@ -90,6 +96,22 @@ try
 					
 					Executer($h,$query);
 					
+			
+			}
+			
+			function Reader($ta, $h){
+			
+					//Only certain rows of table
+					$query = "SELECT * FROM menu WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
+					
+					
+					$st = $h->prepare($query);
+				    $st->execute();
+				
+				
+				   $rowz = $st->fetchAll(PDO::FETCH_ASSOC);
+				   return $rowz ; 
+			
 			
 			}
 			

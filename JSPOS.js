@@ -212,7 +212,7 @@ var rg = {
 	
 		var r = prompt("Enter 'table',col,id","");
 		
-		if (r == ""){return rg;} //Part of error was here
+		if (r == ""){return rg;} 
 		
 		var outArr = r.split(",");
 		
