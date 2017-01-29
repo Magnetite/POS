@@ -222,6 +222,16 @@ var rg = {
 	
 	},
 	
+	ReadAll: function(callBack){
+	
+		var table  = prompt("Input the name of the table from where to read all rows:","");
+		
+		if (table.length < 1){ return;}
+		
+		rg.ajax("t=" + table + "&r1=1", function(){return callBack;} );
+	
+	},
+	
 	UpdateRow: function(){
 	
 		//Test phase

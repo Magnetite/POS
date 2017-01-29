@@ -41,19 +41,6 @@ try
 					
 				   return Reader($table, $handle);
 				
-				/*
-					//Only certain rows of table
-					$query = "SELECT * FROM menu WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
-					//$query = "SELECT * FROM menu WHERE name = 'Salad';";
-					
-					
-					$st = $handle->prepare($query);
-				    $st->execute();
-				
-				
-				   $rowz = $st->fetchAll(PDO::FETCH_ASSOC);
-				   return $rowz ; 
-				   */
 					
 				
 				} else if (isset($_GET['u']) or isset($_GET['u1']) ){
