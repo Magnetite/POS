@@ -33,6 +33,10 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
 	</div>
 	</div>
+	
+		<div class="col-md-3" id="output">
+		
+		</div>
 	</div>
 	</div>
 </body>
