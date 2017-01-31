@@ -260,13 +260,23 @@ var rg = {
 		
 	
 	},
+	
+	RowPrint: function(msg){
+	
+		if (document.getElementById('output')){
+		
+			document.getElementById('output').innerHTML += msg;
+			return rg;
+		
+		} else {
+		
+			console.log(msg);
+		}
+	
+	
+	},
     
     
-	
-	
-	
-	
-	
 	
 	
 	

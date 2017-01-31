@@ -18,7 +18,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <div class="container">
 	<div class="row">
-	<div class="col-md-9">
+	<div class="col-md-5">
 	<div class="btn-group-vertical">
 	
 	
@@ -34,8 +34,8 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</div>
 	</div>
 	
-		<div class="col-md-3" id="output">
-		
+		<div class="col-md-7" id="output">
+		<div class="btn btn-default">TestButton</div>
 		</div>
 	</div>
 	</div>
