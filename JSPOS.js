@@ -181,7 +181,7 @@ var rg = {
 		var c = prompt("Enter a comma separated list of values to enter into DB. 'name,cost,coupon_code,stock,id'","");
 		if (c.length < 2){return;}
 		
-		rg.ajax("c=" + c, function(){console.log("Request Successful");});
+		rg.ajax("c=" + c, function(){rg.RowPrint("Request Successful");});
 		
 		return rg;
 	
@@ -191,7 +191,7 @@ var rg = {
 	
 		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
-		console.log("Read Request Successful ");
+		rg.RowPrint("Read Request Successful ");
 		console.log(R);
 		
 		/*
@@ -241,7 +241,7 @@ var rg = {
 		//Check if string is empty
 		if (input == ""){ return rg;}
 		
-		rg.ajax("t='menu'&u1=" + input, function(){console.log("UpdateRow Func Successful"); });  //<= Finish this
+		rg.ajax("t='menu'&u1=" + input, function(){rg.RowPrint("UpdateRow Func Successful"); });  //<= Finish this
 		return rg;
 	
 	},
@@ -254,7 +254,7 @@ var rg = {
 		if (d = ""){return rg;}
 		
 		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
-		rg.ajax("d='" + d + "'" ,function(){console.log("Request Successful"); })
+		rg.ajax("d='" + d + "'" ,function(){rg.RowPrint("Request Successful"); })
 		
 		return rg;
 		
