@@ -192,6 +192,7 @@ var rg = {
 		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
 		rg.RowPrint("Read Request Successful ");
+		rg.RowPrint(R);
 		console.log(R);
 		
 		/*
@@ -241,7 +242,7 @@ var rg = {
 		//Check if string is empty
 		if (input == ""){ return rg;}
 		
-		rg.ajax("t='menu'&u1=" + input, function(){rg.RowPrint("UpdateRow Func Successful"); });  //<= Finish this
+		rg.ajax("t='menu'&u1=" + input, function(){rg.RowPrint("Update Successful"); });  //<= Finish this
 		return rg;
 	
 	},
@@ -263,10 +264,10 @@ var rg = {
 	
 	RowPrint: function(msg){
 	
-		if (document.getElementById('output')){
+		if (typeof (document.getElementById('output').value !== 'undefined') && typeof (document.getElementById('output').value !== null) ){
 		
-			document.getElementById('output').innerHTML += msg;
-			return rg;
+			document.getElementById('output').innerHTML += "<br>" + msg;
+			
 		
 		} else {
 		
