@@ -39,7 +39,7 @@ try
 				} else if(isset($_GET['P1']) ){
 				
 					
-				   return Reader($table, $handle);
+				   Reader($table, $handle);
 				
 					
 				

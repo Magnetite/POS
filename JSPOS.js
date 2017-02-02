@@ -522,6 +522,8 @@ $(document).ready(function(){
 						rg.onklick("ReadRow",  function(){ return rg.ReadRow_test(); });
 						rg.onklick("UpdateRow",  function(){ return rg.UpdateRow(); });
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
+						
+						rg.onklick("test",  function(){ return rg.RowPrint("tst:" + []); });
 					
 	  });
 
