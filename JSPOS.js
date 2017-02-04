@@ -223,13 +223,13 @@ var rg = {
 	
 	},
 	
-	ReadAll: function(callBack){
+	ReadAll: function(){
 	
 		var table  = prompt("Input the name of the table from where to read all rows:","");
 		
 		if (table.length < 1){ return;}
 		
-		rg.ajax("t=" + table + "&r1=1", function(){return callBack;} );
+		rg.ajax("t=" + table + "&r1=1", function(result){prints(result,"output", 'a');} );  //<= TODO: change this line
 	
 	},
 	
@@ -522,6 +522,7 @@ $(document).ready(function(){
 						rg.onklick("ReadRow",  function(){ return rg.ReadRow_test(); });
 						rg.onklick("UpdateRow",  function(){ return rg.UpdateRow(); });
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
+						rg.onklick("ShowAll",  function(){ return rg.ReadAll(); });
 						
 						rg.onklick("test",  function(){ return rg.RowPrint("tst:" + []); });
 					

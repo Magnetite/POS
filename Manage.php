@@ -27,7 +27,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<div class="btn btn-default" id="UpdateRow">Change Row of Table</div>
 	<div class="btn btn-default" id="DeleteRow">Delete Row of Table</div>
 	
-	<div class="btn btn-default">Show All Rows of Table</div>
+	<div class="btn btn-default" id="ShowAll">Show All Rows of Table</div>
 	
 	
 	

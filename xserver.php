@@ -15,7 +15,7 @@
 	{
 		$menuItems = tryC();
 		
-		echo print_r(json_encode($menuItems), true) ;  //Caution.  String not fixed.
+		echo print_r(json_encode($menuItems), true) ;  
 	
 	}
 
