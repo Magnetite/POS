@@ -22,7 +22,7 @@ var rg = {
 	
     ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
         rg.subtotal = rg.money_format(rg.subtotal + a.price, 'r');  
-		//rg.list.push(a);
+		
 		
 		
 			//Modify this loop?  1/14 
@@ -192,7 +192,7 @@ var rg = {
 		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
 		rg.RowPrint("Read Request Successful ");
-		rg.RowPrint(R);
+		$.each(R, function(a){rg.RowPrint(R[a].toString() ); }); 
 		console.log(R);
 		
 		/*
