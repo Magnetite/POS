@@ -192,8 +192,10 @@ var rg = {
 		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
 		rg.RowPrint("Read Request Successful ");
-		$.each(R, function(){ rg.RowPrint(this.name);}); 
-		console.log(R);
+		$.each(R, function(){ 
+		
+			rg.RowPrint(this.name + ', ' + this.cost + ', ' + this.coupon_code + ', ' + this.in_stock + ', ' + this.id);
+		console.log(this);
 		
 		/*
 		for (i = 0, len = Object.keys(R).length; i < len; i++){
@@ -204,7 +206,7 @@ var rg = {
 		
 		
 		
-		} );
+		}); });
 		return rg;
 	
 	},
