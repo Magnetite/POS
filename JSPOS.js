@@ -192,7 +192,7 @@ var rg = {
 		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
 		rg.RowPrint("Read Request Successful ");
-		$.each(R, function(a){rg.RowPrint(R[a].toString() ); }); 
+		$.each(R, function(){ rg.RowPrint(this.name);}); 
 		console.log(R);
 		
 		/*
@@ -211,7 +211,7 @@ var rg = {
 	
 	ReadRow_test: function(){
 	
-		var r = prompt("Enter 'table',col,id","");
+		var r = prompt("Enter 'table',col,id","'menu','id',3");
 		
 		if (r == ""){return rg;} 
 		
