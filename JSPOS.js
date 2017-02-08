@@ -227,13 +227,17 @@ var rg = {
 	
 	ReadAll: function(){
 	
-		var table  = prompt("Input the name of the table from where to read all rows:","");
+		var table  = prompt("Input the name of the table from where to read all rows:","menu");
 		
 		if (table.length < 1){ return;}
 		
-		rg.ajax("t=" + table + "&r1=1", function(result){prints(result,"output", 'a');} );  //<= TODO: change this line
+		
+		
+		rg.ajax("t=" + table + "&r1=1", function(result){ console.log(result); rg.prints(result,"output", 'a');} );  //<= TODO: change this line
 	
 	},
+	
+	
 	
 	UpdateRow: function(){
 	

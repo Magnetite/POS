@@ -30,18 +30,29 @@ try
 				
 					Creater($table, $handle);
 					
-				} else if(isset($_GET['r1']) ){
-				
-					//All rows of table
-					$query = "SELECT * FROM " . $table ;
-				
-				
-				} else if(isset($_GET['P1']) ){
+					
+					
+					
+					} else if(isset($_GET['P1']) ){
 				
 					
 				   Reader($table, $handle);
 				
 					
+					
+				} else if(isset($_GET['r1']) ){
+				
+					//All rows of table
+					$query = "SELECT * FROM menu" ;
+				
+					$stm = $handle->prepare($query);
+				$stm->execute();
+				
+				$ros = $stm->fetchAll(PDO::FETCH_ASSOC);
+				return $ros;
+				
+				
+				
 				
 				} else if (isset($_GET['u']) or isset($_GET['u1']) ){
 					
