@@ -233,7 +233,7 @@ var rg = {
 		
 		
 		
-		rg.ajax("t=" + table + "&r1=1", function(result){ console.log(result); rg.prints(result,"output", 'a');} );  //<= TODO: change this line
+		rg.ajax("t=" + table + "&r1=1", function(result){ console.log(result); rg.prints(JSON.stringify(result),"output", 'a');} );  //<= TODO: change this line
 	
 	},
 	
