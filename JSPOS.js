@@ -233,7 +233,7 @@ var rg = {
 		
 		
 		
-		rg.ajax("t=" + table + "&r1=1", function(result){ console.log(result); rg.prints(JSON.stringify(result),"output", 'a');} );  //<= TODO: change this line
+		rg.ajax("t=" + table + "&r1=1", function(result){rg.docWrite(result.map(JSON.stringify),"output"); });  
 	
 	},
 	
@@ -334,6 +334,22 @@ var rg = {
 	
 	},
 	
+	docWrite: function(out, id, mode){
+	
+		var doc = document;
+		
+		if (mode){
+		
+			doc.getElementById(id).innerHTML += out;
+		} else {
+		
+			doc.getElementById(id).innerHTML = out;
+		}
+		
+		return rg;
+		
+	
+	},
 	
 	money_format: function(a, mode){                   //<= Rounds fractional cent
 	
@@ -352,17 +368,17 @@ var rg = {
 	prints: function(out, id, mode){  //<= Outputs to HTML
 	
 		if (mode == 'a'){
-			document.getElementById(id).innerHTML += "<div><button>" + out + "</button></div>";
-		} else if (typeof(out) === "object"){
-			document.getElementById(id).innerHTML += "<div id = '" +  rg.lineNum + 
+			rg.docWrite("<div><button>" + out + "</button></div>", id, 1);
+		} else if (typeof(out) === "object" && !(typeof(out) == "string")){
+			rg.docWrite("<div id = '" +  rg.lineNum + 
 			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
 			"a\",\"" + out.price +
 			"\", " + out.id + ")'>" + out.name + 
 			"</button> <button>$" + out.price + 
-			"</button></div>"; 
+			"</button></div>", id, 1); 
 			
 		} else {
-			document.getElementById(id).innerHTML = out;
+			rg.docWrite(out, id);
 		}
 		
 		return rg;

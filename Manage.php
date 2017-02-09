@@ -35,7 +35,6 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</div>
 	
 		<div class="col-md-7" id="output">
-		<div class="btn btn-default" id="test">TestButton</div>
 		</div>
 	</div>
 	</div>
