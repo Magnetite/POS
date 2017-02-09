@@ -370,12 +370,16 @@ var rg = {
 		if (mode == 'a'){
 			rg.docWrite("<div><button>" + out + "</button></div>", id, 1);
 		} else if (typeof(out) === "object" && !(typeof(out) == "string")){
-			rg.docWrite("<div id = '" +  rg.lineNum + 
-			"a'><button onclick='rg.delTag(\"" + rg.lineNum  + 
-			"a\",\"" + out.price +
-			"\", " + out.id + ")'>" + out.name + 
-			"</button> <button>$" + out.price + 
-			"</button></div>", id, 1); 
+		
+		var outStr = "<div id = '" +  rg.lineNum + "a'>";  //<= Start div
+		
+		outStr += "<button onclick='rg.delTag(\"" + rg.lineNum  + "a\",\"" + out.price + "\", " + out.id + ")'>"; //<= Button with old onclick function
+		
+		outStr += out.name + "</button>"; //<= end button
+		
+		outStr += "<button>$" + out.price + "</button></div>" //<= end 2nd button, and div
+		
+			rg.docWrite( outStr , id, 1); 
 			
 		} else {
 			rg.docWrite(out, id);
