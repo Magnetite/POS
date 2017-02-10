@@ -575,6 +575,7 @@ $(document).ready(function(){
 						rg.onklick("UpdateRow",  function(){ return rg.UpdateRow(); });
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
 						rg.onklick("ShowAll",  function(){ return rg.ReadAll(); });
+						rg.onklick("Clear",  function(){ return rg.docWrite("","output"); });
 						
 						rg.onklick("test",  function(){ return rg.RowPrint("tst:" + []); });
 					

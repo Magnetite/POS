@@ -34,6 +34,7 @@ table, th, td {
 	<div class="btn btn-default" id="DeleteRow">Delete Row of Table</div>
 	
 	<div class="btn btn-default" id="ShowAll">Show All Rows of Table</div>
+	<div class="btn btn-default" id="Clear">Clear Screen</div>
 	
 	
 	
