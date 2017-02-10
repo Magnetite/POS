@@ -233,7 +233,7 @@ var rg = {
 		
 		
 		
-		rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite(JSON.stringify(a) + "<br />", "output", 1); }); });  
+		rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite(JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, ", &nbsp;&nbsp;") + "<br />", "output", 1); }); });  
 	
 	},
 	
