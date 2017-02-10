@@ -10,6 +10,12 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="JSPOS.js"></script>
 
+<style>
+table, th, td {
+    border: 1px solid black;    
+}
+</style>
+
 </head>
 <body>
 <div class="btn btn-default"><a href="Test_POS.php">Back to Register</a></div>
@@ -18,7 +24,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <div class="container">
 	<div class="row">
-	<div class="col-md-5">
+	<div class="col-md-2">
 	<div class="btn-group-vertical">
 	
 	
@@ -34,8 +40,12 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</div>
 	</div>
 	
-		<div class="col-md-7" id="output">
-		</div>
+		
+		
+		<table class="col-md-10" id ="output">
+		</table>
+		
+		
 	</div>
 	</div>
 </body>

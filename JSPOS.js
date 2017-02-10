@@ -15,6 +15,8 @@ var rg = {
 	lineNum: 0,
 	dup: 1,
 	receiptStr: "",
+	t_heading: [],
+	test_str: "",
 
     
 	
@@ -233,8 +235,9 @@ var rg = {
 		
 		
 		
-		rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite(JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, ", &nbsp;&nbsp;") + "<br />", "output", 1); }); });  
-	
+		rg.ajax("t=" + table + "&r1=1", function(result){ result.map(function(a){ rg.tableWrite(a);  }); }); //<= TODO  finish this  
+		console.log(rg.test_str); //<= test line
+		
 	},
 	
 	
@@ -341,6 +344,7 @@ var rg = {
 		if (mode){
 		
 			doc.getElementById(id).innerHTML += out;
+			rg.test_str += out;
 		} else {
 		
 			doc.getElementById(id).innerHTML = out;
@@ -349,6 +353,28 @@ var rg = {
 		return rg;
 		
 	
+	},
+	
+	tableWrite: function(Obj){
+	
+		if (rg.t_heading.length === 0){
+		
+			rg.docWrite("<tr>", "output", 1);
+		
+			rg.t_heading = Object.keys(Obj);
+			
+			rg.t_heading.map(function(out){ rg.docWrite("<th>" + out + "</th>", "output", 1); });
+		
+			rg.docWrite("</tr>", "output", 1);
+			
+		}  
+		
+		rg.docWrite("<tr>", "output", 1);
+		
+		Object.values(Obj).map(function(g){ rg.docWrite("<td>" + g + "</td>", "output", 1); });
+		
+		rg.docWrite("</tr>", "output", 1);
+		
 	},
 	
 	money_format: function(a, mode){                   //<= Rounds fractional cent
