@@ -235,7 +235,8 @@ var rg = {
 		
 		
 		
-		rg.ajax("t=" + table + "&r1=1", function(result){ result.map(function(a){ rg.tableWrite(a);  }); }); //<= TODO  finish this  
+		rg.docWrite("<caption>Table: " + table + "</caption>", "output", 1);
+		rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); }); });
 		console.log(rg.test_str); //<= test line
 		
 	},
@@ -359,13 +360,21 @@ var rg = {
 	
 		if (rg.t_heading.length === 0){
 		
-			rg.docWrite("<tr>", "output", 1);
+			
+			var doc = document;
+			/*
+			var r = doc.createElement("div");
+			r.setAttribute("id", "output");
+			doc.body.appendChild(r);
+			*/
+		
+			doc.write("<thead><tr>");
 		
 			rg.t_heading = Object.keys(Obj);
 			
-			rg.t_heading.map(function(out){ rg.docWrite("<th>" + out + "</th>", "output", 1); });
+			rg.t_heading.map(function(out){ doc.write("<th>" + out + "</th>"); });
 		
-			rg.docWrite("</tr>", "output", 1);
+			doc.write("</tr></thead>");
 			
 		}  
 		
@@ -375,6 +384,55 @@ var rg = {
 		
 		rg.docWrite("</tr>", "output", 1);
 		
+	},
+	
+	tabWrite: function(Obj){
+	
+		var obKeys = Object.keys(Obj);
+		var obVals = Object.values(Obj);
+		var doc = document;
+	
+		
+		if ( !doc.getElementById("tab_head") ){
+		
+			rg.addElement("table", "DB_table", "", 0);  // TODO finish this
+			
+			rg.addElement("tr", "head_row", "DB_table", 1);
+			
+			obKeys.map( function(cur){ rg.addElement("td", "", "head_row", 1); });
+		
+		}
+	
+	
+	},
+	
+	addElement: function(nu, id, addTo, mode, txt){
+	
+		//nu is the type of element to create, and "id" is its id.  
+		//addTo is the id of the parent element that receives the new element.
+	
+		var doc = document;
+		
+		var x = doc.createElement(nu);
+		
+		
+		if (txt){
+			
+			x.appendChild( doc.createTextNode(txt) );
+		} else if (id.length > 0) {
+			x.setAttribute("id", id);
+		}
+		
+		//Add to either the body, or to an element by an id
+		if (mode === 1){
+			doc.getElementById(addTo).appendChild(x);
+		} else if (mode === 0) {
+			doc.body.appendChild(x);
+		} 
+		
+		
+	return rg;
+	
 	},
 	
 	money_format: function(a, mode){                   //<= Rounds fractional cent
@@ -577,7 +635,7 @@ $(document).ready(function(){
 						rg.onklick("ShowAll",  function(){ return rg.ReadAll(); });
 						rg.onklick("Clear",  function(){ return rg.docWrite("","output"); });
 						
-						rg.onklick("test",  function(){ return rg.RowPrint("tst:" + []); });
+						
 					
 	  });
 
