@@ -164,7 +164,8 @@ var rg = {
 		
 		r = prompt("Enter a override price:","");
 		
-		if (r = ""){return rg;}
+		//if (r = ""){return rg;}
+		rg.test((r === ""));
 		
 		a.price = r;
 		
@@ -217,7 +218,8 @@ var rg = {
 	
 		var r = prompt("Enter 'table',col,id","'menu','id',3");
 		
-		if (r == ""){return rg;} 
+		//if (r == ""){return rg;} 
+		rg.test((r === ""));
 		
 		var outArr = r.split(",");
 		
@@ -231,7 +233,8 @@ var rg = {
 	
 		var table  = prompt("Input the name of the table from where to read all rows:","menu");
 		
-		if (table.length < 1){ return;}
+		//if (table.length < 1){ return;}
+		rg.test((table.length < 1));
 		
 		
 		
@@ -250,7 +253,8 @@ var rg = {
 		var input = prompt("Please type query like so:  'something-equalTo-id_Num'", "");
 		
 		//Check if string is empty
-		if (input == ""){ return rg;}
+		//if (input == ""){ return rg;}
+		rg.test((input === ""));
 		
 		rg.ajax("t='menu'&u1=" + input, function(){rg.RowPrint("Update Successful"); });  //<= Finish this
 		return rg;
@@ -262,10 +266,11 @@ var rg = {
 		//Testing...
 		var d = prompt("Enter exact name of item to delete from database:", "");
 		
-		if (d = ""){return rg;}
+		//if (d === ""){return rg;}
+		rg.test((d === ""));
 		
 		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
-		rg.ajax("d='" + d + "'" ,function(){rg.RowPrint("Request Successful"); })
+		rg.ajax("d='" + d + "'" ,function(){rg.RowPrint("Request Sent"); });
 		
 		return rg;
 		
@@ -284,6 +289,15 @@ var rg = {
 			console.log(msg);
 		}
 	
+	
+	},
+	
+	test: function(a, ret){
+	
+	if (a === true){
+	
+		return (ret) ?  ret: rg;
+	}
 	
 	},
     
