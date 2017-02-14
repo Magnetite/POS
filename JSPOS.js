@@ -194,10 +194,10 @@ var rg = {
 	
 		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
-		rg.RowPrint("Read Request Successful ");
+		rg.RowPrint("Read Request Sent");
 		$.each(R, function(){ 
 		
-			rg.RowPrint(this.name + ', ' + this.cost + ', ' + this.coupon_code + ', ' + this.in_stock + ', ' + this.id);
+			rg.docWrite(this.name + ', ' + this.cost + ', ' + this.coupon_code + ', ' + this.in_stock + ', ' + this.id, "output", 1);
 		console.log(this);
 		
 		/*
@@ -239,7 +239,8 @@ var rg = {
 		
 		
 		rg.docWrite("<caption>Table: " + table + "</caption>", "output", 1);
-		rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); }); });
+		//rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); }); });
+		rg.ajax("t=" + table + "&r1=1", function(result){ rg.tableMake(result); });
 		console.log(rg.test_str); //<= test line
 		
 	},
@@ -257,6 +258,7 @@ var rg = {
 		rg.test((input === ""));
 		
 		var send = input.split("-");
+		
 		
 		rg.ajax("t='menu'&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2], function(){rg.RowPrint("Update Request sent"); });  //<= Finish this
 		return rg;
@@ -276,6 +278,13 @@ var rg = {
 		
 		return rg;
 		
+	
+	},
+	
+	tableMake: function(Obj){
+	
+		return  JSON.stringify(Obj).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); });
+	
 	
 	},
 	

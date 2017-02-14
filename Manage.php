@@ -21,7 +21,7 @@ table, th, td {
 <body>
 <div class="btn btn-default"><a href="Test_POS.php">Back to Register</a></div>
 
-<?php echo 3**5 ?>
+
 
 <div class="container">
 	<div class="row">
