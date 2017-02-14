@@ -125,19 +125,14 @@ try
 					
 					
 					
-					//Turn string into an array, to easily update stock values
-					$UpdateStr = explode("-", $_GET['u1']); 
-					
-						//Iterate and update all values
-					for($i = 0, $len = count($UpdateStr); $i < $len; $i += 3){
 					
 						
-						$query = "UPDATE " . $_GET['t'] . " SET " . $UpdateStr[$i + 1] . " = " . $UpdateStr[$i + 2] . " WHERE id = " . $UpdateStr[$i] ;
+						$query = "UPDATE " . $_GET['t'] . " SET " . $_GET['u1'] . " = " . $_GET['u2'] . " WHERE id = " . $_GET['u3'] ;
 						
 						//Process $query
 						Executer($h,$query);
 						
-					}
+					
 					
 					return 0;
 					

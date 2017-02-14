@@ -250,13 +250,15 @@ var rg = {
 	
 		//Test phase
 		
-		var input = prompt("Please type query like so:  'something-equalTo-id_Num'", "");
+		var input = prompt("Please type query like so:  'Field-Value-id_Num'", "");
 		
 		//Check if string is empty
 		//if (input == ""){ return rg;}
 		rg.test((input === ""));
 		
-		rg.ajax("t='menu'&u1=" + input, function(){rg.RowPrint("Update Request sent"); });  //<= Finish this
+		var send = input.split("-");
+		
+		rg.ajax("t='menu'&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2], function(){rg.RowPrint("Update Request sent"); });  //<= Finish this
 		return rg;
 	
 	},
