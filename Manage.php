@@ -44,7 +44,7 @@ table, th, td {
 	
 		
 		
-		<br />
+		<br /><div id="outputLine"> </div><br />
 		<table class="col-md-10" id ="output">
 		</table>
 		

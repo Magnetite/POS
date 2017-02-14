@@ -181,10 +181,10 @@ var rg = {
 	CreateRow: function(){
 	
 		
-		var c = prompt("Enter a comma separated list of values to enter into DB. 'name,cost,coupon_code,stock,id'","");
-		if (c.length < 2){return;}
+		var c = prompt("Enter a comma separated list of values to enter into DB. 'name',cost,coupon_code,stock,id","");
+		rg.test((c.length < 2));
 		
-		rg.ajax("c=" + c, function(){rg.RowPrint("Request Successful");});
+		rg.ajax("c=" + c, function(){rg.RowPrint("Request Sent");});
 		
 		return rg;
 	
@@ -256,7 +256,7 @@ var rg = {
 		//if (input == ""){ return rg;}
 		rg.test((input === ""));
 		
-		rg.ajax("t='menu'&u1=" + input, function(){rg.RowPrint("Update Successful"); });  //<= Finish this
+		rg.ajax("t='menu'&u1=" + input, function(){rg.RowPrint("Update Request sent"); });  //<= Finish this
 		return rg;
 	
 	},
@@ -279,9 +279,9 @@ var rg = {
 	
 	RowPrint: function(msg){
 	
-		if (typeof (document.getElementById('output').value !== 'undefined') && typeof (document.getElementById('output').value !== null) ){
+		if (typeof (document.getElementById('outputLine').value !== 'undefined') && typeof (document.getElementById('outputLine').value !== null) ){
 		
-			document.getElementById('output').innerHTML += "<br>" + msg;
+			document.getElementById('outputLine').innerHTML += "<br>" + msg;
 			
 		
 		} else {
@@ -647,7 +647,7 @@ $(document).ready(function(){
 						rg.onklick("UpdateRow",  function(){ return rg.UpdateRow(); });
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
 						rg.onklick("ShowAll",  function(){ return rg.ReadAll(); });
-						rg.onklick("Clear",  function(){ return rg.docWrite("","output"); });
+						rg.onklick("Clear",  function(){ return rg.docWrite("","output").docWrite("","outputLine"); });
 						
 						
 					
