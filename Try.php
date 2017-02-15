@@ -103,7 +103,7 @@ try
 			function Reader($ta, $h){
 			
 					//Only certain rows of table
-					$query = "SELECT * FROM menu WHERE id=" . $_GET['P2']; //changed 1-14-2017 TODO fIX Bug
+					$query = "SELECT * FROM " . $_GET["t"] . " WHERE " . $_GET["P1"] . " = " . $_GET['P2']; //changed 1-14-2017 TODO fIX Bug
 					
 					
 					$st = $h->prepare($query);
