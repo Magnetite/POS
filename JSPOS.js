@@ -216,12 +216,13 @@ var rg = {
 	
 	ReadRow_test: function(){
 	
-		var r = prompt("Enter 'table',col,id","'menu','id',3");
+		var r = prompt("Enter 'table',col,id","menu,id,3");
 		
 		//if (r == ""){return rg;} 
-		rg.test((r === ""));
+		rg.test((r.length < 2));
 		
 		var outArr = r.split(",");
+		//console.log(outArr);
 		
 		rg.ReadRow(outArr[0],outArr[1],outArr[2]);
 		
