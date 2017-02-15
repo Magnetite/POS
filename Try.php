@@ -10,8 +10,7 @@ try
 				// ensure that PDO::prepare returns false when passed invalid SQL
                 $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 
 				
-				//default value of $query
-				$query = "select * from menu where in_stock > ?";
+				
 				
 				
 				
@@ -36,7 +35,7 @@ try
 					} else if(isset($_GET['P1']) ){
 				
 					
-				   Reader($table, $handle);
+				   return Reader($table, $handle);
 				
 					
 					
@@ -66,6 +65,10 @@ try
 				    
 				}
 				
+				
+				//ReadMenu();
+				//default value of $query
+				$query = "select * from menu where in_stock > ?";
 				
 				$stmt = $handle->prepare($query);
 				$stmt->execute([0]);
@@ -100,7 +103,7 @@ try
 			function Reader($ta, $h){
 			
 					//Only certain rows of table
-					$query = "SELECT * FROM menu WHERE " . $_GET['P1'] . " = " . $_GET['P2'];
+					$query = "SELECT * FROM menu WHERE id = 3"; //changed 1-14-2017 TODO fIX Bug
 					
 					
 					$st = $h->prepare($query);
