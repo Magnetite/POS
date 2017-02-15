@@ -197,7 +197,7 @@ var rg = {
 		rg.RowPrint("Read Request Sent");
 		$.each(R, function(){ 
 		
-			rg.docWrite(this.name + ', ' + this.cost + ', ' + this.coupon_code + ', ' + this.in_stock + ', ' + this.id, "output", 1);
+			rg.docWrite("<td>" + this.name + "</td><td>" + this.cost + "</td><td>" + this.coupon_code + "</td><td>" + this.in_stock + "</td><td>" + this.id + "</td>", "output", 1);
 		console.log(this);
 		
 		/*
