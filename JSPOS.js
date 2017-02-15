@@ -143,7 +143,7 @@ var rg = {
 		if ((rg.total - rg.paid) >= 0){
 		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), "due");
 		rg.prints("Change:  " + rg.money_format(0, 'r'), "change");
-		//rg.prints("Change:  0", "change");
+		
 		} else {
 		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), "change");
 		rg.prints("Due:  " + rg.money_format(0, 'r'), "due");
@@ -164,7 +164,7 @@ var rg = {
 		
 		r = prompt("Enter a override price:","");
 		
-		//if (r = ""){return rg;}
+		
 		rg.test((r === ""));
 		
 		a.price = r;
@@ -218,11 +218,11 @@ var rg = {
 	
 		var r = prompt("Enter 'table',col,id","menu,id,3");
 		
-		//if (r == ""){return rg;} 
+		
 		rg.test((r.length < 2));
 		
 		var outArr = r.split(",");
-		//console.log(outArr);
+		
 		
 		rg.ReadRow(outArr[0],outArr[1],outArr[2]);
 		
@@ -234,7 +234,6 @@ var rg = {
 	
 		var table  = prompt("Input the name of the table from where to read all rows:","menu");
 		
-		//if (table.length < 1){ return;}
 		rg.test((table.length < 1));
 		
 		
@@ -242,7 +241,7 @@ var rg = {
 		rg.docWrite("<caption>Table: " + table + "</caption>", "output", 1);
 		//rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); }); });
 		rg.ajax("t=" + table + "&r1=1", function(result){ rg.tableMake(result); });
-		console.log(rg.test_str); //<= test line
+		
 		
 	},
 	
@@ -255,13 +254,12 @@ var rg = {
 		var input = prompt("Please type query like so:  'Field-Value-id_Num'", "");
 		
 		//Check if string is empty
-		//if (input == ""){ return rg;}
 		rg.test((input === ""));
 		
 		var send = input.split("-");
 		
 		
-		rg.ajax("t='menu'&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2], function(){rg.RowPrint("Update Request sent"); });  //<= Finish this
+		rg.ajax("t=menu&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2], function(){rg.RowPrint("Update Request sent"); });  //<= Finish this
 		return rg;
 	
 	},
@@ -271,7 +269,6 @@ var rg = {
 		//Testing...
 		var d = prompt("Enter exact name of item to delete from database:", "");
 		
-		//if (d === ""){return rg;}
 		rg.test((d === ""));
 		
 		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
