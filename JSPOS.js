@@ -234,7 +234,7 @@ var rg = {
 	
 		var table  = prompt("Input the name of the table from where to read all rows:","menu");
 		
-		rg.test((table.length < 1));
+		rg.test((table === ""));
 		
 		
 		
@@ -281,7 +281,9 @@ var rg = {
 	
 	tableMake: function(Obj){
 	
-		return  JSON.stringify(Obj).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); });
+		var heading = "<tr>";
+		Object.keys(Obj).map(function(key){ heading += "<th>" + key + "</th>"; }); 
+		return   heading + "</tr>" + JSON.stringify(Obj).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); });
 	
 	
 	},

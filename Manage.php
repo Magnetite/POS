@@ -12,8 +12,15 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <style>
 table, th, td {
-    border: 1px solid black; 
+    border-bottom: 1px solid black; 
 	padding: 6px;
+}
+
+
+
+tr:hover {
+	background-color:lime;
+
 }
 </style>
 

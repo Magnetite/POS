@@ -42,7 +42,7 @@ try
 				} else if(isset($_GET['r1']) ){
 				
 					//All rows of table
-					$query = "SELECT * FROM menu" ;
+					$query = "SELECT * FROM " . $_GET['t'] ;
 				
 					$stm = $handle->prepare($query);
 				$stm->execute();
