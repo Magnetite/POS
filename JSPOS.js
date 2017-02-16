@@ -254,7 +254,7 @@ var rg = {
 		var input = prompt("Please type query like so:  'Field-Value-id_Num'", "");
 		
 		//Check if string is empty
-		rg.test((input === ""));
+		rg.test((input === ""));  //TODO fix this so it returns on "" instead of continuing
 		
 		var send = input.split("-");
 		
@@ -279,11 +279,32 @@ var rg = {
 	
 	},
 	
-	tableMake: function(Obj){
+	tableMake: function(Arr){
 	
-		var heading = "<tr>";
-		Object.keys(Obj).map(function(key){ heading += "<th>" + key + "</th>"; }); 
-		return   heading + "</tr>" + JSON.stringify(Obj).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); });
+		var heading = "";
+		var body = "";
+		
+		Object.keys(Arr[0]).map(function(a){
+		
+			heading += "<th>" + a + "</th>";
+		});
+		
+		
+		Arr.forEach(function(a){
+			
+			body += "<tr>";
+			Object.values(a).map(function(b){  
+			
+				body += "<td>" + b + "</td>";
+			});
+			
+			body += "</tr>";
+		});
+		
+		
+		//console.log("<tr>" + heading + "</tr>");
+		rg.docWrite("<tr>" + heading + "</tr>" + body, "output", 1);
+		return rg;
 	
 	
 	},
