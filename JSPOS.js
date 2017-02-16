@@ -165,7 +165,7 @@ var rg = {
 		r = prompt("Enter a override price:","");
 		
 		
-		rg.test((r === ""));
+		rg.test(r);
 		
 		a.price = r;
 		
@@ -182,7 +182,7 @@ var rg = {
 	
 		
 		var c = prompt("Enter a comma separated list of values to enter into DB. 'name',cost,coupon_code,stock,id","");
-		rg.test((c.length < 2));
+		rg.test(c);
 		
 		rg.ajax("c=" + c, function(){rg.RowPrint("Request Sent");});
 		
@@ -208,7 +208,7 @@ var rg = {
 		var r = prompt("Enter 'table',col,id","menu,id,3");
 		
 		
-		rg.test((r.length < 2));
+		rg.test(r);
 		
 		var outArr = r.split(",");
 		
@@ -223,7 +223,7 @@ var rg = {
 	
 		var table  = prompt("Input the name of the table from where to read all rows:","menu");
 		
-		rg.test((table === ""));
+		rg.test(table);
 		
 		
 		
@@ -243,7 +243,7 @@ var rg = {
 		var input = prompt("Please type query like so:  'Field-Value-id_Num'", "");
 		
 		//Check if string is empty
-		rg.test((input === ""));  //TODO fix this so it returns on "" instead of continuing
+		rg.test(input);  
 		
 		var send = input.split("-");
 		
@@ -258,7 +258,7 @@ var rg = {
 		//Testing...
 		var d = prompt("Enter exact name of item to delete from database:", "");
 		
-		rg.test((d === ""));
+		rg.test(d);
 		
 		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
 		rg.ajax("d='" + d + "'" ,function(){rg.RowPrint("Request Sent"); });
@@ -315,11 +315,11 @@ var rg = {
 	
 	},
 	
-	test: function(a, ret){
+	test: function(a){
 	
-	if (a === true){
+	if (a === null && typeof a === "object" || a === undefined || a === "" || a === true){
 	
-		return (ret) ?  ret: rg;
+		return rg;
 	}
 	
 	},
