@@ -195,21 +195,10 @@ var rg = {
 		rg.ajax("t=" + table + "&P1=" + col + "&P2=" + id, function(R){ 
 		
 		rg.RowPrint("Read Request Sent");
-		$.each(R, function(){ 
 		
-			rg.docWrite("<td>" + this.name + "</td><td>" + this.cost + "</td><td>" + this.coupon_code + "</td><td>" + this.in_stock + "</td><td>" + this.id + "</td>", "output", 1);
-		console.log(this);
-		
-		/*
-		for (i = 0, len = Object.keys(R).length; i < len; i++){
-			console.log(R[Object.keys(R)]);
-		
-		}
-		*/
-		
-		
-		
-		}); });
+		rg.docWrite( rg.tableMake(R) , "output", 1);
+		console.log(R);
+		});
 		return rg;
 	
 	},
@@ -292,13 +281,15 @@ var rg = {
 		
 		Arr.forEach(function(a){
 			
-			body += "<tr>";
-			Object.values(a).map(function(b){  
+			
+			Object.values(a).map(function(b){ 
+
+				rg.test(typeof b === typeof {});
 			
 				body += "<td>" + b + "</td>";
 			});
 			
-			body += "</tr>";
+			body = "<tr>" + body + "</tr>";
 		});
 		
 		
