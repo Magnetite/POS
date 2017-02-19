@@ -293,7 +293,7 @@ var rg = {
 		});
 		
 		
-		//console.log("<tr>" + heading + "</tr>");
+		
 		rg.docWrite("<tr>" + heading + "</tr>" + body, "output", 1);
 		return rg;
 	

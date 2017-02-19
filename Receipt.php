@@ -19,6 +19,11 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <body>
 
 <div class="jumbotron"><h1>Receipt Page</h1></div>
+<div class="btn btn-default"><a href = "Test_POS.php">Back to Cash Register</a></div>
+<br />
+
+<table class="col-md-6" id ="output">
+</table>
 
 </body>
 </html>
