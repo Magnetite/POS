@@ -271,6 +271,7 @@ var rg = {
 	tableMake: function(Arr){
 	
 		var heading = "";
+		var bodyLine = "";
 		var body = "";
 		
 		Object.keys(Arr[0]).map(function(a){
@@ -286,10 +287,11 @@ var rg = {
 
 				rg.test(typeof b === typeof {});
 			
-				body += "<td>" + b + "</td>";
+				bodyLine += "<td>" + b + "</td>";
 			});
 			
-			body = "<tr>" + body + "</tr>";
+			body += "<tr>" + bodyLine + "</tr>";  //bug fixed, 
+			bodyLine = "";
 		});
 		
 		
