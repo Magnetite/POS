@@ -196,7 +196,7 @@ var rg = {
 		
 		rg.RowPrint("Read Request Sent");
 		
-		rg.docWrite( rg.tableMake(R) , "output", 1);
+		rg.tableMake(R);
 		console.log(R);
 		});
 		return rg;
