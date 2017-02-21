@@ -1,0 +1,21 @@
+.denom {
+background-color: blue;
+//border-radius: 10px;
+color: white;
+width: 65px;
+height:40px;
+//margin: 10px 10px 10px 10px;
+font-size: 20px;
+}
+
+table, th, td {
+    border-bottom: 1px solid black; 
+	padding: 6px;
+}
+
+
+
+tr:hover {
+	background-color:lime;
+
+}

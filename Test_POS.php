@@ -13,35 +13,10 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <script src="JSPOS.js"></script> 
 
-
-
-<style>
-
-.denom {
-background-color: blue;
-//border-radius: 10px;
-color: white;
-width: 65px;
-height:40px;
-//margin: 10px 10px 10px 10px;
-font-size: 20px;
-}
-
-table, th, td {
-    border-bottom: 1px solid black; 
-	padding: 6px;
-}
+<link rel="stylesheet" href="POS_style.css">
 
 
 
-tr:hover {
-	background-color:lime;
-
-}
-
-
-
-</style>
 
 
 </head>

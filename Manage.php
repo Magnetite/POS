@@ -10,19 +10,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="JSPOS.js"></script>
 
-<style>
-table, th, td {
-    border-bottom: 1px solid black; 
-	padding: 6px;
-}
-
-
-
-tr:hover {
-	background-color:lime;
-
-}
-</style>
+<link rel="stylesheet" href="POS_style.css">
 
 </head>
 <body>
