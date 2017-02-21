@@ -285,7 +285,7 @@ var rg = {
 			
 			Object.values(a).map(function(b){ 
 
-				rg.test(typeof b === typeof {});
+				//rg.test(typeof b === typeof {});
 			
 				bodyLine += "<td>" + b + "</td>";
 			});
@@ -372,8 +372,13 @@ var rg = {
 	
 	receipt: function(){
 	
+		var ar = Object.values(rg.dict);
 	
+		
+		rg.tableMake(ar);
+		
 	
+		return rg;
 	
 	},
 	
@@ -665,6 +670,7 @@ $(document).ready(function(){
 						
 						rg.onklick("done", function(){ return rg.sale_complete();} );
 						rg.onklick("cash",  function(){ return rg.exact_change();} );
+						rg.onklick("print",  function(){ return rg.receipt();} );
 						
 						
 						rg.onklick("CreateRow",  function(){ return rg.CreateRow(); });

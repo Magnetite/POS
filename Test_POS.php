@@ -27,6 +27,18 @@ height:40px;
 font-size: 20px;
 }
 
+table, th, td {
+    border-bottom: 1px solid black; 
+	padding: 6px;
+}
+
+
+
+tr:hover {
+	background-color:lime;
+
+}
+
 
 
 </style>
@@ -43,7 +55,7 @@ font-size: 20px;
 		
 
 		
-		<div class="col-md-9">
+		<div class="col-md-6">
 		
 		
 			<div class="btn-group-vertical">
@@ -82,7 +94,7 @@ font-size: 20px;
 			
 		</div>
 		
-		<div class="col-md-3">
+		<div class="col-md-6">
 			<div id="list"></div>
 			<div id="subtotal" > Subtotal: 0</div>
 			<div id="tax" > Tax: 0</div>
@@ -92,8 +104,16 @@ font-size: 20px;
 			<div id="due">Due: 0</div>
 			<div id="change">Change: 0</div>
 		</div>
+		<div class="col-md-3">
+			
+		</div>
 	</div>
+	
+	
 </div>
+<br />
+
+<table id="output"></table>
 
 </body>
 </html>
