@@ -87,7 +87,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
 </div>
 <br />
-<div id="nav"></div> <div id="printer"></div>
+<div id="nav" class="btn btn-default">Back to register</div> <div id="printer" class="btn btn-default">print</div>
 <br />
 <table id="output"></table>
 

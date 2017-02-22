@@ -372,9 +372,7 @@ var rg = {
 	
 	receipt: function(){
 	
-		$('.container').hide();
-		$('#nav').addClass("btn btn-default").text("Back to Register").click(function(){ location.reload(); });
-		$('#printer').addClass("btn btn-default").text("print").click(function(){ window.print(); });
+		rg.toggleView();
 	
 		var ar = Object.values(rg.dict);
 	
@@ -384,6 +382,14 @@ var rg = {
 	
 		return rg;
 	
+	},
+	
+	toggleView: function(){
+	
+		$('.container').toggle();
+		$('#nav').toggle();
+		$('#printer').toggle();
+		$('#output').toggle();
 	},
 	
 	docWrite: function(out, id, mode){
@@ -684,6 +690,11 @@ $(document).ready(function(){
 						rg.onklick("ShowAll",  function(){ return rg.ReadAll(); });
 						rg.onklick("Clear",  function(){ return rg.docWrite("","output").docWrite("","outputLine"); });
 						
+						rg.onklick("nav", function(){ rg.toggleView(); });
+							$("#nav").hide();
+						rg.onklick("printer", function(){ window.print(); });
+							$("#printer").hide();
+							$("output").hide();
 						
 					
 	  });
