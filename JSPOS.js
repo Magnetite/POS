@@ -389,7 +389,7 @@ var rg = {
 		$('.container').toggle();
 		$('#nav').toggle();
 		$('#printer').toggle();
-		$('#output').toggle();
+		$('#output').toggle().html("");
 	},
 	
 	docWrite: function(out, id, mode){
@@ -694,7 +694,7 @@ $(document).ready(function(){
 							$("#nav").hide();
 						rg.onklick("printer", function(){ window.print(); });
 							$("#printer").hide();
-							$("output").hide();
+							$("#output").hide();
 						
 					
 	  });
