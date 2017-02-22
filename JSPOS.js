@@ -373,8 +373,8 @@ var rg = {
 	receipt: function(){
 	
 		$('.container').hide();
-		$('#nav').addClass("btn btn-default").text("Back to Register");
-		$('#printer').addClass("btn btn-default").text("print");
+		$('#nav').addClass("btn btn-default").text("Back to Register").click(function(){ location.reload(); });
+		$('#printer').addClass("btn btn-default").text("print").click(function(){ window.print(); });
 	
 		var ar = Object.values(rg.dict);
 	
