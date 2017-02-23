@@ -695,6 +695,8 @@ $(document).ready(function(){
 						rg.onklick("printer", function(){ window.print(); });
 							$("#printer").hide();
 							$("#output").hide();
+						rg.onklick("NextOrder", function(){ rg.toggleView(); rg.sale_complete(); });
+							$("NextOrder").hide();
 						
 					
 	  });
