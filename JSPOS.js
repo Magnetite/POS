@@ -410,55 +410,9 @@ var rg = {
 	
 	},
 	
-	tableWrite: function(Obj){
-	
-		if (rg.t_heading.length === 0){
-		
-			
-			var doc = document;
-			/*
-			var r = doc.createElement("div");
-			r.setAttribute("id", "output");
-			doc.body.appendChild(r);
-			*/
-		
-			doc.write("<thead><tr>");
-		
-			rg.t_heading = Object.keys(Obj);
-			
-			rg.t_heading.map(function(out){ doc.write("<th>" + out + "</th>"); });
-		
-			doc.write("</tr></thead>");
-			
-		}  
-		
-		rg.docWrite("<tr>", "output", 1);
-		
-		Object.values(Obj).map(function(g){ rg.docWrite("<td>" + g + "</td>", "output", 1); });
-		
-		rg.docWrite("</tr>", "output", 1);
-		
-	},
-	
-	tabWrite: function(Obj){
-	
-		var obKeys = Object.keys(Obj);
-		var obVals = Object.values(Obj);
-		var doc = document;
-	
-		
-		if ( !doc.getElementById("tab_head") ){
-		
-			rg.addElement("table", "DB_table", "", 0);  // TODO finish this
-			
-			rg.addElement("tr", "head_row", "DB_table", 1);
-			
-			obKeys.map( function(cur){ rg.addElement("td", "", "head_row", 1); });
-		
-		}
 	
 	
-	},
+	
 	
 	addElement: function(nu, id, addTo, mode, txt){
 	
@@ -696,7 +650,7 @@ $(document).ready(function(){
 							$("#printer").hide();
 							$("#output").hide();
 						rg.onklick("NextOrder", function(){ rg.toggleView(); rg.sale_complete(); });
-							$("NextOrder").hide();
+							$("#NextOrder").hide();
 						
 					
 	  });
