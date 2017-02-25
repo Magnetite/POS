@@ -274,6 +274,8 @@ var rg = {
 		var bodyLine = "";
 		var body = "";
 		
+		$("#output").show();
+		
 		Object.keys(Arr[0]).map(function(a){
 		
 			heading += "<th>" + a + "</th>";
