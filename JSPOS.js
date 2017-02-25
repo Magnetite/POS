@@ -389,6 +389,7 @@ var rg = {
 		$('.container').toggle();
 		$('#nav').toggle();
 		$('#printer').toggle();
+		$('#NextOrder').toggle();
 		$('#output').toggle().html("");
 	},
 	
