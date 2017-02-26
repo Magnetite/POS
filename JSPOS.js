@@ -308,7 +308,7 @@ var rg = {
 	
 		if (typeof (document.getElementById('outputLine').value !== 'undefined') && typeof (document.getElementById('outputLine').value !== null) ){
 		
-			document.getElementById('outputLine').innerHTML += "<br>" + msg;
+			document.getElementById('outputLine').innerHTML = "<br>" + msg;
 			
 		
 		} else {
@@ -417,34 +417,6 @@ var rg = {
 	
 	
 	
-	addElement: function(nu, id, addTo, mode, txt){
-	
-		//nu is the type of element to create, and "id" is its id.  
-		//addTo is the id of the parent element that receives the new element.
-	
-		var doc = document;
-		
-		var x = doc.createElement(nu);
-		
-		
-		if (txt){
-			
-			x.appendChild( doc.createTextNode(txt) );
-		} else if (id.length > 0) {
-			x.setAttribute("id", id);
-		}
-		
-		//Add to either the body, or to an element by an id
-		if (mode === 1){
-			doc.getElementById(addTo).appendChild(x);
-		} else if (mode === 0) {
-			doc.body.appendChild(x);
-		} 
-		
-		
-	return rg;
-	
-	},
 	
 	money_format: function(a, mode){                   //<= Rounds fractional cent
 	
