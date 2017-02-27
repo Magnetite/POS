@@ -37,7 +37,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	</div>
 	</div>
 	
-		
+		<br />
 		
 		<br /><div id="outputLine"> </div><br />
 		<table class="col-md-10" id ="output">

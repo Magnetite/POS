@@ -19,6 +19,16 @@ background-color: teal;
 
 }
 
+body{
+
+	background-color: tan;
+}
+
+.receipt, #output{
+
+	background-color:white;
+}
+
 
 
 tr:hover {

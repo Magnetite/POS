@@ -69,7 +69,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 			
 		</div>
 		
-		<div class="col-md-6">
+		<div class="receipt col-md-6">
 			<div id="list"></div>
 			<div id="subtotal" > Subtotal: 0</div>
 			<div id="tax" > Tax: 0</div>
