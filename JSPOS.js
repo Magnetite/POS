@@ -373,11 +373,25 @@ var rg = {
 	receipt: function(){
 	
 		rg.toggleView();
+		
+		var receiptArr = [];
+		var recOb = {};
 	
-		var ar = Object.values(rg.dict);
+		Object.values(rg.dict).forEach(function(cur, ind, ar){ 
+		
+		recOb.name = ar[ind].name;
+		recOb.cost = ar[ind].cost;
+		recOb.amount = ar[ind].max - ar[ind].stock;
+		
+		receiptArr[ind] = recOb;
+		
+		recOb = {};
+		
+			
+		});
 	
 		
-		rg.tableMake(ar);
+		rg.tableMake(receiptArr);
 		
 	
 		return rg;
