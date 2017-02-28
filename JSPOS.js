@@ -124,7 +124,7 @@ var rg = {
 	},
 	
 	
-	total_amt: function(){                        //<= Calculates total 
+	total_amt: function(){                        //<= Calculates and prints totals 
     
 		
 		if ( rg.subtotal >= 0){
@@ -133,8 +133,17 @@ var rg = {
 		rg.total = rg.money_format(rg.subtotal + rg.taxSub, 'r');
 		
 		
-		rg.prints("Total: " + rg.total, "total");
 		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
+		
+		rg.printTotals();
+		
+		
+		return rg;
+	},
+	
+	printTotals: function(){
+	
+		rg.prints("Total: " + rg.total, "total");
 		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), "tax"); //Fix, make taxSub variable instead
 		rg.prints("Paid:  " + rg.paid, "paid");
 		
@@ -146,8 +155,7 @@ var rg = {
 		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), "change");
 		rg.prints("Due:  " + rg.money_format(0, 'r'), "due");
 		}
-		
-		return rg;
+	
 	},
 	
 	amount_over: function(over){
@@ -385,6 +393,7 @@ var rg = {
 		recOb.Amount = ar[ind].max - ar[ind].stock;
 		recOb["Amount Cost"] = rg.money_format(ar[ind].price * recOb.Amount, "r"); 
 		sub += recOb["Amount Cost"]; 
+		sub = rg.money_format(sub,"r");
 		recOb.Subtotals = sub;
 		
 		receiptArr[ind] = recOb;
