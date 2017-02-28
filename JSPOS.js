@@ -385,6 +385,7 @@ var rg = {
 		var receiptArr = [];
 		var recOb = {};
 		var sub = 0;
+		var len = 0;
 	
 		Object.values(rg.dict).forEach(function(cur, ind, ar){ 
 		
@@ -399,13 +400,22 @@ var rg = {
 		receiptArr[ind] = recOb;
 		
 		recOb = {};
+		len++;
 		
 			
 		});
+		
+		receiptArr[len] = {"name": "--", "s1":"--","s2":"--","s3":"--", "num":"--"};
+		receiptArr[len + 1] = {"name": "Total:", "s1":"--","s2":"--","s3":"--", "num":rg.total};
+		receiptArr[len + 2] = {"name": "Tax:","s1":"--","s2":"--","s3":"--","num":rg.taxSub};
+		receiptArr[len + 3] = {"name": "Paid:","s1":"--","s2":"--","s3":"--", "num":rg.paid};
+		receiptArr[len + 4] = {"name": "Due:", "s1":"--","s2":"--","s3":"--", "num":rg.due};
+		receiptArr[len + 5] = {"name": "Change:","s1":"--","s2":"--","s3":"--", "num":rg.change};
+	
 	
 		
 		rg.tableMake(receiptArr);
-		rg.printTotals("rtotal","rtax","rpaid","rdue","rchange");
+		//rg.printTotals("rtotal","rtax","rpaid","rdue","rchange");
 		
 	
 		return rg;
