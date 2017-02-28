@@ -135,25 +135,25 @@ var rg = {
 		
 		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
 		
-		rg.printTotals();
+		rg.printTotals("total","tax","paid","due","change");
 		
 		
 		return rg;
 	},
 	
-	printTotals: function(){
+	printTotals: function(id1,id2,id3,id4,id5){
 	
-		rg.prints("Total: " + rg.total, "total");
-		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), "tax"); //Fix, make taxSub variable instead
-		rg.prints("Paid:  " + rg.paid, "paid");
+		rg.prints("Total: " + rg.total, id1);
+		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), id2); //Fix, make taxSub variable instead
+		rg.prints("Paid:  " + rg.paid, id3);
 		
 		if ((rg.total - rg.paid) >= 0){
-		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), "due");
-		rg.prints("Change:  " + rg.money_format(0, 'r'), "change");
+		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), id4);
+		rg.prints("Change:  " + rg.money_format(0, 'r'), id5);
 		
 		} else {
-		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), "change");
-		rg.prints("Due:  " + rg.money_format(0, 'r'), "due");
+		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), id5);
+		rg.prints("Due:  " + rg.money_format(0, 'r'), id4);
 		}
 	
 	},
@@ -405,6 +405,7 @@ var rg = {
 	
 		
 		rg.tableMake(receiptArr);
+		rg.printTotals("rtotal","rtax","rpaid","rdue","rchange");
 		
 	
 		return rg;
@@ -417,6 +418,7 @@ var rg = {
 		$('#nav').toggle();
 		$('#printer').toggle();
 		$('#NextOrder').toggle();
+		$('#rgtotals').toggle();
 		$('#output').toggle().html("");
 	},
 	
@@ -651,7 +653,7 @@ $(document).ready(function(){
 							$("#output").hide();
 						rg.onklick("NextOrder", function(){ rg.toggleView(); rg.sale_complete(); });
 							$("#NextOrder").hide();
-						
+							$("#rgtotals").hide();						
 					
 	  });
 

@@ -93,5 +93,14 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <br />
 <table id="output"></table>
 
+<div id="rgtotals" class="receipt col-md-6">
+			<div id="rtax" > Tax: 0</div>
+			<div id="rpaid" > Paid: 0</div>
+
+			<div id="rtotal">Total: 0</div>
+			<div id="rdue">Due: 0</div>
+			<div id="rchange">Change: 0</div>
+		</div>
+
 </body>
 </html>
