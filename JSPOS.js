@@ -15,8 +15,6 @@ var rg = {
 	lineNum: 0,
 	dup: 1,
 	receiptStr: "",
-	t_heading: [],
-	test_str: "",
 
     
 	
@@ -402,7 +400,7 @@ var rg = {
 		if (mode){
 		
 			doc.getElementById(id).innerHTML += out;
-			rg.test_str += out;
+			//rg.test_str += out;
 		} else {
 		
 			doc.getElementById(id).innerHTML = out;

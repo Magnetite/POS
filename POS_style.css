@@ -27,6 +27,8 @@ body{
 .receipt, #output{
 
 	background-color:white;
+	border-radius: 5px;
+	border: black;
 }
 
 
