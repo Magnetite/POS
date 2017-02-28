@@ -380,7 +380,7 @@ var rg = {
 		Object.values(rg.dict).forEach(function(cur, ind, ar){ 
 		
 		recOb.name = ar[ind].name;
-		recOb.cost = ar[ind].cost;
+		recOb.cost = ar[ind].price;
 		recOb.amount = ar[ind].max - ar[ind].stock;
 		
 		receiptArr[ind] = recOb;
