@@ -376,12 +376,16 @@ var rg = {
 		
 		var receiptArr = [];
 		var recOb = {};
+		var sub = 0;
 	
 		Object.values(rg.dict).forEach(function(cur, ind, ar){ 
 		
-		recOb.name = ar[ind].name;
-		recOb.cost = ar[ind].price;
-		recOb.amount = ar[ind].max - ar[ind].stock;
+		recOb.Name = ar[ind].name;
+		recOb["Unit Cost"] = ar[ind].price;
+		recOb.Amount = ar[ind].max - ar[ind].stock;
+		recOb["Amount Cost"] = rg.money_format(ar[ind].price * recOb.Amount, "r"); 
+		sub += recOb["Amount Cost"]; 
+		recOb.Subtotals = sub;
 		
 		receiptArr[ind] = recOb;
 		
