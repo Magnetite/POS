@@ -420,17 +420,16 @@ var rg = {
 		var d = Date().split(" ");
 		
 		receiptArr[len] = {"name": "--", "s1":"--","s2":"--","s3":"--", "num":"--"};
-		receiptArr[len + 1] = {"name": "Total:", "s1":"--","s2":"--","s3":"--", "num":rg.total};
-		receiptArr[len + 2] = {"name": "Tax:","s1":"--","s2":"--","s3":"--","num":rg.taxSub};
-		receiptArr[len + 3] = {"name": "Paid:","s1":"--","s2":"--","s3":"--", "num":rg.paid};
-		receiptArr[len + 4] = {"name": "Due:", "s1":"--","s2":"--","s3":"--", "num":due};
-		receiptArr[len + 5] = {"name": "Change:","s1":"--","s2":"--","s3":"--", "num":change};
-		receiptArr[len + 6] = {"name": "Date & Time:","s1":d[1],"s2":d[2],"s3":d[3], "num":d[4]};
+		receiptArr[len + 1] = {"name": "<b>Tax:</b>","s1":"--","s2":"--","s3":"--","num":rg.taxSub};
+		receiptArr[len + 2] = {"name": "<b>Total:</b>", "s1":"--","s2":"--","s3":"--", "num":rg.total};
+		receiptArr[len + 3] = {"name": "<b>Paid:</b>","s1":"--","s2":"--","s3":"--", "num":rg.paid};
+		receiptArr[len + 4] = {"name": "<b>Due:</b>", "s1":"--","s2":"--","s3":"--", "num":due};
+		receiptArr[len + 5] = {"name": "<b>Change:</b>","s1":"--","s2":"--","s3":"--", "num":change};
+		receiptArr[len + 6] = {"name": "<b>Date & Time:</b>","s1":d[1],"s2":d[2],"s3":d[3], "num":d[4]};
 	
 	
 		
 		rg.tableMake(receiptArr);
-		//rg.printTotals("rtotal","rtax","rpaid","rdue","rchange");
 		
 	
 		return rg;
