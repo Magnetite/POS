@@ -360,6 +360,7 @@ var rg = {
         rg.total = 0;
         rg.subtotal = 0;
         rg.tax_elgible = 0;
+		rg.taxSub = 0;
         rg.paid = 0;
         rg.change = 0;
 		rg.list = [];
