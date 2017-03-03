@@ -63,6 +63,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 			
 			
 			<div class="btn btn-default denom" > <a href="Manage.php">Manage DB</a></div>
+			<div class="btn btn-default denom" id="adjust" >Adjust Price</div>
 			</div>
 			<div class="btn-group-vertical" id = "menuButtons">
 			</div>

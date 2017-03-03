@@ -132,28 +132,26 @@ var rg = {
 		}
 		rg.total = rg.money_format(rg.subtotal + rg.taxSub, 'r');
 		
-		
-		rg.prints("Subtotal: " + rg.subtotal, "subtotal");
-		
-		rg.printTotals("total","tax","paid","due","change");
+		rg.printTotals("total","subtotal","tax","paid","due","change");
 		
 		
 		return rg;
 	},
 	
-	printTotals: function(id1,id2,id3,id4,id5){
+	printTotals: function(id1,id2,id3,id4,id5,id6){
 	
 		rg.prints("Total: " + rg.total, id1);
-		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), id2); //Fix, make taxSub variable instead
-		rg.prints("Paid:  " + rg.paid, id3);
+		rg.prints("Subtotal: " + rg.subtotal, id2);
+		rg.prints("Tax:  " + rg.money_format(rg.taxSub, 'r'), id3); 
+		rg.prints("Paid:  " + rg.paid, id4);
 		
 		if ((rg.total - rg.paid) >= 0){
-		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), id4);
-		rg.prints("Change:  " + rg.money_format(0, 'r'), id5);
+		rg.prints("Due:  " + rg.money_format(rg.total - rg.paid, 'r'), id5);
+		rg.prints("Change:  " + rg.money_format(0, 'r'), id6);
 		
 		} else {
-		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), id5);
-		rg.prints("Due:  " + rg.money_format(0, 'r'), id4);
+		rg.prints("Change:  " + rg.money_format(Math.abs(rg.total - rg.paid), 'r'), id6);
+		rg.prints("Due:  " + rg.money_format(0, 'r'), id5);
 		}
 	
 	},
@@ -172,10 +170,27 @@ var rg = {
 		
 		
 		rg.test(r);
+		//rg.test(a === null);  //<= Added 3-1-2017
+		if (a == null){ return rg;}
 		
 		a.price = r;
 		
-		rg.subtotal = rg.money_format( rg.subtotal - money_format(parseFloat(a.price), 'c' ) , 'c');   //<= Need to fix rounding error
+		rg.subtotal = rg.money_format( rg.subtotal - rg.money_format(parseFloat(a.price), 'c' ) , 'c');   //<= todo Need to fix rounding error
+		rg.total_amt(); 
+		return rg;
+	},
+	
+	adjust_price: function(){
+		
+		r = prompt("Enter Price Adjustment:","Value to subtract");
+		
+		
+		rg.test(r);
+		
+		rg.subtotal = rg.money_format( rg.subtotal - rg.money_format(parseFloat(r), 'c' ) , 'c');   //<= todo Need to fix rounding error
+		
+		rg.lineNum++;
+		rg.prints({name:"Adjustment", price: r}, "list");
 		rg.total_amt(); 
 		return rg;
 	},
@@ -493,9 +508,9 @@ var rg = {
 		
 		outStr += "<button onclick='rg.delTag(\"" + rg.lineNum  + "a\",\"" + out.price + "\", " + out.id + ")'>"; //<= Button with old onclick function
 		
-		outStr += out.name + "</button>"; //<= end button
+		outStr += out.name + "</button>"; //<= end of button
 		
-		outStr += "<button>$" + out.price + "</button></div>" //<= end 2nd button, and div
+		outStr += "<button onclick='rg.change_price(" +  ")'>$" + out.price + "</button></div>" //<= todo: fix this, so it updates checkout price
 		
 			rg.docWrite( outStr , id, 1); 
 			
@@ -668,6 +683,7 @@ $(document).ready(function(){
 						rg.onklick("UpdateRow",  function(){ return rg.UpdateRow(); });
 						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
 						rg.onklick("ShowAll",  function(){ return rg.ReadAll(); });
+						rg.onklick("adjust",  function(){ return rg.adjust_price(); });
 						rg.onklick("Clear",  function(){ return rg.docWrite("","output").docWrite("","outputLine"); });
 						
 						rg.onklick("nav", function(){ rg.toggleView(); });
@@ -680,5 +696,3 @@ $(document).ready(function(){
 							$("#rgtotals").hide();						
 					
 	  });
-
-	  
