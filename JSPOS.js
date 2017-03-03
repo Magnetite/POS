@@ -181,13 +181,16 @@ var rg = {
 	},
 	
 	adjust_price: function(){
+	
+		var r = 0;
 		
-		r = prompt("Enter Price Adjustment:","Value to subtract");
+		r = parseFloat(prompt("Enter Price Adjustment:","Value to subtract") );
 		
 		
 		rg.test(r);
+		if ( isNaN(r) ){ return;}
 		
-		rg.subtotal = rg.money_format( rg.subtotal + rg.money_format(parseFloat(r) * -1, 'c' ) , 'c');   //<= todo Need to fix rounding error
+		rg.subtotal = rg.money_format( rg.subtotal + rg.money_format(r * -1, 'c' ) , 'c');   //<= todo Need to fix rounding error
 		
 		rg.lineNum++;
 		rg.prints({name:"Adjustment", price: r * -1, id:0}, "list");
