@@ -187,10 +187,10 @@ var rg = {
 		
 		rg.test(r);
 		
-		rg.subtotal = rg.money_format( rg.subtotal - rg.money_format(parseFloat(r), 'c' ) , 'c');   //<= todo Need to fix rounding error
+		rg.subtotal = rg.money_format( rg.subtotal + rg.money_format(parseFloat(r) * -1, 'c' ) , 'c');   //<= todo Need to fix rounding error
 		
 		rg.lineNum++;
-		rg.prints({name:"Adjustment", price: r, id:0}, "list");
+		rg.prints({name:"Adjustment", price: r * -1, id:0}, "list");
 		rg.total_amt(); 
 		return rg;
 	},
