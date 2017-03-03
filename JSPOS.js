@@ -190,7 +190,7 @@ var rg = {
 		rg.subtotal = rg.money_format( rg.subtotal - rg.money_format(parseFloat(r), 'c' ) , 'c');   //<= todo Need to fix rounding error
 		
 		rg.lineNum++;
-		rg.prints({name:"Adjustment", price: r}, "list");
+		rg.prints({name:"Adjustment", price: r, id:0}, "list");
 		rg.total_amt(); 
 		return rg;
 	},
@@ -544,12 +544,13 @@ var rg = {
 	
 	delTag: function(id, price, index){
 		
-		
+		//todo: MAKE A WAY OF KEEPONG TRACK OF DISCOUNTS!
+		if (index !== 0){
 		
 		rg.dict[index].stock += 1; 
 		
 		if (rg.dict[index].stock === rg.dict[index].max){ delete rg.dict[index]};
-	
+		}
 	
 		var del = document.getElementById(id);
 		del.parentNode.removeChild(del);
