@@ -633,12 +633,12 @@ $(document).ready(function(){
 						
 						$.each(r, function(){
 						
-						var a = "btn-default";
+						var a = "btn-primary";
 						if (this.in_stock < 20){
 								a = "btn-danger";
 							}
 							
-							$('#menuButtons').append('<div class="btn ' + a + ' " id="' + this.id + '" >' + this.name + '</div>');
+							$('#menuButtons').append('<div class="btn ' + a + ' " id="' + this.id + '" >' + this.name + "  &nbsp;<span class='badge'>" + this.in_stock + '</span></div>');
 							var fcost = this.cost;
 							var fname = this.name;
 							var fstock = this.in_stock;
