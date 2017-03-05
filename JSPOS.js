@@ -374,6 +374,9 @@ var rg = {
 		return;
 		
 		}
+		
+		Object.values(rg.dict).forEach(function(cur){  rg.buttonBadge(cur); });
+		
 	
         rg.total = 0;
         rg.subtotal = 0;
@@ -394,8 +397,29 @@ var rg = {
 		rg.clear("tax", "Tax:  0");
 		rg.clear("change", "Change:  0");
 		
+		
+		
+		
         return rg;
     },
+	
+	buttonBadge: function(b){
+				
+				/*
+				var a = "btn-primary";
+				
+				if (this.in_stock < 20){
+					a = "btn-danger";
+				}
+				*/
+				
+				
+				
+				$("#" + b.id).children().text(b.stock);
+				
+		return rg;
+	
+	},
 	
 	receipt: function(){
 	
