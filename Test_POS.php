@@ -33,7 +33,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<div class="col-md-7 col-sm-7 col-xs-7">
 		
 		
-			<div class="btn-group btn-group-lg">
+			<div class="btn-group btn-group-lg btn-group-justified">
 				<div class=" btn btn-primary" id="1d"> $1</div>
 				<div class=" btn btn-primary" id="5d"> $5</div>
 				<div class=" btn btn-primary" id="10d"> $10</div>
@@ -41,14 +41,14 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 				<div class=" btn btn-primary" id="50d"> $50</div>
 			</div>
 		
-			<div class="btn-group btn-group-lg">
+			<div class="btn-group btn-group-lg btn-group-justified">
 				<div class="btn btn-primary " id="Nearest5" >Nearest .05</div>
 				<div class="btn btn-primary " id="Nearest10" >Nearest .10</div> 
 				<div class="btn btn-primary " id="Nearest25" >Nearest .25</div> 
 				<div class="btn btn-primary " id="NearestD" >Nearest 1.00</div> 
 			</div>
 			
-			<div class="btn-group btn-group-lg">
+			<div class="btn-group btn-group-lg btn-group-justified">
 				<div class="btn btn-primary " id="More1" >$1 More</div> 
 				<div class="btn btn-primary " id="More5" >$5 More</div>
 				<div class="btn btn-primary " id="More10" >$10 More</div>
