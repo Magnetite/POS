@@ -15,6 +15,7 @@ var rg = {
 	lineNum: 0,
 	dup: 1,
 	receiptStr: "",
+	menuOb: {},
 
     
 	
@@ -46,9 +47,9 @@ var rg = {
 								
 						} else {
 							
-							
+							a.stock--;
 							rg.dict[a.id] = a;
-							rg.dict[a.id].stock -= 1;  //Check for non zero stock!  1/14
+							//rg.dict[a.id].stock -= 1;  //Check for non zero stock!  1/14
 						}
 						
 						
@@ -375,7 +376,12 @@ var rg = {
 		
 		}
 		
-		Object.values(rg.dict).forEach(function(cur){  rg.buttonBadge(cur); });
+		Object.values(rg.dict).forEach(function(cur){  
+		
+		rg.buttonBadge(cur);
+		rg.menuOb[cur.id].stock = cur.stock;
+		
+		});
 		
 	
         rg.total = 0;
@@ -670,9 +676,16 @@ $(document).ready(function(){
 							var fname = this.name;
 							var fstock = this.in_stock;
 							var fid = this.id;
+							
+							rg.menuOb[this.id] = {id:fid, name:fname, price:fcost, stock:fstock, max:fstock};
+							
 							$('#' + this.id).bind("click", function(){
+							
+							
 								
-								rg.ring_up({id:fid, name:fname, price:fcost, stock:fstock, max:fstock});
+								
+								//TODO: fix bug!!! 
+								rg.ring_up(rg.menuOb[this.id]);
 								
 							})
 							
