@@ -379,7 +379,7 @@ var rg = {
 		Object.values(rg.dict).forEach(function(cur){  
 		
 		rg.buttonBadge(cur);
-		rg.menuOb[cur.id].stock = cur.stock;
+		//rg.menuOb[cur.id].stock = cur.stock;
 		
 		});
 		
@@ -410,18 +410,21 @@ var rg = {
     },
 	
 	buttonBadge: function(b){
+
+				if (b.stock < 20){
 				
-				/*
-				var a = "btn-primary";
+					$("#" + b.id).removeClass("btn-primary");
+					$("#" + b.id).addClass("btn-danger");
+					
+				} else {
 				
-				if (this.in_stock < 20){
-					a = "btn-danger";
+					$("#" + b.id).removeClass("btn-danger");
+					$("#" + b.id).addClass("btn-primary");
 				}
-				*/
-				
 				
 				
 				$("#" + b.id).children().text(b.stock);
+				
 				
 		return rg;
 	
