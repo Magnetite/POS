@@ -22,12 +22,14 @@ var rg = {
 	
 	
     ring_up: function(a){                          //<= updates total and subtotal, parameter 'a' is an Object
-        rg.subtotal = rg.money_format(rg.subtotal + a.price, 'r');  
+        
 		
 		
 		
 			//Modify this loop?  1/14 
 			while(rg.dup > 0){
+			
+			rg.subtotal = rg.money_format(rg.subtotal + a.price, 'r');  //<= Update subtotal every iteration
 		
 						if ( rg.dict.hasOwnProperty(a.id) )
 						{
