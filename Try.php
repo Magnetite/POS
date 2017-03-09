@@ -12,7 +12,7 @@ try
 				
 				
 				
-				
+				$managerPass = "orange322"; // TODO: Replace this with a call to a database
 				
 				$table = "menu";
 				
@@ -27,8 +27,10 @@ try
 				
 				if (isset($_GET['c']) ){
 				
+				if ($_GET['mp'] == $managerPass){
+				
 					Creater($table, $handle);
-					
+				}
 					
 					
 					
@@ -60,8 +62,10 @@ try
 					
 				} else if (isset($_GET['d'])){
 				
-				
-				Deleter($table, $handle);
+					if ($_GET['mp'] == $managerPass){
+					
+						Deleter($table, $handle);
+					} 
 				    
 				}
 				

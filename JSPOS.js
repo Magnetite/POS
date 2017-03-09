@@ -207,11 +207,12 @@ var rg = {
 	
 	CreateRow: function(){
 	
-		
+		var pass = prompt("Enter your Manager password","");
+		console.log(pass);
 		var c = prompt("Enter a comma separated list of values to enter into DB. 'name',cost,coupon_code,stock,id","");
 		rg.test(c);
 		
-		rg.ajax("c=" + c, function(){rg.RowPrint("Request Sent");});
+		rg.ajax("c=" + c + "&mp=" + pass, function(){rg.RowPrint("Request Sent");});
 		
 		return rg;
 	
@@ -282,13 +283,13 @@ var rg = {
 	
 	DeleteRow: function(){
 	
-		//Testing...
+		var pass = prompt("Enter your Manager password","");
 		var d = prompt("Enter exact name of item to delete from database:", "");
 		
 		rg.test(d);
 		
 		//Uses name as an id to find and delete an item from database. The name is required to be quoted.
-		rg.ajax("d='" + d + "'" ,function(){rg.RowPrint("Request Sent"); });
+		rg.ajax("d='" + d + "'&mp=" + pass,function(){rg.RowPrint("Request Sent"); });
 		
 		return rg;
 		
