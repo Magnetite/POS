@@ -1,6 +1,7 @@
 
 <?php
 
+$managerPass = "orange322"; // TODO: Replace this with a call to a database
 
 function TryC(){
 try
@@ -12,7 +13,7 @@ try
 				
 				
 				
-				$managerPass = "orange322"; // TODO: Replace this with a call to a database
+				
 				
 				$table = "menu";
 				
@@ -125,7 +126,7 @@ try
 			
 			
 			
-			if (isset($_GET['u1']) ){
+			if (isset($_GET['u1']) && $_GET['mp'] == $managerPass ){
 					
 					
 					
