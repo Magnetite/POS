@@ -183,6 +183,19 @@ try
 					Executer($h,$query);
 							
 				}
+				
+			
+			function UpdateColumn( $ta, $h, $name, $colArr){
+			
+			
+			for ($i = 0, $len = count($colArr); $i < $len; $i++){
+			
+				$query = "UPDATE " . $ta . " SET " . $name . " = " . $colArr[i] . " WHERE  id = " . $i;
+				
+				Executer($h,$query);
+			
+				}
+			}
 			
 			
 			function Executer($h,$q){
