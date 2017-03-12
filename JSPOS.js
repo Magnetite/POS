@@ -212,7 +212,7 @@ var rg = {
 		var c = prompt("Enter a comma separated list of values to enter into DB. 'name',cost,coupon_code,stock,id","");
 		rg.test(c);
 		
-		rg.ajax("c=" + c + "&mp=" + pass, function(){rg.RowPrint("Request Sent");});
+		rg.ajax("c=" + c + "&mp=" + pass, () => rg.RowPrint("Request Sent") );
 		
 		return rg;
 	
@@ -256,8 +256,8 @@ var rg = {
 		
 		
 		rg.docWrite("<caption>Table: " + table + "</caption>", "output", 1);
-		//rg.ajax("t=" + table + "&r1=1", function(result){ JSON.stringify(result).split("},{").map(function(a){ rg.docWrite("<td>" + JSON.stringify(a).replace(/[{}"\\ \[\]]/g, "").replace(/,/g, "</td><td>") + "<br /></td>", "output", 1); }); });
-		rg.ajax("t=" + table + "&r1=1", function(result){ rg.tableMake(result); });
+		
+		rg.ajax("t=" + table + "&r1=1", result => rg.tableMake(result) );
 		
 		
 	},
@@ -277,7 +277,7 @@ var rg = {
 		var send = input.split("-");
 		
 		
-		rg.ajax("t=menu&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2] +"&mp=" + mp, function(){rg.RowPrint("Update Request sent"); });  //<= Finish this
+		rg.ajax("t=menu&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2] +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= todo Finish this
 		return rg;
 	
 	},
@@ -367,11 +367,7 @@ var rg = {
 	
 		if (rg.paid >= rg.total){
 	
-				rg.ajax("u=" + str, function(){
-				//test 
-				console.log("Request Successful");
-				
-				} )
+				rg.ajax("u=" + str,() => console.log("Request Successful") );
 				
 		} else { 
 		
@@ -383,7 +379,6 @@ var rg = {
 		Object.values(rg.dict).forEach(function(cur){  
 		
 		rg.buttonBadge(cur);
-		//rg.menuOb[cur.id].stock = cur.stock;
 		
 		});
 		
@@ -642,9 +637,7 @@ var rg = {
 					url: "xserver.php",
 					data: data_str,
 					dataType: "json",
-					success: function(result){
-					callback(result);
-					}
+					success: result => callback(result),
 					
 					})
 	
@@ -704,48 +697,52 @@ $(document).ready(function(){
 
 
 
-						rg.onklick("50d", function(){ return rg.cash_button(50);} )
-						rg.onklick("20d", function(){ return rg.cash_button(20);})
-						rg.onklick("10d", function(){ return rg.cash_button(10);} )
-						rg.onklick("5d", function(){ return rg.cash_button(5);})
-						rg.onklick("1d", function(){ return rg.cash_button(1);})
 						
-						rg.onklick("exact", function(){ return rg.exact_change(rg.total); });
-						
-						rg.onklick("Dup", function(){ return rg.duplicate(); });
-						
-						rg.onklick("NearestD", function(){ return rg.nearest_amount(100); });
-						rg.onklick("Nearest25", function(){ return rg.nearest_amount(25); });
-						rg.onklick("Nearest10", function(){ return rg.nearest_amount(10); });
-						rg.onklick("Nearest5", function(){ return rg.nearest_amount(5); });
+						rg.onklick("50d", () => rg.cash_button(50) );
+						rg.onklick("20d", () => rg.cash_button(20) );
+						rg.onklick("10d", () => rg.cash_button(10) );
+						rg.onklick("5d", () => rg.cash_button(5) );
+						rg.onklick("1d", () => rg.cash_button(1) );
 						
 						
-						rg.onklick("More50", function(){ return rg.amount_over(50); });
-						rg.onklick("More20", function(){ return rg.amount_over(20); });
-						rg.onklick("More10", function(){ return rg.amount_over(10); });
-						rg.onklick("More5", function(){ return rg.amount_over(5); });
-						rg.onklick("More1", function(){ return rg.amount_over(1); });
+						
+						rg.onklick("NearestD", () => rg.nearest_amount(100) );
+						rg.onklick("Nearest25", () =>  rg.nearest_amount(25) );
+						rg.onklick("Nearest10", () => rg.nearest_amount(10) );
+						rg.onklick("Nearest5", () =>  rg.nearest_amount(5) );
 						
 						
-						rg.onklick("done", function(){ return rg.sale_complete();} );
-						rg.onklick("cash",  function(){ return rg.exact_change();} );
-						rg.onklick("print",  function(){ return rg.receipt();} );
+						rg.onklick("More50", () =>   rg.amount_over(50) );
+						rg.onklick("More20", () =>   rg.amount_over(20) );
+						rg.onklick("More10", () =>   rg.amount_over(10) );
+						rg.onklick("More5", () =>   rg.amount_over(5) );
+						rg.onklick("More1", () =>   rg.amount_over(1) );
 						
 						
-						rg.onklick("CreateRow",  function(){ return rg.CreateRow(); });
-						rg.onklick("ReadRow",  function(){ return rg.ReadRow_test(); });
-						rg.onklick("UpdateRow",  function(){ return rg.UpdateRow(); });
-						rg.onklick("DeleteRow",  function(){ return rg.DeleteRow(); });
-						rg.onklick("ShowAll",  function(){ return rg.ReadAll(); });
-						rg.onklick("adjust",  function(){ return rg.adjust_price(); });
-						rg.onklick("Clear",  function(){ return rg.docWrite("","output").docWrite("","outputLine"); });
+						rg.onklick("exact", () =>   rg.exact_change(rg.total) );
 						
-						rg.onklick("nav", function(){ rg.toggleView(); });
+						rg.onklick("Dup", () =>   rg.duplicate() );
+						
+						
+						rg.onklick("done", () =>   rg.sale_complete() );
+						rg.onklick("cash",  () =>   rg.exact_change()  );
+						rg.onklick("print",  () =>   rg.receipt()  );
+						
+						
+						rg.onklick("CreateRow",  () =>   rg.CreateRow());
+						rg.onklick("ReadRow",  () =>   rg.ReadRow_test() );
+						rg.onklick("UpdateRow",  () =>   rg.UpdateRow() );
+						rg.onklick("DeleteRow",  () =>   rg.DeleteRow() );
+						rg.onklick("ShowAll",  () =>   rg.ReadAll() );
+						rg.onklick("adjust",  () =>   rg.adjust_price() );
+						rg.onklick("Clear",  () =>   rg.docWrite("","output").docWrite("","outputLine") );
+						
+						rg.onklick("nav", () =>  rg.toggleView() );
 							$("#nav").hide();
-						rg.onklick("printer", function(){ window.print(); });
+						rg.onklick("printer", () =>  window.print() );
 							$("#printer").hide();
 							$("#output").hide();
-						rg.onklick("NextOrder", function(){ rg.toggleView(); rg.sale_complete(); });
+						rg.onklick("NextOrder", () =>  {rg.toggleView(); rg.sale_complete();} );
 							$("#NextOrder").hide();
 							$("#rgtotals").hide();						
 					
