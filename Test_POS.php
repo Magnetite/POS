@@ -62,7 +62,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 				<div class="btn btn-primary " id="Dup" >Quantity</div>
 				<div class="btn btn-primary " id="print" >Print Receipt</div>
 				<div class="btn btn-primary " id="done" >Done</div>		
-				<div class="btn btn-primary" > <a href="Manage.php">Manage DB</a></div>
+			 <a href="Manage.php" class="btn btn-primary">Manage DB</a>
 				<div class="btn btn-primary " id="adjust" >Adjust Price</div>
 			</div>
 			
@@ -90,7 +90,10 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
 </div>
 <br />
-<div id="nav" class="btn btn-primary">Back to register</div> <div id="printer" class="btn btn-primary">print</div>
+<div id="nav" class="btn btn-primary">
+
+<span class="glyphicon glyphicon-arrow-left"></span>  Back to register</div> <div id="printer" class="btn btn-primary">
+   <span class="glyphicon glyphicon-print"></span>  print</div>
 <br />
 <div id="NextOrder" class="btn btn-primary">Next Order</div>
 <br />

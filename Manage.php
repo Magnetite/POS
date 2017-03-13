@@ -14,7 +14,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 </head>
 <body>
-<div class="btn btn-default"><a href="Test_POS.php">Back to Register</a></div>
+<a href="Test_POS.php" class="btn btn-default">Back to Register</a>
 
 
 
