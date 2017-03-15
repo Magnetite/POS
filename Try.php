@@ -61,6 +61,13 @@ try
 					Updater($table, $handle);
 					
 					
+				} else if (isset($_GET['uc']) ){
+				
+				
+					
+					UpdateColumn($table, $handle);
+					
+					
 				} else if (isset($_GET['d'])){
 				
 					if ($_GET['mp'] == $managerPass){
@@ -185,16 +192,16 @@ try
 				}
 				
 			
-			function UpdateColumn( $ta, $h, $name, $colArr){
+			function UpdateColumn( $ta, $h){
 			
 				if ($_GET['mp'] == $managerPass){
 				
 				
+				$colArr = explode("-", $_GET['uc']);
 				
-				
-					for ($i = 0, $len = count($colArr); $i < $len; $i++){
+					for ($i = 1, $len = count($colArr); $i < $len; $i++){
 					
-						$query = "UPDATE " . $ta . " SET " . $name . " = " . $colArr[i] . " WHERE  id = " . $i;
+						$query = "UPDATE " . $ta . " SET " . $colArr[0] . " = " . $colArr[i] . " WHERE  id = " . $i;
 						
 						Executer($h,$query);
 						}
