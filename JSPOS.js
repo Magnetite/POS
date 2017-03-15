@@ -1,5 +1,4 @@
 
-//Experimental POS script
 //rg is short for register
 
 var rg = {
@@ -10,7 +9,6 @@ var rg = {
 	taxSub: 0,
     paid: 0,
     change: 0,
-	list: [],
 	dict: {},
 	lineNum: 0,
 	dup: 1,
@@ -389,7 +387,7 @@ var rg = {
 		rg.taxSub = 0;
         rg.paid = 0;
         rg.change = 0;
-		rg.list = [];
+		
 		rg.dict = {};
 		rg.lineNum = 0;
 		
