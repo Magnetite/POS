@@ -278,6 +278,21 @@ var rg = {
 		rg.ajax("t=menu&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2] +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= todo Finish this
 		return rg;
 	
+	}, 
+	
+	UpdateColumn: function(){    //TODO: finish this function
+	
+		//Test phase
+		var mp = prompt("Enter manager password");
+		var input = prompt("Please type query like so:  'Column_Name-Value1-Value2-Value3'", "");
+		
+		//Check if string is empty
+		rg.test(input);  
+		
+		
+		rg.ajax("t=menu&uc=" + " " +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= todo Finish this
+		return rg;
+	
 	},
 	
 	DeleteRow: function(){
