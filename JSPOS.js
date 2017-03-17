@@ -275,7 +275,7 @@ var rg = {
 		var send = input.split("-");
 		
 		
-		rg.ajax("t=menu&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2] +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= todo Finish this
+		rg.ajax("t=menu&u1=" + send[0] + "&u2=" + send[1] + "&u3=" + send[2] +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= TODO: Constant hard coded in!
 		return rg;
 	
 	}, 
@@ -290,7 +290,7 @@ var rg = {
 		rg.test(input);  
 		
 		
-		rg.ajax("t=menu&uc=" + " " +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= todo Finish this
+		rg.ajax("t=menu&uc=" + input +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  // <= TODO:  constant hard coded in!
 		return rg;
 	
 	},
@@ -745,6 +745,8 @@ $(document).ready(function(){
 						rg.onklick("CreateRow",  () =>   rg.CreateRow());
 						rg.onklick("ReadRow",  () =>   rg.ReadRow_test() );
 						rg.onklick("UpdateRow",  () =>   rg.UpdateRow() );
+						rg.onklick("UpdateColumn",  () =>   rg.UpdateColumn() );
+						rg.onklick("UpdateInven",  () =>   rg.UpdateColumn() ); //TODO: make functionette for Updating stock
 						rg.onklick("DeleteRow",  () =>   rg.DeleteRow() );
 						rg.onklick("ShowAll",  () =>   rg.ReadAll() );
 						rg.onklick("adjust",  () =>   rg.adjust_price() );
