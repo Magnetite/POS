@@ -295,6 +295,21 @@ var rg = {
 	
 	},
 	
+	UpdateInven: function(){
+	
+		//Test phase
+		var mp = prompt("Enter manager password");
+		var input = prompt("Please type query like so:  'Value1-Value2-Value3'", "");
+		
+		//Check if string is empty
+		rg.test(input);  
+		
+		
+		rg.ajax("t=menu&uc=" + input +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  // <= TODO:  constant hard coded in!
+		return rg;
+	
+	},
+	
 	DeleteRow: function(){
 	
 		var pass = prompt("Enter your Manager password","");
@@ -395,8 +410,14 @@ var rg = {
 		
 		});
 		
+		rg.reset();
 	
-        rg.total = 0;
+        return rg;
+    },
+	
+	reset: function(){
+	
+		rg.total = 0;
         rg.subtotal = 0;
         rg.tax_elgible = 0;
 		rg.taxSub = 0;
@@ -415,11 +436,11 @@ var rg = {
 		rg.clear("tax", "Tax:  0");
 		rg.clear("change", "Change:  0");
 		
+		return rg;
 		
-		
-		
-        return rg;
-    },
+	
+	
+	},
 	
 	buttonBadge: function(b){
 
@@ -740,6 +761,7 @@ $(document).ready(function(){
 						rg.onklick("done", () =>   rg.sale_complete() );
 						rg.onklick("cash",  () =>   rg.exact_change()  );
 						rg.onklick("print",  () =>   rg.receipt()  );
+						rg.onklick("cancel",  () =>   rg.reset()  );
 						
 						
 						rg.onklick("CreateRow",  () =>   rg.CreateRow());

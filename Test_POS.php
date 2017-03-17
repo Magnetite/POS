@@ -64,6 +64,7 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 				<div class="btn btn-primary " id="done" >Done</div>		
 			 <a href="Manage.php" class="btn btn-primary">Manage DB</a>
 				<div class="btn btn-primary " id="adjust" >Adjust Price</div>
+				<div class="btn btn-primary " id="cancel" >Cancel Order*</div>
 			</div>
 			
 			<div class="btn-group-vertical" id = "menuButtons">
