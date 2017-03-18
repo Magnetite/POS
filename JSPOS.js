@@ -260,6 +260,23 @@ var rg = {
 		
 	},
 	
+	UpdateR: function(format, callback){
+	
+		//Test phase
+		
+		var mp = prompt("Enter manager password");
+		var input = prompt("Please type query like so: " + format, "");
+		
+		//Check if string is empty
+		rg.test(input);  
+		
+		
+		rg.ajax("t=menu" + callback(input) +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  //<= TODO: Constant hard coded in!
+		return rg;
+	
+	}, 
+	
+	
 	
 	
 	UpdateRow: function(){
