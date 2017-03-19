@@ -299,16 +299,9 @@ var rg = {
 	
 	UpdateColumn: function(){    //TODO: finish this function
 	
-		//Test phase
-		var mp = prompt("Enter manager password");
-		var input = prompt("Please type query like so:  'Column_Name-Value1-Value2-Value3'", "");
-		
-		//Check if string is empty
-		rg.test(input);  
-		
-		
-		rg.ajax("t=menu&uc=" + input +"&mp=" + mp, () => rg.RowPrint("Update Request sent") );  // <= TODO:  constant hard coded in!
-		return rg;
+		rg.UpdateR("Name-Value1-Value2-Value3", function(ar){ 
+			return "&uc=" + ar;
+		});
 	
 	},
 	
