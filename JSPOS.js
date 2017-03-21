@@ -723,7 +723,7 @@ $(document).ready(function(){
 							
 							rg.menuOb[this.id] = {id:fid, name:fname, price:fcost, stock:fstock, max:fstock};
 							
-							$('#' + this.id).bind("click", function(){
+							$('#' + this.id).bind("click", () => {
 							
 							
 								
