@@ -39,13 +39,14 @@ href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
 	</div>
 	</div>
+	<div class="col-md-10">
 	
 		<br />
 		
 		<br /><div id="outputLine"> </div><br />
-		<table class="col-md-10" id ="output">
+		<table  id ="output">
 		</table>
-		
+	</div>	
 		
 	</div>
 	</div>
